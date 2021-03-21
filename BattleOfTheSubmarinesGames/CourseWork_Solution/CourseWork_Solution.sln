@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31019.35
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Submarine_Library", "Submarine_Library\Submarine_Library.csproj", "{78AD86EE-2415-4DF4-A161-74C3ECFCAADE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{78AD86EE-2415-4DF4-A161-74C3ECFCAADE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78AD86EE-2415-4DF4-A161-74C3ECFCAADE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78AD86EE-2415-4DF4-A161-74C3ECFCAADE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78AD86EE-2415-4DF4-A161-74C3ECFCAADE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2429C2F1-CCE6-4742-963A-C17540105FC6}
+	EndGlobalSection
+EndGlobal
