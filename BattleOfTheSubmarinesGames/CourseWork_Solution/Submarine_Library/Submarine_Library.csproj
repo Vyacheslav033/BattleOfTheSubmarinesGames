@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Destroyer\Destroyer.cs" />
+    <Compile Include="Destroyer\Mina.cs" />
     <Compile Include="SubmarineDecorator\Ammunition.cs" />
     <Compile Include="SubmarineDecorator\Armor.cs" />
     <Compile Include="SubmarineDecorator\Life.cs" />

@@ -13,11 +13,12 @@ namespace Submarine_Library.Torpedos
     {
         /// <summary>
         /// Конструктор торпеды.
-        /// </summary>
-        /// <param name="speed"> Скорость. </param>
-        /// <param name="lifeDamage"> Урон. </param>
-        /// <param name="armorDamage"> Бронепробиваемость. </param>
-        /// <param name="firingSpeed"> Скорострельность. </param>
-        public IceTorpedo(double speed, int lifeDamage, int armorDamage, double firingSpeed) : base(speed, lifeDamage, armorDamage, firingSpeed) { }
+        /// </summary>  
+        public IceTorpedo() 
+        {
+            Speed = 15;
+            LifeDamage = 10;
+            ArmorDamage = 15; 
+        }
     }
 }

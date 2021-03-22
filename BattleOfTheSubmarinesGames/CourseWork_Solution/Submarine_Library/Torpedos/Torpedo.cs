@@ -14,36 +14,16 @@ namespace Submarine_Library.Torpedos
         /// <summary>
         /// Скорость торпеды.
         /// </summary>
-        public double Speed { get; private set; }
+        public double Speed { get; protected set; }
 
         /// <summary>
         /// Урон торпеды.
         /// </summary>
-        public int LifeDamage { get; private set; }
+        public int LifeDamage { get; protected set; }
 
         /// <summary>
         /// Бронепробиваемость.
         /// </summary>
-        public int ArmorDamage { get; private set; }
-
-        /// <summary>
-        /// Скорострельность торпеды.
-        /// </summary>
-        public double FiringSpeed { get; private set; }
-
-        /// <summary>
-        /// Конструктор торпеды.
-        /// </summary>
-        /// <param name="speed"> Скорость. </param>
-        /// <param name="lifeDamage"> Урон. </param>
-        /// <param name="armorDamage"> Бронепробиваемость. </param>
-        /// <param name="firingSpeed"> Скорострельность. </param>
-        public Torpedo(double speed, int lifeDamage, int armorDamage, double firingSpeed)
-        {
-            Speed = speed;
-            LifeDamage = lifeDamage;
-            ArmorDamage = armorDamage;
-            FiringSpeed = firingSpeed;
-        }
+        public int ArmorDamage { get; protected set; }
     }
 }

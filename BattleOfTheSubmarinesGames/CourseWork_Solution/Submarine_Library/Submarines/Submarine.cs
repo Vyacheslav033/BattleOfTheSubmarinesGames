@@ -11,36 +11,43 @@ namespace Submarine_Library
         /// <summary>
         /// Количество жизней.
         /// </summary>
-        public int Life { get; private set; }
+        public int Life { get; protected set; }
 
         /// <summary>
         /// Скорость лодки.
         /// </summary>
-        public double Speed { get; private set; }
+        public double Speed { get; protected set; }
 
         /// <summary>
         /// Броня.
         /// </summary>
-        public int Armor { get; private set; }
+        public int Armor { get; protected set; }
 
         /// <summary>
         /// Торпеды.
         /// </summary>
-        public List<Torpedo> Ammunition { get; private set; }
+        public List<Torpedo> Ammunition { get; protected set; }
 
         /// <summary>
         ///  Конструктор лодки.
         /// </summary>
-        /// <param name="life"> Жизни. </param>
-        /// <param name="speed"> Скорость. </param>
-        /// <param name="armor"> Броня. </param>
         /// <param name="ammunition"> Торпеды. </param>
-        public Submarine(int life, double speed, int armor, List<Torpedo> ammunition)
+        public Submarine(List<Torpedo> ammunition)
         {
-            Life = life;
-            Speed = speed;
-            Armor = armor;
+            Life = 100;
+            Speed = 15;
+            Armor = 100;
             Ammunition = ammunition;
+        }
+
+        /// <summary>
+        ///  Получение урона
+        /// </summary>
+        /// <param name="lifeDamage"></param>
+        public void TakingDamage(int lifeDamage, int armorDamage)
+        {
+            Life += lifeDamage;
+            Armor += armorDamage;
         }
     }
 }

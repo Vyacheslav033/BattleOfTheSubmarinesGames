@@ -1,13 +1,23 @@
-﻿using System;
+﻿using Submarine_Library.Torpedos;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Submarine_Library.SubmarineDecorator
 {
     public abstract class SubmarineDecorator : Submarine
     {
+        /// <summary>
+        /// Декорируемая лодка.
+        /// </summary>
+        protected Submarine submarine;
 
+        /// <summary>
+        /// Конструктор.
+        /// </summary>
+        /// <param name="ammunition"> Торпеды. </param>
+        /// <param name="submarine"> Декорируемая лодка. </param>
+        public SubmarineDecorator(List<Torpedo> ammunition, Submarine submarine) : base( ammunition )
+        {
+            this.submarine = submarine;
+        }
     }
 }
