@@ -8,6 +8,6 @@ namespace Submarine_Library.SubmarineFactoryMethod
 {
     public abstract class Creator
     {
-        public abstract Bonus FactoryMethod();
+        public abstract Bonus CreateBonus();
     }
 }

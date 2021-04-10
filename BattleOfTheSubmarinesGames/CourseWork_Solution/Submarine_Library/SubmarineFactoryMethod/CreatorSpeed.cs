@@ -1,16 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Submarine_Library.SubmarineFactoryMethod
 {
     public class CreatorSpeed : Creator
     {
-        public override Bonus FactoryMethod()
+        public override Bonus CreateBonus()
         {
-            return new SpeedBonus();
+            return null;
+            //return new SpeedBonus();
         }
     }
 }

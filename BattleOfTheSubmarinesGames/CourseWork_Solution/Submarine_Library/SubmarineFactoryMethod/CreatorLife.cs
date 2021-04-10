@@ -8,9 +8,10 @@ namespace Submarine_Library.SubmarineFactoryMethod
 {
     public class CreatorLife : Creator
     {
-        public override Bonus FactoryMethod()
+        public override Bonus CreateBonus()
         {
-            return new LifeBonus();
+            //return new LifeBonus();
+            return null;
         }
     }
 }

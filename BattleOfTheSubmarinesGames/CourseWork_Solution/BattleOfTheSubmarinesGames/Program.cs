@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using Submarine_Library.OpenTK_Graphics;
 
 namespace BattleOfTheSubmarinesGames
 {
@@ -14,7 +11,7 @@ namespace BattleOfTheSubmarinesGames
         [STAThread]
         static void Main()
         {
-            MainWindow mainWindow = new MainWindow(800, 600);
+            MainWindow mainWindow = new MainWindow(1200, 600);
             mainWindow.Run(60);
         }
     }

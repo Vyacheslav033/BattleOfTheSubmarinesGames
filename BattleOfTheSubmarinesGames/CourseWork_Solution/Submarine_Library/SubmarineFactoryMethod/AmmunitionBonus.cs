@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using OpenTK;
 
 namespace Submarine_Library.SubmarineFactoryMethod
 {
     public class AmmunitionBonus : Bonus
     {
+        public AmmunitionBonus(int width, int height, Vector2 position, string path) : base(width, height, position, path) { }
     }
 }

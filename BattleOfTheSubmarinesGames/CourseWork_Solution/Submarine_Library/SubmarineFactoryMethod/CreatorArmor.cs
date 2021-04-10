@@ -8,9 +8,10 @@ namespace Submarine_Library.SubmarineFactoryMethod
 {
     public class CreatorArmor : Creator
     {
-        public override Bonus FactoryMethod()
+        public override Bonus CreateBonus()
         {
-            return new ArmorBonus();
+            //return new ArmorBonus();
+            return null;
         }
     }
 }

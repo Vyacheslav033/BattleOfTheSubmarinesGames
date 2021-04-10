@@ -4,3 +4,7 @@ D:\CourseWorkRepos\BattleOfTheSubmarinesGames\CourseWork_Solution\Submarine_Libr
 D:\CourseWorkRepos\BattleOfTheSubmarinesGames\CourseWork_Solution\Submarine_Library\obj\Debug\Submarine_Library.csproj.CoreCompileInputs.cache
 D:\CourseWorkRepos\BattleOfTheSubmarinesGames\CourseWork_Solution\Submarine_Library\obj\Debug\Submarine_Library.dll
 D:\CourseWorkRepos\BattleOfTheSubmarinesGames\CourseWork_Solution\Submarine_Library\obj\Debug\Submarine_Library.pdb
+D:\CourseWorkRepos\BattleOfTheSubmarinesGames\CourseWork_Solution\Submarine_Library\bin\Debug\OpenTK.dll
+D:\CourseWorkRepos\BattleOfTheSubmarinesGames\CourseWork_Solution\Submarine_Library\bin\Debug\OpenTK.pdb
+D:\CourseWorkRepos\BattleOfTheSubmarinesGames\CourseWork_Solution\Submarine_Library\bin\Debug\OpenTK.xml
+D:\CourseWorkRepos\BattleOfTheSubmarinesGames\CourseWork_Solution\Submarine_Library\obj\Debug\Submarine_Library.csproj.CopyComplete
