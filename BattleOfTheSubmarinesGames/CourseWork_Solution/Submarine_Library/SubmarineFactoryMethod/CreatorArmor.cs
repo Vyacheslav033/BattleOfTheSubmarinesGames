@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace Submarine_Library.SubmarineFactoryMethod
 {
-    public class CreatorArmor : Creator
+    public class CreatorArmor : BonusCreator
     {
         public override Bonus CreateBonus()
         {
-            //return new ArmorBonus();
-            return null;
+            return new ArmorBonus();
         }
     }
 }

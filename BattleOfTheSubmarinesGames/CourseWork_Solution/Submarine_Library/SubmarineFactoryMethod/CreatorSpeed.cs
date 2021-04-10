@@ -2,12 +2,11 @@
 
 namespace Submarine_Library.SubmarineFactoryMethod
 {
-    public class CreatorSpeed : Creator
+    public class CreatorSpeed : BonusCreator
     {
         public override Bonus CreateBonus()
         {
-            return null;
-            //return new SpeedBonus();
+            return new SpeedBonus();
         }
     }
 }

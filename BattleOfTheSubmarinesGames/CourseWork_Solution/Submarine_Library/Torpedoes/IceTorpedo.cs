@@ -14,11 +14,6 @@ namespace Submarine_Library.Torpedos
         /// <summary>
         /// Конструктор торпеды.
         /// </summary>  
-        public IceTorpedo() 
-        {
-            Speed = 15;
-            LifeDamage = 10;
-            ArmorDamage = 15; 
-        }
+        public IceTorpedo() : base(15, 10, 15) { }
     }
 }

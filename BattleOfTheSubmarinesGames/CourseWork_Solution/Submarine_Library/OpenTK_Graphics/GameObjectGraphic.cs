@@ -1,14 +1,11 @@
 ﻿using System;
 using OpenTK;
-using OpenTK.Graphics.OpenGL;
 using System.IO;
+using OpenTK.Graphics.OpenGL;
 
 namespace Submarine_Library.OpenTK_Graphics
 {
-    /// <summary>
-    /// Игровой объект.
-    /// </summary>
-    public class GameObject
+    public class GameObjectGraphic
     {
         /// <summary>
         /// Начальное положение объекта.
@@ -28,7 +25,7 @@ namespace Submarine_Library.OpenTK_Graphics
         /// <param name="height"> Высота. </param>
         /// <param name="position"> Начальная позиция. </param>
         /// <param name="path"> Текстура. </param>
-        public GameObject(int width, int height, Vector2 position, string path)
+        public GameObjectGraphic(int width, int height, Vector2 position, string path)
         {
             if (!File.Exists(path))
             {
@@ -67,7 +64,7 @@ namespace Submarine_Library.OpenTK_Graphics
                 width + Position.X, height + Position.Y, 0.0f,
                 0.0f + Position.X, height + Position.Y, 0.0f
             };
-            
+
             GL.BindBuffer(BufferTarget.ArrayBuffer, vertexBufferId);
             GL.BufferData(BufferTarget.ArrayBuffer, vertexData.Length * sizeof(float), vertexData, BufferUsageHint.StaticDraw);
             GL.BindBuffer(BufferTarget.ArrayBuffer, 0);

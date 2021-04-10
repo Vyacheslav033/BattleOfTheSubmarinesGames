@@ -25,5 +25,18 @@ namespace Submarine_Library.Torpedos
         /// Бронепробиваемость.
         /// </summary>
         public int ArmorDamage { get; protected set; }
+
+        /// <summary>
+        /// Конструктор торпеды.
+        /// </summary>
+        /// <param name="speed"> Скорость. </param>
+        /// <param name="lifeDamage"> Урон по жизням. </param>
+        /// <param name="armorDamage"> Урон по броне. </param>
+        public Torpedo(double speed, int lifeDamage, int armorDamage)
+        {
+            Speed = speed;
+            LifeDamage = lifeDamage;
+            ArmorDamage = armorDamage;
+        }
     }
 }

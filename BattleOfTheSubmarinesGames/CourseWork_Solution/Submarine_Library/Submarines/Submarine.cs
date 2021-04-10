@@ -1,4 +1,5 @@
 ﻿using Submarine_Library.Torpedos;
+using System;
 using System.Collections.Generic;
 
 namespace Submarine_Library
@@ -11,7 +12,7 @@ namespace Submarine_Library
         /// <summary>
         /// Количество жизней.
         /// </summary>
-        public int Life { get; protected set; }
+        public int Health { get; protected set; }
 
         /// <summary>
         /// Скорость лодки.
@@ -26,18 +27,48 @@ namespace Submarine_Library
         /// <summary>
         /// Торпеды.
         /// </summary>
-        public List<Torpedo> Ammunition { get; protected set; }
+        public int SumAmmunition { get; protected set; }
 
         /// <summary>
         ///  Конструктор лодки.
         /// </summary>
-        /// <param name="ammunition"> Торпеды. </param>
-        public Submarine(List<Torpedo> ammunition)
+        public Submarine(int sumAmmunition)
         {
-            Life = 100;
+            if (sumAmmunition == 0)
+            {
+                throw new ArgumentNullException("Снаряды не выбраны", nameof(sumAmmunition));
+            }
+
+            Health = 100;
             Speed = 15;
             Armor = 100;
-            Ammunition = ammunition;
+            SumAmmunition = sumAmmunition;
+        }
+
+        /// <summary>
+        /// Конструктор для декоратора.
+        /// </summary>
+        /// <param name="submarine"> Лодка. </param>
+        protected Submarine(Submarine submarine) : this(submarine.SumAmmunition) { }
+
+        public virtual int GetHealth()
+        {
+            return Health;
+        }
+
+        public virtual double GetSpeed()
+        {
+            return Speed;
+        }
+
+        public virtual int GetArmor()
+        {
+            return Armor;
+        }
+
+        public virtual int GetAmmunition()
+        {
+            return SumAmmunition;
         }
 
         /// <summary>
@@ -46,7 +77,7 @@ namespace Submarine_Library
         /// <param name="lifeDamage"></param>
         public void TakingDamage(int lifeDamage, int armorDamage)
         {
-            Life += lifeDamage;
+            Health += lifeDamage;
             Armor += armorDamage;
         }
     }

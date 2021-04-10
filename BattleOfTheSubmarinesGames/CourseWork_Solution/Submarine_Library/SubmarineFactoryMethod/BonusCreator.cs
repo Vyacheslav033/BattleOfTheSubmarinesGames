@@ -4,13 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Submarine_Library.OpenTK_Graphics
+namespace Submarine_Library.SubmarineFactoryMethod
 {
-    public class BoxColider
+    public abstract class BonusCreator
     {
-        public BoxColider()
-        {
-
-        }
+        public abstract Bonus CreateBonus();
     }
 }

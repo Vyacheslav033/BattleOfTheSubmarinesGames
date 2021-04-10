@@ -14,11 +14,6 @@ namespace Submarine_Library.Torpedos
         /// <summary>
         /// Конструктор торпеды.
         /// </summary>       
-        public AtomicTorpedo()
-        {
-            Speed = 10;
-            LifeDamage = 25;
-            ArmorDamage = 5;
-        }
+        public AtomicTorpedo() : base(10, 25, 5) { }
     }
 }

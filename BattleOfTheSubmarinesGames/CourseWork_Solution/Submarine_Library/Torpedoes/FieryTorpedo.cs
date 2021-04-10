@@ -14,11 +14,6 @@ namespace Submarine_Library.Torpedos
         /// <summary>
         /// Конструктор торпеды.
         /// </summary>       
-        public FieryTorpedo()
-        {
-            Speed = 20;
-            LifeDamage = 15;
-            ArmorDamage = 10;
-        }
+        public FieryTorpedo() : base(20, 15, 10) { }
     }
 }

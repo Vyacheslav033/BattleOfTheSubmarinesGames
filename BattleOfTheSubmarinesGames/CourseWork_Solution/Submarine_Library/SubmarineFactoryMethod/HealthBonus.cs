@@ -3,11 +3,11 @@ using Submarine_Library.SubmarineDecorator;
 
 namespace Submarine_Library.SubmarineFactoryMethod
 {
-    public class AmmunitionBonus : Bonus
+    public class HealthBonus : Bonus
     {
         public override void Activation(ref Submarine submarine)
         {
-            submarine = new Ammunition(submarine);
+            submarine = new Health(submarine);
         }
     }
 }

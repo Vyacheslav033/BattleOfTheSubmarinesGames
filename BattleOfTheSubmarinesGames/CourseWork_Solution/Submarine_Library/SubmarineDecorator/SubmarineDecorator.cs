@@ -15,7 +15,7 @@ namespace Submarine_Library.SubmarineDecorator
         /// </summary>
         /// <param name="ammunition"> Торпеды. </param>
         /// <param name="submarine"> Декорируемая лодка. </param>
-        public SubmarineDecorator(List<Torpedo> ammunition, Submarine submarine) : base( ammunition )
+        protected SubmarineDecorator(Submarine submarine) : base(submarine)
         {
             this.submarine = submarine;
         }

@@ -7,22 +7,28 @@ namespace Submarine_Library.SubmarineDecorator
     /// <summary>
     /// Увеличение жизней лодки.
     /// </summary>
-    public class Life : SubmarineDecorator
+    public class Health : SubmarineDecorator
     {
+        private int boostLife = 1;
+
         /// <summary>
         /// Конструктор.
         /// </summary>
         /// <param name="ammunition"> Торпеды. </param>
         /// <param name="submarine"> Декорируемая лодка. </param>
         /// <param name="boostLife"> Увеличение жизней. </param>
-        public Life(List<Torpedo> ammunition, Submarine submarine, int boostLife) : base( ammunition, submarine )
+        public Health(Submarine submarine) : base(submarine)
         {
-            if (boostLife < 0)
-            {
-                throw new ArgumentException("Нельзя понижать жизни лодки", nameof(boostLife));
-            }
+            //if (boostLife < 0)
+            //{
+            //    throw new ArgumentException("Нельзя понижать жизни лодки", nameof(boostLife));
+            //}
 
-            Life += boostLife;
+        }
+
+        public override int GetHealth()
+        {
+            return base.GetHealth() + boostLife;
         }
     }
 }

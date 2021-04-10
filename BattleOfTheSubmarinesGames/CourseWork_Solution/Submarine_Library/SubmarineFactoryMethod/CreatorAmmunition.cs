@@ -2,12 +2,11 @@
 
 namespace Submarine_Library.SubmarineFactoryMethod
 {
-    public class CreatorAmmunition : Creator
+    public class CreatorAmmunition : BonusCreator
     {
         public override Bonus CreateBonus()
         {
-            //return new AmmunitionBonus();
-            return null;
+            return new AmmunitionBonus();
         }
     }
 }

@@ -17,8 +17,8 @@ namespace Submarine_Library.OpenTK_Graphics
     public partial class MainWindow : GameWindow
     {
         private Background background;
-        private GameObject firstSubmarine;
-        List<GameObject> torpedoList = new List<GameObject>();
+        private GameObjectGraphic firstSubmarine;
+        List<GameObjectGraphic> torpedoList = new List<GameObjectGraphic>();
         //private GameObject torpedoGraphics;
         private Matrix4 ortho;
 
@@ -65,8 +65,8 @@ namespace Submarine_Library.OpenTK_Graphics
             try
             {
                 background = new Background(Width, Height, @"SpritesAndTextures\seaFloor2.jpg");
-                firstSubmarine = new Submarine(Width / 10, Height / 10, Vector2.Zero, @"SpritesAndTextures\submarine1.png");
-                torpedoList.Add(new TorpedoGraphics(Width / 12, Height / 20, Vector2.Zero, @"SpritesAndTextures\fieryTorpedo1.png"));
+                firstSubmarine = new GameObjectGraphic(Width / 10, Height / 10, Vector2.Zero, @"SpritesAndTextures\submarine1.png");
+                torpedoList.Add(new GameObjectGraphic(Width / 12, Height / 20, Vector2.Zero, @"SpritesAndTextures\fieryTorpedo1.png"));
             }
             catch (Exception ex)
             {
