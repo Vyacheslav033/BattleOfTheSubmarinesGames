@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace Submarine_Library.GameObjectComponent
 {
@@ -9,12 +8,29 @@ namespace Submarine_Library.GameObjectComponent
     public class GameObject
     {
         public Transform Transform { get; }
-        public List<GameObjectComponents> Components { get;}
 
+        public List<Component> Components { get;}
+
+        /// <summary>
+        /// Инициализатор игрового объекта.
+        /// </summary>
         public GameObject()
         {
             Transform = new Transform();
-            Components = new List<GameObjectComponents>();
+            Components = new List<Component>();
+        }
+
+        public Component GetComponent<TComponent>() where TComponent : Component
+        {
+            foreach (Component component in Components)
+            {
+                if (component is TComponent)
+                {
+                    return component as TComponent;
+                }
+            }
+
+            return null;
         }
     }
 }

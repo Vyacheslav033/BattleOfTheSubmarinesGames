@@ -1,6 +1,4 @@
-﻿using System;
-using Submarine_Library.Torpedos;
-using System.Collections.Generic;
+﻿using Submarine_Library.Submarines;
 
 namespace Submarine_Library.SubmarineDecorator
 {
@@ -14,9 +12,7 @@ namespace Submarine_Library.SubmarineDecorator
         /// <summary>
         /// Конструктор.
         /// </summary>
-        /// <param name="ammunition"> Торпеды. </param>
         /// <param name="submarine"> Декорируемая лодка. </param>
-        /// <param name="boostSpeed"> Увеличение скорости. </param>
         public Speed(Submarine submarine) : base(submarine)
         {
             //if (boostSpeed < 0)

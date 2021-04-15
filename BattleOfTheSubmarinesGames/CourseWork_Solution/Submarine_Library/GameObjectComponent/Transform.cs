@@ -1,5 +1,4 @@
-﻿using System;
-using OpenTK;
+﻿using OpenTK;
 
 namespace Submarine_Library.GameObjectComponent
 {
@@ -27,7 +26,7 @@ namespace Submarine_Library.GameObjectComponent
         {
             Position = new Vector2(0.0f, 0.0f);
             Rotation = new Vector2(0.0f, 0.0f);
-            Scale = new Vector2(0.0f, 0.0f);
+            Scale = new Vector2(1.0f, 1.0f);
         }    
     }
 }

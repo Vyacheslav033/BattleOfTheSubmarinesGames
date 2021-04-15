@@ -11,7 +11,7 @@ namespace BattleOfTheSubmarinesGames
         [STAThread]
         static void Main()
         {
-            MainWindow mainWindow = new MainWindow(1200, 600);
+            var mainWindow = new MainWindow(1920, 1080);
             mainWindow.Run(60);
         }
     }

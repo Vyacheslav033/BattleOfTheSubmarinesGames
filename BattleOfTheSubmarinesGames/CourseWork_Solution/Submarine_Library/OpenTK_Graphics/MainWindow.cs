@@ -1,214 +1,234 @@
 ﻿using System;
+using System.Drawing;
+using System.Collections.Generic;
+using Submarine_Library.GameObjectComponent;
+using Submarine_Library.Submarines;
 using OpenTK;
 using OpenTK.Graphics.OpenGL;
-using OpenTK.Graphics;
 using OpenTK.Input;
-using System.Drawing;
-using System.Timers;
-using System.Collections.Generic;
-using Timer = System.Timers.Timer;
 using System.Windows.Forms;
 
 namespace Submarine_Library.OpenTK_Graphics
 {
-    /// <summary>
-    /// Окно игрового приложения, сцена.
-    /// </summary>
-    public partial class MainWindow : GameWindow
+    public class MainWindow : GameWindow
     {
-        private Background background;
-        private GameObjectGraphic firstSubmarine;
-        List<GameObjectGraphic> torpedoList = new List<GameObjectGraphic>();
-        //private GameObject torpedoGraphics;
-        private Matrix4 ortho;
-
-        //private Timer aTimer;
-
-        //private TextRenderer textRenderer;
-        bool  activeTorpedo = false;
+        List<GameObject> gameObjects;
+        Dictionary<GameObject, Texture2D> textures;
 
         /// <summary>
-        /// Конструктор окна.
+        /// Инициализатор окна OpenTK.
         /// </summary>
-        /// <param name="width"> Ширина окна. </param>
-        /// <param name="height"> Высота окна. </param>
-        public MainWindow(int width, int height)
+        /// <param name="width"> Ширина. </param>
+        /// <param name="height"> Высота. </param>
+        public MainWindow(int width, int height) : base(width, height)
         {
-            if (width < 800)
-            {
-                throw new ArgumentException($"Ширина окна - {width} недопустима.", nameof(width));
-            }
+            this.Location = new Point(-10, 0);
 
-            if (height < 600)
-            {
-                throw new ArgumentException($"Высота окна - {height} недопустима.", nameof(height));
-            }
-
-            Width = width;
-            Height = height;
-            Title = "BattleOfTheSubmarines";
-
-            GL.Enable(EnableCap.PointSmooth);
-            GL.Enable(EnableCap.LineSmooth);
-            GL.Enable(EnableCap.PolygonSmooth);
-            GL.Enable(EnableCap.Multisample);
-            // Активировать прозрачный фон текстур.
-            GL.Enable(EnableCap.Blend);
-            //GL.Enable(EnableCap.DepthTest);
             GL.Enable(EnableCap.Texture2D);
-            GL.Enable(EnableCap.AlphaTest);
-            GL.Enable(EnableCap.CullFace);
+            GL.Enable(EnableCap.Blend);
             GL.BlendFunc(BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha);
-            GL.FrontFace(FrontFaceDirection.Cw);
-            GL.CullFace(CullFaceMode.Back);
+            
+            gameObjects = new List<GameObject>();
+            textures = new Dictionary<GameObject, Texture2D>();
 
-            try
-            {
-                background = new Background(Width, Height, @"SpritesAndTextures\seaFloor2.jpg");
-                firstSubmarine = new GameObjectGraphic(Width / 10, Height / 10, Vector2.Zero, @"SpritesAndTextures\submarine1.png");
-                torpedoList.Add(new GameObjectGraphic(Width / 12, Height / 20, Vector2.Zero, @"SpritesAndTextures\fieryTorpedo1.png"));
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                Exit();
-            }     
-        }
-
-        public void Timerr()
-        {
-            //aTimer = new System.Timers.Timer
-            //{
-            //    Interval = 2000
-            //};
-
-            //// Hook up the Elapsed event for the timer. 
-            //aTimer.Elapsed += OnTimedEvent;
-
-            //// Have the timer fire repeated events (true is the default)
-            //aTimer.AutoReset = true;
-
-            //// Start the timer
-            //aTimer.Enabled = true;
-        }
-
-
-        private void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e)
-        {
-            if (activeTorpedo)
-            {
-                activeTorpedo = false;
-            }
-            else
-            {
-                activeTorpedo = true;
-            }
-        }
-
-        protected override void OnResize(EventArgs e)
-        {
-            base.OnResize(e);
-            GL.Viewport(0, 0, Width, Height);
-            ortho = Matrix4.CreateOrthographicOffCenter(0, Width, Height, 0, -1, 1);
-            GL.MatrixMode(MatrixMode.Projection);
-            GL.LoadMatrix(ref ortho);
-            GL.MatrixMode(MatrixMode.Modelview);
-            GL.LoadIdentity();
-
-            background.Resize(Width, Height);
-            firstSubmarine.Resize(Width / 10, Height / 10);
+            LoadingGameObjects();
         }
 
         /// <summary>
-        /// Покадровое считывание действий объектов сцены.
+        /// Загрузка игровых объектов.
+        /// </summary>
+        private void LoadingGameObjects()
+        {
+            //int submarieSize = 1;
+
+            // Первая лодка.
+            var firstSubmarine = new Submarine(3);
+            firstSubmarine.Transform.Position = new Vector2(-300.0f, 0);
+            //firstSubmarine.Transform.Scale = new Vector2(Width / submarieSize, Height / submarieSize);
+            var firstSubmarineTexture = TextureProcessing.LoadTexture2D("secondSubmarine.png");
+            textures.Add(firstSubmarine, firstSubmarineTexture);
+            gameObjects.Add(firstSubmarine);
+
+            firstSubmarine.Components.Add(new BoxCollider(textures[firstSubmarine].Width, textures[firstSubmarine].Height));          
+
+            // Вторая  лодка.
+            var secondSubmarine = new Submarine(3);
+            //secondSubmarine.Transform.Scale = new Vector2(Width / submarieSize, Height / submarieSize);
+            secondSubmarine.Transform.Position = new Vector2(300.0f, 0);
+            var secondSubmarineTexture = TextureProcessing.LoadTexture2D("secondSubmarine.png");
+            textures.Add(secondSubmarine, secondSubmarineTexture);
+            gameObjects.Add(secondSubmarine);
+
+            secondSubmarine.Components.Add(new BoxCollider(textures[secondSubmarine].Width, textures[secondSubmarine].Height));
+        }
+
+        private bool CheckingColliders(GameObject gameObject)
+        {
+            if (gameObject.GetComponent<Collider>() == null)
+            {
+                throw new Exception("gameObject has no collider!");
+            }
+
+            foreach (GameObject go in gameObjects)
+            {
+                if (!go.Equals(gameObject))
+                {
+                    if (go.GetComponent<Collider>() != null)
+                    {
+                        if (Collider.CheckCollision(go, gameObject))
+                        {
+                            return true;
+                        }
+                    }
+                }
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Загрузка окна.
+        /// </summary>
+        /// <param name="e"> Данные события. </param>
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            GL.ClearColor(Color.FromArgb(54, 54, 38));
+            Sprite.Begin(this.Width, this.Height);
+        }
+
+        /// <summary>
+        /// Покадровая отрисовка.
+        /// </summary>
+        /// <param name="e"> Данные события. </param>
+        protected override void OnRenderFrame(FrameEventArgs e)
+        {
+            GL.Clear(ClearBufferMask.ColorBufferBit);
+
+            base.OnRenderFrame(e);
+
+            foreach (GameObject gameObject in gameObjects)
+            {
+                Sprite.Draw(textures[gameObject], gameObject.Transform);
+            }
+
+            SwapBuffers(); 
+        }
+
+        /// <summary>
+        /// Покадровая логика.
+        /// </summary>
+        /// <param name="e"> Данные события. </param>
+        protected override void OnUpdateFrame(FrameEventArgs e)
+        {
+            base.OnUpdateFrame(e);
+
+            ControllingFirstPlayer(e);
+            ControllingSecondPlayer(e);
+        }
+
+        /// <summary>
+        /// Управление первого игрока.
         /// </summary>
         /// <param name="e"></param>
-        protected override void OnUpdateFrame(FrameEventArgs e)
-        {      
-            base.OnUpdateFrame(e);
+        private void ControllingFirstPlayer(FrameEventArgs e)
+        {
             KeyboardState kb = Keyboard.GetState();
-            int submarineSpeed = 4;
-            int torpedosSpeed = 8;
 
-            if (activeTorpedo)
-            {
-                torpedoList[0].Move(new Vector2(1, 0) * torpedosSpeed);
-            }
+            var firstSubmarine = (Submarine)gameObjects[0];
 
-            // Активация ракеты.
-            if (kb.IsKeyDown(Key.Enter) && !activeTorpedo)
+            var scaleX = firstSubmarine.Transform.Scale.X < 0 ? firstSubmarine.Transform.Scale.X * -1 : firstSubmarine.Transform.Scale.X;
+            var scaleY = firstSubmarine.Transform.Scale.Y;
+
+            Vector2 oldPosition = firstSubmarine.Transform.Position;
+
+            if (kb.IsKeyDown(Key.W) ^ kb.IsKeyDown(Key.S))
             {
-                if (activeTorpedo)
+                if (kb.IsKeyDown(Key.W))
                 {
-                    activeTorpedo = false;                 
+                    firstSubmarine.Move(Direction.Up, e.Time * firstSubmarine.Speed);
                 }
                 else
                 {
-                    torpedoList[0].Position = firstSubmarine.Position + new Vector2(30, 70);
-                    activeTorpedo = true;
+                    firstSubmarine.Move(Direction.Down, e.Time * firstSubmarine.Speed);
                 }
 
+                if (CheckingColliders(firstSubmarine))
+                {
+                    firstSubmarine.Transform.Position = oldPosition;
+                }
             }
 
-
-
-            // Пересмотреть реализацию управленния.
-            if (kb.IsKeyDown(Key.Escape))
+            if (kb.IsKeyDown(Key.A) ^ kb.IsKeyDown(Key.D))
             {
-                Exit();
+                if (kb.IsKeyDown(Key.A))
+                {
+                    //firstSubmarine.Transform.Scale = new Vector2(-scaleX, scaleY);
+                    firstSubmarine.Move(Direction.Left, e.Time * firstSubmarine.Speed);
+                }
+                else
+                {
+                    //firstSubmarine.Transform.Scale = new Vector2(scaleX, scaleY);
+                    firstSubmarine.Move(Direction.Right, e.Time * firstSubmarine.Speed);
+                }
+
+                if (CheckingColliders(firstSubmarine))
+                {
+                    firstSubmarine.Transform.Position = oldPosition;
+                }
             }
-            
-            
-            // Добавит корень из 2!!
-
-
-
-
-
-
-            if (kb.IsKeyDown(Key.W))
-            {
-                firstSubmarine.Move(new Vector2(0, -1) * submarineSpeed);
-            }
-                
-            if (kb.IsKeyDown(Key.S))
-            {
-                firstSubmarine.Move(new Vector2(0, 1) * submarineSpeed);
-            }
-                
-            if (kb.IsKeyDown(Key.A))
-            {
-                firstSubmarine.Move(new Vector2(-1, 0) * submarineSpeed);
-            }
-                
-            if (kb.IsKeyDown(Key.D))
-            {
-                firstSubmarine.Move(new Vector2(1, 0) * submarineSpeed);
-            }  
         }
 
         /// <summary>
-        /// Покадровая отрисовка объектов сцены.
+        /// Управление второго игрока.
         /// </summary>
-        /// <param name="e"></param>
-        protected override void OnRenderFrame(FrameEventArgs e)
+        /// <param name="e"> Данные события. </param>
+        private void ControllingSecondPlayer(FrameEventArgs e)
         {
-            base.OnRenderFrame(e);
-            GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
-            GL.ClearColor(Color4.Aqua);
             KeyboardState kb = Keyboard.GetState();
 
-            background.Draw();
-            firstSubmarine.Draw();
-            
-            if (activeTorpedo && torpedoList[0].Position.X < Width)
-            {
-                torpedoList[0].Draw();
-            }
-           
+            var secondSubmarine = (Submarine)gameObjects[1];
 
-            //GL.LoadIdentity();
-            SwapBuffers();
+            var scaleX = secondSubmarine.Transform.Scale.X < 0 ? secondSubmarine.Transform.Scale.X * -1 : secondSubmarine.Transform.Scale.X;
+            var scaleY = secondSubmarine.Transform.Scale.Y;
+
+            Vector2 oldPosition = secondSubmarine.Transform.Position;
+
+            if (kb.IsKeyDown(Key.Up) ^ kb.IsKeyDown(Key.Down))
+            {
+                if (kb.IsKeyDown(Key.Up))
+                {
+                    secondSubmarine.Move(Direction.Up, e.Time * secondSubmarine.Speed);
+                }
+                else
+                {
+                    secondSubmarine.Move(Direction.Down, e.Time * secondSubmarine.Speed);
+                }
+
+                if (CheckingColliders(secondSubmarine))
+                {
+                    secondSubmarine.Transform.Position = oldPosition;
+                }
+            }
+
+            if (kb.IsKeyDown(Key.Left) ^ kb.IsKeyDown(Key.Right))
+            {
+                if (kb.IsKeyDown(Key.Left))
+                {
+                    //secondSubmarine.Transform.Scale = new Vector2(-scaleX, scaleY);
+                    secondSubmarine.Move(Direction.Left, e.Time * secondSubmarine.Speed);
+                }
+                else
+                {
+                    //secondSubmarine.Transform.Scale = new Vector2(scaleX, scaleY);
+                    secondSubmarine.Move(Direction.Right, e.Time * secondSubmarine.Speed);
+                }
+
+                if (CheckingColliders(secondSubmarine))
+                {
+                    secondSubmarine.Transform.Position = oldPosition;
+                }
+            }   
         }
     }
 }

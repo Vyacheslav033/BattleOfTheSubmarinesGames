@@ -32,7 +32,7 @@ namespace Submarine_Library.OpenTK_Graphics
         /// <summary>
         /// Текстура фона.
         /// </summary>
-        private Texture texture;
+        private Texture2D texture;
 
         /// <summary>
         /// Конструктор фона.
@@ -49,7 +49,7 @@ namespace Submarine_Library.OpenTK_Graphics
 
             Width = width;
             Height = height;
-            texture = new Texture(path);
+            //texture = new Texture(path);
             vertexBufferId = GL.GenBuffer();
             Resize(Width, Height);
         }
@@ -81,12 +81,12 @@ namespace Submarine_Library.OpenTK_Graphics
         {
             GL.EnableClientState(ArrayCap.VertexArray);
             GL.EnableClientState(ArrayCap.TextureCoordArray);
-            texture.Bind();
+            //texture.Bind();
             GL.BindBuffer(BufferTarget.ArrayBuffer, vertexBufferId);
             GL.VertexPointer(3, VertexPointerType.Float, 0, 0);
             GL.DrawArrays(PrimitiveType.Quads, 0, vertexData.Length);
             GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
-            texture.Unbind();
+            //texture.Unbind();
             GL.DisableClientState(ArrayCap.VertexArray);
             GL.DisableClientState(ArrayCap.TextureCoordArray);
         }
@@ -96,7 +96,7 @@ namespace Submarine_Library.OpenTK_Graphics
         /// </summary>
         public void Dispose()
         {
-            texture?.Dispose();
+            //texture?.Dispose();
             GL.DeleteBuffer(vertexBufferId);
         }
     }

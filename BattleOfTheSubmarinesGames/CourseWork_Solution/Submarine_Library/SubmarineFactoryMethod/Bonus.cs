@@ -1,5 +1,5 @@
 ﻿using OpenTK;
-using Submarine_Library.OpenTK_Graphics;
+using Submarine_Library.Submarines;
 
 namespace Submarine_Library.SubmarineFactoryMethod
 {

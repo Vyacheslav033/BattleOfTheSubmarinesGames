@@ -1,5 +1,4 @@
-﻿using Submarine_Library.Torpedos;
-using System.Collections.Generic;
+﻿using Submarine_Library.Submarines;
 
 namespace Submarine_Library.SubmarineDecorator
 {

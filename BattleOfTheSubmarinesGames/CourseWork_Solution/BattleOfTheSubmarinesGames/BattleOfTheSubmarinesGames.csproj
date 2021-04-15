@@ -49,7 +49,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TextRenderer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -83,28 +82,31 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="SpritesAndTextures\fieryTorpedo.png">
+    <Content Include="Sprites\fieryTorpedo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="SpritesAndTextures\fieryTorpedo1.png">
+    <Content Include="Sprites\fieryTorpedo1.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="SpritesAndTextures\firstSubmarine.png">
+    <Content Include="Sprites\firstSubmarine.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="SpritesAndTextures\health.png">
+    <Content Include="Sprites\firstSubmarine.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="SpritesAndTextures\seaFloor.jpg">
+    <Content Include="Sprites\health.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="SpritesAndTextures\seaFloor2.jpg">
+    <Content Include="Sprites\seaFloor.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="SpritesAndTextures\secondSubmarine.png">
+    <Content Include="Sprites\seaFloor2.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="SpritesAndTextures\submarine1.png">
+    <Content Include="Sprites\secondSubmarine.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sprites\submarine.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
