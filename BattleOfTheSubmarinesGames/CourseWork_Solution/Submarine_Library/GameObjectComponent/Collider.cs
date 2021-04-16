@@ -4,10 +4,8 @@ using OpenTK;
 
 namespace Submarine_Library.GameObjectComponent
 {
-    public abstract class Collider : Component
+    public abstract class Collider : GameComponents
     {
-
-
         public abstract List<Vector2> GetField(GameObject gameObject);
         
         public static List<Vector2> GetVertices(GameObject gameObject)

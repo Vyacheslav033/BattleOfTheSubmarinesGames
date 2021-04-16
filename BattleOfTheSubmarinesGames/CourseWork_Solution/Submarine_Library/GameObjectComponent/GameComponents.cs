@@ -2,5 +2,5 @@
 
 namespace Submarine_Library.GameObjectComponent
 {
-    public abstract class Component { }
+    public abstract class GameComponents { }
 }

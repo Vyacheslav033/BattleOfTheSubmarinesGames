@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Submarine_Library.SubmarineFactoryMethod
 {
-    public class CreatorLife : BonusCreator
+    public class CreatorHealth : BonusCreator
     {
         public override Bonus CreateBonus()
         {

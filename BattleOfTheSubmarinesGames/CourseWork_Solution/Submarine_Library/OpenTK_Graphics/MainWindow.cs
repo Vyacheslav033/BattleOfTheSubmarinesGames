@@ -15,6 +15,9 @@ namespace Submarine_Library.OpenTK_Graphics
         List<GameObject> gameObjects;
         Dictionary<GameObject, Texture2D> textures;
 
+
+        
+
         /// <summary>
         /// Инициализатор окна OpenTK.
         /// </summary>
@@ -87,16 +90,18 @@ namespace Submarine_Library.OpenTK_Graphics
         }
 
         /// <summary>
-        /// Загрузка окна.
+        /// OnRenderFrame.
         /// </summary>
         /// <param name="e"> Данные события. </param>
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
             GL.ClearColor(Color.FromArgb(54, 54, 38));
-            Sprite.Begin(this.Width, this.Height);
+            SpriteRendering.Begin(this.Width, this.Height);
         }
 
+
+         
         /// <summary>
         /// Покадровая отрисовка.
         /// </summary>
@@ -109,7 +114,7 @@ namespace Submarine_Library.OpenTK_Graphics
 
             foreach (GameObject gameObject in gameObjects)
             {
-                Sprite.Draw(textures[gameObject], gameObject.Transform);
+                SpriteRendering.Draw(textures[gameObject], gameObject.Transform);
             }
 
             SwapBuffers(); 

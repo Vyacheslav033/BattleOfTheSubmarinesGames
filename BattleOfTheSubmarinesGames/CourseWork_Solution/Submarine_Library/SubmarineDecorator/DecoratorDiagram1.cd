@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Submarine_Library.SubmarineDecorator.SubmarineDecorator" Collapsed="true">
+    <Position X="3.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SubmarineDecorator\SubmarineDecorator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Submarine_Library.Submarines.Submarine" Collapsed="true">
+    <Position X="3.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACEAAAIAAAAAAAAAAQAABAAMAAAAAEAAQACAAAAA=</HashCode>
+      <FileName>Submarines\Submarine.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Submarine_Library.SubmarineDecorator.Ammunition" Collapsed="true">
+    <Position X="0.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAQAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SubmarineDecorator\Ammunition.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Submarine_Library.SubmarineDecorator.Armor" Collapsed="true">
+    <Position X="2.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>SubmarineDecorator\Armor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Submarine_Library.SubmarineDecorator.Health" Collapsed="true">
+    <Position X="4.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>SubmarineDecorator\Health.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Submarine_Library.SubmarineDecorator.Speed" Collapsed="true">
+    <Position X="6" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SubmarineDecorator\Speed.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Submarine_Library.Torpedos.Torpedo" Collapsed="true">
+    <Position X="9.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAgAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Torpedoes\Torpedo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Submarine_Library.Torpedos.AtomicTorpedo" Collapsed="true">
+    <Position X="8" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Torpedoes\AtomicTorpedo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Submarine_Library.Torpedos.FieryTorpedo" Collapsed="true">
+    <Position X="9.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Torpedoes\FieryTorpedo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Submarine_Library.Torpedos.IceTorpedo" Collapsed="true">
+    <Position X="11.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Torpedoes\IceTorpedo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Submarine_Library.Destroyer.Destroyer" Collapsed="true">
+    <Position X="3.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Destroyer\Destroyer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Submarine_Library.Destroyer.Mina" Collapsed="true">
+    <Position X="5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAgAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Destroyer\Mina.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -7,7 +7,7 @@ namespace Submarine_Library.OpenTK_Graphics
     /// <summary>
     /// Работа с текстурой, отрисовка.
     /// </summary>
-    public static class Sprite
+    public class SpriteRendering : GameComponents
     {
         /// <summary>
         /// Отрисовка текстуры.

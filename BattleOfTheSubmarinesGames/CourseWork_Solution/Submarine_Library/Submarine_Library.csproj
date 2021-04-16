@@ -50,13 +50,14 @@
     <Compile Include="Destroyer\Mina.cs" />
     <Compile Include="GameObjectComponent\BoxCollider.cs" />
     <Compile Include="GameObjectComponent\Collider.cs" />
-    <Compile Include="GameObjectComponent\Component.cs" />
+    <Compile Include="GameObjectComponent\GameComponents.cs" />
     <Compile Include="GameObjectComponent\Direction.cs" />
     <Compile Include="GameObjectComponent\Transform.cs" />
+    <Compile Include="OpenTK_Graphics\Animator.cs" />
     <Compile Include="OpenTK_Graphics\Background.cs" />
     <Compile Include="GameObjectComponent\GameObject.cs" />
     <Compile Include="OpenTK_Graphics\MainWindow.cs" />
-    <Compile Include="OpenTK_Graphics\Sprite.cs" />
+    <Compile Include="OpenTK_Graphics\SpriteRendering.cs" />
     <Compile Include="OpenTK_Graphics\TextureProcessing.cs" />
     <Compile Include="OpenTK_Graphics\Texture2D.cs" />
     <Compile Include="SubmarineDecorator\Ammunition.cs" />
@@ -70,7 +71,7 @@
     <Compile Include="SubmarineFactoryMethod\BonusCreator.cs" />
     <Compile Include="SubmarineFactoryMethod\CreatorAmmunition.cs" />
     <Compile Include="SubmarineFactoryMethod\CreatorArmor.cs" />
-    <Compile Include="SubmarineFactoryMethod\CreatorLife.cs" />
+    <Compile Include="SubmarineFactoryMethod\CreatorHealth.cs" />
     <Compile Include="SubmarineFactoryMethod\CreatorSpeed.cs" />
     <Compile Include="SubmarineFactoryMethod\HealthBonus.cs" />
     <Compile Include="SubmarineFactoryMethod\SpeedBonus.cs" />
@@ -83,6 +84,9 @@
     <Compile Include="Torpedoes\Torpedo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="SubmarineFactoryMethod\FactoryMethodDiagram1.cd" />
+    <None Include="SubmarineDecorator\DecoratorDiagram1.cd" />
     <None Include="OpenTK.dll.config" />
     <None Include="packages.config" />
   </ItemGroup>
