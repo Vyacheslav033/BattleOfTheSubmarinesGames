@@ -10,7 +10,7 @@ namespace Submarine_Library.GameObjectComponent
     public class Timerr
     {
         private Timer aTimer;
-        private Action function;
+        private Action function = null;
 
         /// <summary>
         /// Запуск таймера.

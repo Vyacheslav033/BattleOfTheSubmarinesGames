@@ -22,3 +22,5 @@ D:\CourseWorkRepos\BattleOfTheSubmarinesGames\CourseWork_Solution\BattleOfTheSub
 D:\CourseWorkRepos\BattleOfTheSubmarinesGames\CourseWork_Solution\BattleOfTheSubmarinesGames\bin\Debug\Sprites\health.png
 D:\CourseWorkRepos\BattleOfTheSubmarinesGames\CourseWork_Solution\BattleOfTheSubmarinesGames\bin\Debug\Sprites\speed.png
 D:\CourseWorkRepos\BattleOfTheSubmarinesGames\CourseWork_Solution\BattleOfTheSubmarinesGames\bin\Debug\Sprites\rocket.png
+D:\CourseWorkRepos\BattleOfTheSubmarinesGames\CourseWork_Solution\BattleOfTheSubmarinesGames\bin\Debug\Sprites\destroyer.png
+D:\CourseWorkRepos\BattleOfTheSubmarinesGames\CourseWork_Solution\BattleOfTheSubmarinesGames\bin\Debug\Sprites\mina.png

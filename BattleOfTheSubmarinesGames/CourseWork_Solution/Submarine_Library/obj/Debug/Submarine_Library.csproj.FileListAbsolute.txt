@@ -7,3 +7,4 @@ D:\CourseWorkRepos\BattleOfTheSubmarinesGames\CourseWork_Solution\Submarine_Libr
 D:\CourseWorkRepos\BattleOfTheSubmarinesGames\CourseWork_Solution\Submarine_Library\bin\Debug\OpenTK.pdb
 D:\CourseWorkRepos\BattleOfTheSubmarinesGames\CourseWork_Solution\Submarine_Library\bin\Debug\OpenTK.xml
 D:\CourseWorkRepos\BattleOfTheSubmarinesGames\CourseWork_Solution\Submarine_Library\obj\Debug\Submarine_Library.csproj.CopyComplete
+D:\CourseWorkRepos\BattleOfTheSubmarinesGames\CourseWork_Solution\Submarine_Library\obj\Debug\Submarine_Library.csprojAssemblyReference.cache

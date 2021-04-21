@@ -7,6 +7,6 @@ namespace Submarine_Library.Rockets
     /// </summary>
     public class IceTorpedo : Rocket
     {      
-        public IceTorpedo(Direction direction) : base(15, 10, 15, direction) { }
+        public IceTorpedo(Direction direction) : base(30, 20, 25, direction) { }
     }
 }

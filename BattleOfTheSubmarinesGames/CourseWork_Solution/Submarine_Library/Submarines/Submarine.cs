@@ -8,7 +8,7 @@ namespace Submarine_Library.Submarines
     /// <summary>
     /// Подводная лодка.
     /// </summary>
-    public class Submarine : GameObject, IMovable
+    public abstract class Submarine : GameObject, IMovableSubmarine
     {
         private int health;
         private int armor;
@@ -64,7 +64,7 @@ namespace Submarine_Library.Submarines
         /// </summary>
         /// <param name="lifeDamage"> Урон по здоровью. </param>
         /// <param name="armorDamage"> Урон по броне. </param>
-        private void TakingDamage(int lifeDamage, int armorDamage)
+        public void TakingDamage(int lifeDamage, int armorDamage)
         {
             health -= lifeDamage;
             armor -= armorDamage;

@@ -7,7 +7,7 @@ namespace Submarine_Library.Rockets
     /// <summary>
     /// Ракета.
     /// </summary>
-    public abstract class Rocket : GameObject, IMovableRocket
+    public abstract class Rocket : GameObject, IMovable
     {      
         /// <summary>
         /// Скорость.

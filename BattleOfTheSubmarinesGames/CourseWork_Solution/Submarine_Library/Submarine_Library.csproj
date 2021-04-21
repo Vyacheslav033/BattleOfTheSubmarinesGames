@@ -54,7 +54,7 @@
     <Compile Include="GameObjectComponent\Direction.cs" />
     <Compile Include="GameObjectComponent\Timerr.cs" />
     <Compile Include="GameObjectComponent\Transform.cs" />
-    <Compile Include="Interfaces\IMovableRocket.cs" />
+    <Compile Include="Interfaces\IMovable.cs" />
     <Compile Include="OpenTK_Graphics\Animator.cs" />
     <Compile Include="GameObjectComponent\GameObject.cs" />
     <Compile Include="OpenTK_Graphics\Background.cs" />
@@ -79,7 +79,9 @@
     <Compile Include="FactoryMethod\CreatorSpeed.cs" />
     <Compile Include="FactoryMethod\HealthBonus.cs" />
     <Compile Include="FactoryMethod\SpeedBonus.cs" />
-    <Compile Include="Interfaces\IMovable.cs" />
+    <Compile Include="Interfaces\IMovableSubmarine.cs" />
+    <Compile Include="Submarines\FirstSubmarine.cs" />
+    <Compile Include="Submarines\SecondSubmarine.cs" />
     <Compile Include="Submarines\Submarine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rockets\AtomicRocket.cs" />
