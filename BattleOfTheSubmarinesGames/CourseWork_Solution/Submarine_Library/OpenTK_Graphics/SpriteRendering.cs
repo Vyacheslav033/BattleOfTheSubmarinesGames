@@ -7,7 +7,7 @@ namespace Submarine_Library.OpenTK_Graphics
     /// <summary>
     /// Работа с текстурой, отрисовка.
     /// </summary>
-    public class SpriteRendering : GameComponents
+    public class SpriteRendering
     {
         /// <summary>
         /// Отрисовка текстуры.
@@ -35,7 +35,7 @@ namespace Submarine_Library.OpenTK_Graphics
                 vertices[i].Y *= texture.Height;
                 vertices[i] *= transform.Scale;
                 vertices[i] += transform.Position;
-                vertices[i] -= new Vector2(texture.Width / 2, texture.Height / 2);
+                vertices[i] -= new Vector2(((transform.Scale.X < 0) ? -1 : 1) * texture.Width / 2, ((transform.Scale.Y < 0) ? -1 : 1) * texture.Height / 2);
 
                 GL.Vertex2(vertices[i]);
             }

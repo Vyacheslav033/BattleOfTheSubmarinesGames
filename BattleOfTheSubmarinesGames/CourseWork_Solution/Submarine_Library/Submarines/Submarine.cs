@@ -1,5 +1,7 @@
 ﻿using System;
+using OpenTK;
 using Submarine_Library.GameObjectComponent;
+using Submarine_Library.Interfaces;
 
 namespace Submarine_Library.Submarines
 {
@@ -8,67 +10,53 @@ namespace Submarine_Library.Submarines
     /// </summary>
     public class Submarine : GameObject, IMovable
     {
-        /// <summary>
-        /// Количество жизней.
-        /// </summary>
-        public int Health { get; protected set; }
-
-        /// <summary>
-        /// Скорость лодки.
-        /// </summary>
-        public float Speed { get; protected set; }
-
-        /// <summary>
-        /// Броня.
-        /// </summary>
-        public int Armor { get; protected set; }
-
-        /// <summary>
-        /// Торпеды.
-        /// </summary>
-        public int SumAmmunition { get; protected set; }
+        private int health;
+        private int armor;
+        private float speed; 
+        private int ammunition;
 
         /// <summary>
         /// Инициализатор лодки.
         /// </summary>
         /// <param name="sumAmmunition"> Количество снаряжения. </param>
-        public Submarine(int sumAmmunition)
+        public Submarine()
         {
-            if (sumAmmunition <= 0)
-            {
-                throw new ArgumentException("Снаряды не выбраны", nameof(sumAmmunition));
-            }
-
-            Health = 100;
-            Speed = 15;
-            Armor = 100;
-            SumAmmunition = sumAmmunition;
+            health = 100;
+            speed = 25;
+            armor = 100;
+            ammunition = 10;
+        }
+        
+        /// <summary>
+        /// Количество жизней.
+        /// </summary>
+        public virtual int Health
+        {
+            get { return health; }
         }
 
         /// <summary>
-        /// Конструктор для декоратора.
+        /// Запас брони.
         /// </summary>
-        /// <param name="submarine"> Лодка. </param>
-        protected Submarine(Submarine submarine) : this(submarine.SumAmmunition) { }
-
-        public virtual int GetHealth()
+        public virtual int Armor
         {
-            return Health;
+            get { return armor; }
         }
 
-        public virtual double GetSpeed()
+        /// <summary>
+        /// Скорость.
+        /// </summary>
+        public virtual float Speed
         {
-            return Speed;
+            get { return speed; }
         }
 
-        public virtual int GetArmor()
+        /// <summary>
+        /// Количество ракет.
+        /// </summary>
+        public virtual int Ammunition
         {
-            return Armor;
-        }
-
-        public virtual int GetAmmunition()
-        {
-            return SumAmmunition;
+            get { return ammunition; }
         }
 
         /// <summary>
@@ -76,10 +64,10 @@ namespace Submarine_Library.Submarines
         /// </summary>
         /// <param name="lifeDamage"> Урон по здоровью. </param>
         /// <param name="armorDamage"> Урон по броне. </param>
-        public void TakingDamage(int lifeDamage, int armorDamage)
+        private void TakingDamage(int lifeDamage, int armorDamage)
         {
-            Health -= lifeDamage;
-            Armor -= armorDamage;
+            health -= lifeDamage;
+            armor -= armorDamage;
         }
 
         public void Move(Direction direction, double time)
@@ -109,7 +97,16 @@ namespace Submarine_Library.Submarines
                     break;
             }
 
-            Transform.Position = new OpenTK.Vector2(x, y);
+            Transform.Position = new Vector2(x, y);
+        }
+
+        /// <summary>
+        /// Вывод характеристик лодки.
+        /// </summary>
+        /// <returns> Характеристика лодки. </returns>
+        public override string ToString()
+        {
+            return $"Жизни: {Health} | Броня: {Armor} | Скорость: {Speed} | Снаряды: {Ammunition}";
         }
     }
 }

@@ -1,26 +1,18 @@
 ﻿using System;
+using Submarine_Library.GameObjectComponent;
 
 namespace Submarine_Library.OpenTK_Graphics
 {
     /// <summary>
     /// Свойства текстуры.
     /// </summary>
-    public class Texture2D
+    public class Texture2D : GameComponents
     {
-        /// <summary>
-        /// Номер текстуры.
-        /// </summary>
-        public int Id { get; }
+        private int id;
 
-        /// <summary>
-        /// Ширина.
-        /// </summary>
-        public int Width { get; }
+        private int width;
 
-        /// <summary>
-        /// Высота.
-        /// </summary>
-        public int Height { get; }
+        private int height;
 
         /// <summary>
         /// Инициализатор текстуры.
@@ -30,9 +22,58 @@ namespace Submarine_Library.OpenTK_Graphics
         /// <param name="height"> Высота. </param>
         public Texture2D(int id, int width, int height)
         {
-            Id = id;
-            Width = width;
-            Height = height;
+            if (width <= 0)
+            {
+                throw new ArgumentException($"Ширина текстура не может быть {width}", nameof(width));
+            }
+
+            if (height <= 0)
+            {
+                throw new ArgumentException($"Высота текстура не может быть {height}", nameof(height));
+            }
+
+            this.id = id;
+            this.width = width;
+            this.height = height;
         }
+
+        /// <summary>
+        /// Номер текстуры.
+        /// </summary>
+        public int Id
+        {
+            get { return id; }
+        }
+
+        /// <summary>
+        /// Ширина.
+        /// </summary>
+        public int Width
+        {
+            get { return width; }
+            set
+            {
+                if (value > 0)
+                {
+                    width = value;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Высота.
+        /// </summary>
+        public int Height
+        {
+            get { return height; }
+            set
+            {
+                if (value > 0)
+                {
+                    height = value;
+                }
+            }
+        }
+
     }
 }

@@ -18,26 +18,26 @@ namespace Submarine_Library.GameObjectComponent
             return (gameObject.GetComponent<Collider>() as Collider).GetField(gameObject);
         }
 
-        public static Boolean CheckCollision(GameObject gameObject_1, GameObject gameObject_2)
+        public static bool CheckCollision(GameObject gameObject_1, GameObject gameObject_2)
         {
             if (gameObject_1.GetComponent<Collider>() == null)
             {
-                throw new Exception("gameObject_1 has no collider!");
+                throw new ArgumentException($"Игровой объект не имеет коллайдера", nameof(gameObject_1));
             }
 
             if (gameObject_2.GetComponent<Collider>() == null)
             {
-                throw new Exception("gameObject_2 has no collider!");
+                throw new ArgumentException($"Игровой объект не имеет коллайдера", nameof(gameObject_2));
             }
 
             if (gameObject_1 == null)
             {
-                throw new ArgumentNullException("gameObject_1 has null value!");
+                throw new ArgumentNullException("Игровой объект является null", nameof(gameObject_1));
             }
 
             if (gameObject_2 == null)
             {
-                throw new ArgumentNullException("gameObject_2 has null value!");
+                throw new ArgumentNullException("Игровой объект является null", nameof(gameObject_2));
             }
 
             List<Vector2> vertices_1 = GetVertices(gameObject_1);
@@ -62,21 +62,21 @@ namespace Submarine_Library.GameObjectComponent
             return false;
         }
 
-        public static Boolean CheckPointCollision(GameObject gameObject, Vector2 point)
+        public static bool CheckPointCollision(GameObject gameObject, Vector2 point)
         {
             if (gameObject == null)
             {
-                throw new ArgumentNullException("gameObject has null value!");
+                throw new ArgumentNullException("Игровой объект является null", nameof(gameObject));
             }
 
-            Boolean collision = false;
+            bool collision = false;
 
-            Single x = point.X;
-            Single y = point.Y;
+            float x = point.X;
+            float y = point.Y;
 
             List<Vector2> vertices = GetVertices(gameObject);
 
-            for (Int32 i = 0, j = vertices.Count - 1; i < vertices.Count; j = i++)
+            for (int i = 0, j = vertices.Count - 1; i < vertices.Count; j = i++)
             {
                 if ((((vertices[i].Y <= y) && (y < vertices[j].Y)) ||
                     ((vertices[j].Y <= y) && (y < vertices[i].Y))) &&

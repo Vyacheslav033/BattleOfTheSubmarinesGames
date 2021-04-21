@@ -1,5 +1,4 @@
 ﻿using System;
-using Submarine_Library.OpenTK_Graphics;
 
 namespace BattleOfTheSubmarinesGames
 {

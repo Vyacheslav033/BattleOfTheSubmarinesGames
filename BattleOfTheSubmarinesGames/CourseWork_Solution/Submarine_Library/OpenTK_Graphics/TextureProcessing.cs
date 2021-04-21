@@ -3,6 +3,7 @@ using System.IO;
 using System.Drawing;
 using System.Drawing.Imaging;
 using OpenTK.Graphics.OpenGL;
+using System.Windows.Forms;
 
 namespace Submarine_Library.OpenTK_Graphics
 {
@@ -27,8 +28,7 @@ namespace Submarine_Library.OpenTK_Graphics
 
             bmp.RotateFlip(RotateFlipType.Rotate180FlipX);
 
-            BitmapData data = bmp.LockBits(
-                new Rectangle(0, 0, bmp.Width, bmp.Height),
+            BitmapData data = bmp.LockBits(new Rectangle(0, 0, bmp.Width, bmp.Height),
                 ImageLockMode.ReadOnly,
                 System.Drawing.Imaging.PixelFormat.Format32bppArgb);
 
