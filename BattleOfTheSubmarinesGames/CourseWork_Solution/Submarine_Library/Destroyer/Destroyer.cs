@@ -22,7 +22,7 @@ namespace Submarine_Library.Destroyer
         public Destroyer(Direction direction)
         {
             Direction = direction;
-            Speed = 15;
+            Speed = 20;
         }
 
         public void Move(double time)

@@ -1,4 +1,5 @@
-﻿using OpenTK;
+﻿using System;
+using OpenTK;
 using Submarine_Library.GameObjectComponent;
 using Submarine_Library.Interfaces;
 
@@ -30,17 +31,23 @@ namespace Submarine_Library.Rockets
         public Direction Direction { get; }
 
         /// <summary>
+        /// Хозяин ракеты.
+        /// </summary>
+        public Type Owner { get; }
+
+        /// <summary>
         /// Инициализатор ракеты.
         /// </summary>
         /// <param name="speed"> Скорость. </param>
         /// <param name="lifeDamage"> Урон по жизням. </param>
         /// <param name="armorDamage"> Урон по броне. </param>
-        public Rocket(float speed, int lifeDamage, int armorDamage, Direction direction)
+        public Rocket(float speed, int lifeDamage, int armorDamage, Direction direction, Type owner)
         {          
             Speed = speed;
             LifeDamage = lifeDamage;
             ArmorDamage = armorDamage;
             Direction = direction;
+            Owner = owner;
         }
 
         public void Move(double time)

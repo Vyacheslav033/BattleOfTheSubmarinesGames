@@ -17,7 +17,7 @@ namespace Submarine_Library.Destroyer
         /// <summary>
         /// Бронепробиваемость.
         /// </summary>
-        public int ArmorGamage { get; }
+        public int ArmorDamage { get; }
 
         /// <summary>
         /// Скорость.
@@ -29,9 +29,9 @@ namespace Submarine_Library.Destroyer
         /// </summary>
         public Mina()
         {
-            LifeDamage = 15;
-            ArmorGamage = 15;
-            Speed = 15;
+            LifeDamage = 25;
+            ArmorDamage = 25;
+            Speed = 20;
         }
 
         public void Move(double time)
