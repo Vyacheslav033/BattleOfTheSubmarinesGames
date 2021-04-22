@@ -15,30 +15,15 @@ namespace Submarine_Library.SubmarineDecorator
         {
             this.submarine = submarine;
 
+            Health = submarine.Health;
+            Armor = submarine.Armor;
+            Speed = submarine.Speed;
+            Ammunition = submarine.Ammunition;
+
             foreach (GameComponents goc in submarine.Components)
             {
-                this.Components.Add(goc);
+                this.Components.Add(goc);               
             }
-        }
-
-        public override int Health
-        {
-            get => submarine.Health;
-        }
-
-        public override int Armor
-        {
-            get => submarine.Armor;
-        }
-
-        public override float Speed
-        {
-            get => submarine.Speed;
-        }
-
-        public override int Ammunition
-        {
-            get => submarine.Ammunition;
         }
     }
 }

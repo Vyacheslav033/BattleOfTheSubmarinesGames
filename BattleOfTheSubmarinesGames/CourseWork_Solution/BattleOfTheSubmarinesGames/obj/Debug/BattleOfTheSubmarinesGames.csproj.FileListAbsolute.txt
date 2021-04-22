@@ -24,3 +24,5 @@ D:\CourseWorkRepos\BattleOfTheSubmarinesGames\CourseWork_Solution\BattleOfTheSub
 D:\CourseWorkRepos\BattleOfTheSubmarinesGames\CourseWork_Solution\BattleOfTheSubmarinesGames\bin\Debug\Sprites\rocket.png
 D:\CourseWorkRepos\BattleOfTheSubmarinesGames\CourseWork_Solution\BattleOfTheSubmarinesGames\bin\Debug\Sprites\destroyer.png
 D:\CourseWorkRepos\BattleOfTheSubmarinesGames\CourseWork_Solution\BattleOfTheSubmarinesGames\bin\Debug\Sprites\mina.png
+D:\CourseWorkRepos\BattleOfTheSubmarinesGames\CourseWork_Solution\BattleOfTheSubmarinesGames\bin\Debug\Sprites\win_1.png
+D:\CourseWorkRepos\BattleOfTheSubmarinesGames\CourseWork_Solution\BattleOfTheSubmarinesGames\bin\Debug\Sprites\win_2.png

@@ -29,8 +29,8 @@ namespace Submarine_Library.Destroyer
         /// </summary>
         public Mina()
         {
-            LifeDamage = 25;
-            ArmorDamage = 25;
+            LifeDamage = 20;
+            ArmorDamage = 20;
             Speed = 20;
         }
 

@@ -10,9 +10,6 @@ namespace Submarine_Library.GameObjectComponent
     public class BoxCollider : Collider
     {
         private int width;
-
-        public bool Visability { get; set; }
-
         private int height;
 
         /// <summary>
@@ -36,16 +33,11 @@ namespace Submarine_Library.GameObjectComponent
             this.height = height;
         }
 
-        /// <summary>
-        /// Считывание вершин игрового объекта.
-        /// </summary>
-        /// <param name="gameObject"></param>
-        /// <returns></returns>
         public override List<Vector2> GetField(GameObject gameObject)
         {
             if (!gameObject.GetComponent<Collider>().Equals(this))
             {
-                throw new Exception("gameObject collider doesn't match to this collider!");
+                throw new Exception($"Тип коллайдера {gameObject.GetType().Name} не cоответствует {this.GetType()}!");
             }
 
             float x = gameObject.Transform.Position.X;

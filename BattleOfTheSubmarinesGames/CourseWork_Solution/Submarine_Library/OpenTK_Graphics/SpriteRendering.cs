@@ -48,8 +48,6 @@ namespace Submarine_Library.OpenTK_Graphics
             GL.MatrixMode(MatrixMode.Projection);
             GL.LoadIdentity();
 
-            // Убрать деления на два.
-
             int halfScreenWidth = screenWidth / 2;
             int halfScreenHeight = screenHeight / 2;
 

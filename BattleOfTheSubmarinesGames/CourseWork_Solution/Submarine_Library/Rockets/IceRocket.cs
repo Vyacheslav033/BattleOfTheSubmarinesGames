@@ -8,6 +8,6 @@ namespace Submarine_Library.Rockets
     /// </summary>
     public class IceTorpedo : Rocket
     {      
-        public IceTorpedo(Direction direction, Type owner) : base(30, 20, 25, direction, owner) { }
+        public IceTorpedo(Direction direction, Type owner) : base(25, 20, 25, direction, owner) { }
     }
 }

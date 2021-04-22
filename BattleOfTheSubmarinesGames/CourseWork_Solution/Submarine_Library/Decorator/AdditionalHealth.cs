@@ -7,13 +7,11 @@ namespace Submarine_Library.SubmarineDecorator
     /// </summary>
     public class AdditionalHealth : SubmarineDecorator
     {
-        private static int boostLife = 5;
+        static int boostHealth = 20;
 
-        public AdditionalHealth(Submarine submarine) : base(submarine) { }
-
-        public override int Health
+        public AdditionalHealth(Submarine submarine) : base(submarine)
         {
-            get => base.Health + boostLife;
+            Health += boostHealth;
         }
     }
 }

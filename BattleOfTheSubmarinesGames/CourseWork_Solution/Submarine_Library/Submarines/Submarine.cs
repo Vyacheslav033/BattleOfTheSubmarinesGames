@@ -10,10 +10,25 @@ namespace Submarine_Library.Submarines
     /// </summary>
     public abstract class Submarine : GameObject, IMovableSubmarine
     {
-        private int health;
-        private int armor;
-        private float speed; 
-        private int ammunition;
+        /// <summary>
+        /// Количество жизней.
+        /// </summary>
+        public int Health { get; protected set; }
+
+        /// <summary>
+        /// Запас брони.
+        /// </summary>
+        public int Armor { get; protected set; }
+
+        /// <summary>
+        /// Скорость.
+        /// </summary>
+        public float Speed { get; protected set; }
+
+        /// <summary>
+        /// Количество ракет.
+        /// </summary>
+        public int Ammunition { get; protected set; }
 
         /// <summary>
         /// Инициализатор лодки.
@@ -21,42 +36,10 @@ namespace Submarine_Library.Submarines
         /// <param name="sumAmmunition"> Количество снаряжения. </param>
         public Submarine()
         {
-            health = 100;
-            speed = 25;
-            armor = 100;
-            ammunition = 10;
-        }
-        
-        /// <summary>
-        /// Количество жизней.
-        /// </summary>
-        public virtual int Health
-        {
-            get { return health; }
-        }
-
-        /// <summary>
-        /// Запас брони.
-        /// </summary>
-        public virtual int Armor
-        {
-            get { return armor; }
-        }
-
-        /// <summary>
-        /// Скорость.
-        /// </summary>
-        public virtual float Speed
-        {
-            get { return speed; }
-        }
-
-        /// <summary>
-        /// Количество ракет.
-        /// </summary>
-        public virtual int Ammunition
-        {
-            get { return ammunition; }
+            Health = 100;
+            Speed = 20;
+            Armor = 100;
+            Ammunition = 7;
         }
 
         /// <summary>
@@ -66,8 +49,16 @@ namespace Submarine_Library.Submarines
         /// <param name="armorDamage"> Урон по броне. </param>
         public void TakingDamage(int lifeDamage, int armorDamage)
         {
-            health -= lifeDamage;
-            armor -= armorDamage;
+            Health -= lifeDamage;
+            Armor -= armorDamage;
+        }
+
+        /// <summary>
+        /// Выстрел, расходует ракету.
+        /// </summary>
+        public void Shoot()
+        {
+            Ammunition--;
         }
 
         public void Move(Direction direction, double time)

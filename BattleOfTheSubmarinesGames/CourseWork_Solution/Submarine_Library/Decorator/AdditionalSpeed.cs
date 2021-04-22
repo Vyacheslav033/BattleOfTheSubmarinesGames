@@ -7,13 +7,10 @@ namespace Submarine_Library.SubmarineDecorator
     /// </summary>
     public class AdditionalSpeed : SubmarineDecorator
     {
-        private static float boostSpeed = 5;
-
-        public AdditionalSpeed(Submarine submarine) : base(submarine) { }
-
-        public override float Speed
+        static int boostSpeed = 2;
+        public AdditionalSpeed(Submarine submarine) : base(submarine)
         {
-            get => base.Speed + boostSpeed;
+            Speed += boostSpeed;
         }
     }
 }

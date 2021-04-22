@@ -43,7 +43,6 @@ namespace Submarine_Library.OpenTK_Graphics
         public int Id
         {
             get { return id; }
-            set { id = value; }
         }
 
         /// <summary>

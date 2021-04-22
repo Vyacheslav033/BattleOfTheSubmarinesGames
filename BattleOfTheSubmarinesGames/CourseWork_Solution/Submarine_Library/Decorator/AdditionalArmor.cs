@@ -7,13 +7,10 @@ namespace Submarine_Library.SubmarineDecorator
     /// </summary>
     public class AdditionalArmor : SubmarineDecorator
     {
-        private static int boostArmor = 5;
-
-        public AdditionalArmor(Submarine submarine) : base( submarine ) { }
-
-        public override int Armor
+        static int boostArmor = 20;
+        public AdditionalArmor(Submarine submarine) : base( submarine )
         {
-            get => base.Armor + boostArmor;
+            Armor += boostArmor;
         }
     }
 }
