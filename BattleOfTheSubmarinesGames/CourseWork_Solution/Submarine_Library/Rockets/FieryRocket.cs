@@ -8,6 +8,6 @@ namespace Submarine_Library.Rockets
     /// </summary>
     public class FieryRocket : Rocket
     {      
-        public FieryRocket(Direction direction, Type owner) : base(30, 20, 20, direction, owner) { } 
+        public FieryRocket(Direction direction, Type owner) : base(37, 20, 20, direction, owner) { } 
     }
 }

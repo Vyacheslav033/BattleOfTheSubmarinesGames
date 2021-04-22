@@ -28,7 +28,7 @@ namespace BattleOfTheSubmarinesGames
             "ammunition.png",
             "destroyer.png",
             "mina.png",
-            "rocket.png",
+            "atomicRocket.png",
             "win_1.png",
             "win_2.png"
         };
@@ -41,7 +41,7 @@ namespace BattleOfTheSubmarinesGames
         bool activeRocket_1 = true;
         bool activeRocket_2 = true;
         bool activeMina = false;
-        int rocketCooldown = 1000;
+        int rocketCooldown = 750;
           
 
         /// <summary>
@@ -61,8 +61,8 @@ namespace BattleOfTheSubmarinesGames
 
             LoadingGameObjects();        
   
-            bonusTimer.Start(7000, CreateBonus);
-            destroyerTimer.Start(9500, CreateDestroyer);
+            bonusTimer.Start(10000, CreateBonus);
+            destroyerTimer.Start(12000, CreateDestroyer);
         }
         
         public void GameWin(int numberSubmarine)
@@ -221,11 +221,11 @@ namespace BattleOfTheSubmarinesGames
                 direction = Direction.Right;
             }
 
-            var rocket = new FieryRocket(direction, owner);
+            var rocket = new AtomicRocket(direction, owner);
             rocket.Transform.Position = new Vector2(transform.Position.X, transform.Position.Y - 50);
             rocket.Transform.Scale = new Vector2(rocket.Transform.Scale.X * sign, rocket.Transform.Scale.Y);
-            rocket.Components.Add(textures["rocket.png"]);
-            rocket.Components.Add(new BoxCollider(textures["rocket.png"].Width, textures["rocket.png"].Height));
+            rocket.Components.Add(textures["atomicRocket.png"]);
+            rocket.Components.Add(new BoxCollider(textures["atomicRocket.png"].Width, textures["atomicRocket.png"].Height));
             gameObjects.Add(rocket);
         } 
 
@@ -482,7 +482,10 @@ namespace BattleOfTheSubmarinesGames
                                 gameObjects.RemoveAt(i);
                             }
 
-                            property += sub.ToString() + "             ";
+                            property += sub.ToString() + 
+                                "                                                " +
+                                "                                                " +
+                                "                                                ";
                         }
                     }
                 }
@@ -546,7 +549,7 @@ namespace BattleOfTheSubmarinesGames
 
             Vector2 oldPosition = submarine.Transform.Position;
            
-            if (kb.IsKeyDown(Key.F) && activeRocket_1 && submarine.Ammunition > 0)
+            if (kb.IsKeyDown(Key.Space) && activeRocket_1 && submarine.Ammunition > 0)
             {
                 CreateRocket(submarine.Transform, submarine.GetType());
                 submarine.Shoot();
@@ -604,7 +607,7 @@ namespace BattleOfTheSubmarinesGames
 
             Vector2 oldPosition = submarine.Transform.Position;
 
-            if (kb.IsKeyDown(Key.ControlRight) && activeRocket_2 && submarine.Ammunition > 0)
+            if (kb.IsKeyDown(Key.KeypadEnter) && activeRocket_2 && submarine.Ammunition > 0)
             {
                 CreateRocket(submarine.Transform, submarine.GetType());
                 submarine.Shoot();

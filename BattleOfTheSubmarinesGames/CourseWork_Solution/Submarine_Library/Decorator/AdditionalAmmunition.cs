@@ -7,7 +7,7 @@ namespace Submarine_Library.SubmarineDecorator
     /// </summary>
     public class AdditionalAmmunition : SubmarineDecorator
     {
-        static int boostAmmunition = 2;
+        static int boostAmmunition = 4;
 
         public AdditionalAmmunition(Submarine submarine) : base(submarine)
         {

@@ -37,9 +37,9 @@ namespace Submarine_Library.Submarines
         public Submarine()
         {
             Health = 100;
-            Speed = 20;
+            Speed = 18;
             Armor = 100;
-            Ammunition = 7;
+            Ammunition = 15;
         }
 
         /// <summary>
