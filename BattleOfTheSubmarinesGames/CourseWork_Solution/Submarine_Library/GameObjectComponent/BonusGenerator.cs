@@ -27,7 +27,6 @@ namespace Submarine_Library.GameObjectComponent
             get { return randomBonus; }
         }
 
-
         /// <summary>
         /// Генерация бонуса.
         /// </summary>

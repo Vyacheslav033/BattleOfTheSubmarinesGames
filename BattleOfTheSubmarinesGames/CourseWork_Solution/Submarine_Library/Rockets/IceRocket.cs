@@ -6,8 +6,8 @@ namespace Submarine_Library.Rockets
     /// <summary>
     /// Ледяная ракета.
     /// </summary>
-    public class IceTorpedo : Rocket
+    public class IceRocket : Rocket
     {      
-        public IceTorpedo(Direction direction, Type owner) : base(25, 20, 25, direction, owner) { }
+        public IceRocket(Direction direction, Type owner) : base(30, 25, 20, 1000, direction, owner) { }
     }
 }

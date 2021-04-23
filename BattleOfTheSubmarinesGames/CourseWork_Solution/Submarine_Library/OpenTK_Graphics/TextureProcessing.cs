@@ -3,7 +3,6 @@ using System.IO;
 using System.Drawing;
 using System.Drawing.Imaging;
 using OpenTK.Graphics.OpenGL;
-using System.Windows.Forms;
 
 namespace Submarine_Library.OpenTK_Graphics
 {

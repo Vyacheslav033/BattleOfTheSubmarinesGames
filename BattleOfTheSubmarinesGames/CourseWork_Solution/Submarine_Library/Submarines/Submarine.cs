@@ -33,7 +33,6 @@ namespace Submarine_Library.Submarines
         /// <summary>
         /// Инициализатор лодки.
         /// </summary>
-        /// <param name="sumAmmunition"> Количество снаряжения. </param>
         public Submarine()
         {
             Health = 100;

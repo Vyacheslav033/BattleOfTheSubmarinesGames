@@ -16,33 +16,21 @@ namespace BattleOfTheSubmarinesGames
     public class MainWindow : GameWindow
     {       
         List<GameObject> gameObjects;
-        Dictionary<string, Texture2D> textures = new Dictionary<string, Texture2D>();
-        List<string> sprites = new List<string>()
-        {
-            "seaFloor.jpg",
-            "firstSubmarine.png",
-            "secondSubmarine.png",
-            "health.png",
-            "armor.png",
-            "speed.png",
-            "ammunition.png",
-            "destroyer.png",
-            "mina.png",
-            "atomicRocket.png",
-            "win_1.png",
-            "win_2.png"
-        };
+        Dictionary<string, Texture2D> textures;
+        List<string> sprites;
         Timerr bonusTimer = new Timerr();
         Timerr submarineCooldown_1 = new Timerr();
         Timerr submarineCooldown_2 = new Timerr();
         Timerr destroyerTimer = new Timerr();
         Timerr stopGame = new Timerr();
-        static object locker = new object();
+        //static object locker = new object();
+        RocketType firstRocketType = RocketType.FieryRocket;
+        RocketType secondRocketType = RocketType.FieryRocket;
+        int rocketCooldown_1 = 750;
+        int rocketCooldown_2 = 750;
         bool activeRocket_1 = true;
         bool activeRocket_2 = true;
-        bool activeMina = false;
-        int rocketCooldown = 750;
-          
+        bool activeMina = false;      
 
         /// <summary>
         /// Инициализатор окна OpenTK.
@@ -58,6 +46,24 @@ namespace BattleOfTheSubmarinesGames
             GL.BlendFunc(BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha);
 
             gameObjects = new List<GameObject>();
+            textures = new Dictionary<string, Texture2D>();
+            sprites = new List<string>()
+            {
+                "seaFloor.jpg",
+                "firstSubmarine.png",
+                "secondSubmarine.png",
+                "health.png",
+                "armor.png",
+                "speed.png",
+                "ammunition.png",
+                "destroyer.png",
+                "mina.png",
+                "fieryRocket.png",
+                "iceRocket.png",
+                "atomicRocket.png",
+                "win_1.png",
+                "win_2.png"
+            };
 
             LoadingGameObjects();        
   
@@ -100,14 +106,11 @@ namespace BattleOfTheSubmarinesGames
         /// <param name="go"></param>
         private void RemoveGameObjects(GameObject go)
         {
-            lock (locker)
+            for (var i = 0; i < gameObjects.Count; i++)
             {
-                for (var i = 0; i < gameObjects.Count; i++)
+                if (gameObjects[i].GetType() == go.GetType())
                 {
-                    if (gameObjects[i].GetType() == go.GetType())
-                    {
-                        gameObjects.RemoveAt(i);
-                    }
+                    gameObjects.RemoveAt(i);
                 }
             }
         }
@@ -157,7 +160,7 @@ namespace BattleOfTheSubmarinesGames
             side = (side == 0) ? (1) : (-1);
 
             var destroyer = new Destroyer(direction);
-            RemoveGameObjects(destroyer);
+            //RemoveGameObjects(destroyer);
             destroyer.Transform.Scale = new Vector2(destroyer.Transform.Scale.X * side, destroyer.Transform.Scale.Y);           
             destroyer.Transform.Position = new Vector2((-(ClientSize.Width + textures["destroyer.png"].Width) / 2) * side, (ClientSize.Height - textures["destroyer.png"].Height) / 2);
             destroyer.Components.Add(textures["destroyer.png"]);
@@ -205,27 +208,36 @@ namespace BattleOfTheSubmarinesGames
         /// Создание ракеты.
         /// </summary>
         /// <param name="transform"> Позиция стреляющей лодки. </param>
-        private void CreateRocket(Transform transform, Type owner)
+        private void CreateRocket(Transform transform, Type owner, RocketType rocketType)
         {
-            int sign;
-            Direction direction;
+            int sign = (transform.Scale.X < 0) ? (-1) : (1);
+            Direction direction = (transform.Scale.X < 0) ? (Direction.Left) : (Direction.Right);
 
-            if (transform.Scale.X < 0)
+            Rocket rocket = null;
+         
+            switch (rocketType)
             {
-                sign = -1;
-                direction = Direction.Left;
-            }
-            else
-            {
-                sign = 1;
-                direction = Direction.Right;
+                case RocketType.FieryRocket:
+                    rocket = new FieryRocket(direction, owner);
+                    rocket.Components.Add(textures["fieryRocket.png"]);
+                    rocket.Components.Add(new BoxCollider(textures["fieryRocket.png"].Width, textures["fieryRocket.png"].Height));
+                    break;
+                case RocketType.IceRocket:
+                    rocket = new IceRocket(direction, owner);
+                    rocket.Components.Add(textures["iceRocket.png"]);
+                    rocket.Components.Add(new BoxCollider(textures["iceRocket.png"].Width, textures["iceRocket.png"].Height));
+                    break;
+                case RocketType.AtomicRocket:
+                    rocket = new AtomicRocket(direction, owner);
+                    rocket.Components.Add(textures["atomicRocket.png"]);
+                    rocket.Components.Add(new BoxCollider(textures["atomicRocket.png"].Width, textures["atomicRocket.png"].Height));
+                    break;
+                default:
+                    break;
             }
 
-            var rocket = new AtomicRocket(direction, owner);
             rocket.Transform.Position = new Vector2(transform.Position.X, transform.Position.Y - 50);
-            rocket.Transform.Scale = new Vector2(rocket.Transform.Scale.X * sign, rocket.Transform.Scale.Y);
-            rocket.Components.Add(textures["atomicRocket.png"]);
-            rocket.Components.Add(new BoxCollider(textures["atomicRocket.png"].Width, textures["atomicRocket.png"].Height));
+            rocket.Transform.Scale = new Vector2(rocket.Transform.Scale.X * sign, rocket.Transform.Scale.Y);  
             gameObjects.Add(rocket);
         } 
 
@@ -265,103 +277,96 @@ namespace BattleOfTheSubmarinesGames
 
             // Первая лодка.
             var firstSubmarine = new FirstSubmarine();
-            firstSubmarine.Transform.Position = new Vector2(-600, 0);
-            firstSubmarine.Components.Add(textures["firstSubmarine.png"]);
-            firstSubmarine.Components.Add(new BoxCollider(textures["firstSubmarine.png"].Width, textures["firstSubmarine.png"].Height));
+            var sub2_Texture = textures["firstSubmarine.png"];
+            firstSubmarine.Transform.Position = new Vector2(-(ClientSize.Width / 2) + sub2_Texture.Width, 0);
+            firstSubmarine.Components.Add(sub2_Texture);
+            firstSubmarine.Components.Add(new BoxCollider(sub2_Texture.Width, sub2_Texture.Height));
             gameObjects.Add(firstSubmarine);
 
             // Вторая  лодка.
             var secondSubmarine = new SecondSubmarine();
-            secondSubmarine.Transform.Position = new Vector2(600, 0);
-            secondSubmarine.Transform.Scale = new Vector2(-1, 1);
-            secondSubmarine.Components.Add(textures["secondSubmarine.png"]);
-            secondSubmarine.Components.Add(new BoxCollider(textures["secondSubmarine.png"].Width, textures["secondSubmarine.png"].Height));
+            var sub1_Texture = textures["secondSubmarine.png"];
+            secondSubmarine.Transform.Position = new Vector2((ClientSize.Width / 2) - sub1_Texture.Width, 0);
+            secondSubmarine.Transform.Scale = new Vector2(-secondSubmarine.Transform.Scale.X, secondSubmarine.Transform.Scale.Y);
+            secondSubmarine.Components.Add(sub1_Texture);
+            secondSubmarine.Components.Add(new BoxCollider(sub1_Texture.Width, sub1_Texture.Height));
             gameObjects.Add(secondSubmarine);
-
         }
 
         /// <summary>
         /// Проверка на столкновение объектов.
         /// </summary>
         /// <param name="go"> Игровой объект. </param>
-        /// <param name="object_id"> Номер объекта в коллекции. </param>
-        /// <returns></returns>
-        private bool CheckingColliders(GameObject go, int object_id)
+        /// <returns> Итог проверги на столкновения. </returns>
+        private bool CheckingColliders(GameObject go)
         {
             if (go.GetComponent<Collider>() == null)
             {
                 throw new Exception($"Игровой объект {go.GetType().Name} не имеет коллайдера!"); ;
             }
 
-            // try
-
-            lock (locker)
+            for (var i = 0; i < gameObjects.Count; i++)
             {
-                for (var i = 0; i < gameObjects.Count; i++)
+                if (!gameObjects[i].Equals(go))
                 {
-                    if (!gameObjects[i].Equals(go))
+                    if (gameObjects[i].GetComponent<Collider>() != null)
                     {
-                        if (gameObjects[i].GetComponent<Collider>() != null)
+                        if (Collider.CheckCollision(gameObjects[i], go))
                         {
-                            if (Collider.CheckCollision(gameObjects[i], go))
+                            // При столкновении лодки с лодкой, стеной. И при столкновении ракеты со стеной ???
+                            if (go is Submarine && gameObjects[i] is Submarine || gameObjects[i] is Border)
                             {
-                                // При столкновении лодки с лодкой, стеной. И при столкновении ракеты со стеной ???
-                                if (go is Submarine && gameObjects[i] is Submarine || gameObjects[i] is Border)
+                                return true;
+                            }
+
+                            // При столкновении ракеты с лодкой.
+                            if (go is Rocket && gameObjects[i] is Submarine)
+                            {
+                                var sub = (Submarine)gameObjects[i];
+                                var rocket = (Rocket)go;
+
+                                if (sub.GetType() != rocket.Owner)
                                 {
-                                    return true;
-                                }
-
-                                // При столкновении ракеты с лодкой.
-                                if (go is Rocket && gameObjects[i] is Submarine)
-                                {
-                                    var sub = (Submarine)gameObjects[i];
-                                    var rocket = (Rocket)go;
-
-                                    if (sub.GetType() != rocket.Owner)
-                                    {
-                                        sub.TakingDamage(rocket.LifeDamage, rocket.ArmorDamage);
-                                        gameObjects[i] = sub;
-
-                                        return true;
-                                    }
-
-                                    return false;
-                                }
-
-                                // При столкновении лодки с бонусом.
-                                if (go is Submarine && gameObjects[i] is BonusGenerator)
-                                {
-                                    var sub = (Submarine)go;
-
-                                    var oldPosition = sub.Transform.Position;
-                                    var oldScale = sub.Transform.Scale;
-
-                                    var bonusGenerator = (BonusGenerator)gameObjects[i];
-                                    var bonus = bonusGenerator.GenerateBonus();
-                                    sub = bonus.Activation(sub);
-
-                                    sub.Transform.Position = oldPosition;
-                                    sub.Transform.Scale = oldScale;
-                                    gameObjects[object_id] = sub;
-
-                                    gameObjects.RemoveAt(i);
-                                    return false;
-                                }
-
-                                // При столкновении мины с лодкой.
-                                if (go is Mina && gameObjects[i] is Submarine)
-                                {
-                                    var sub = (Submarine)gameObjects[i];
-                                    var mina = (Mina)go;
-
-                                    sub.TakingDamage(mina.LifeDamage, mina.ArmorDamage);
+                                    sub.TakingDamage(rocket.LifeDamage, rocket.ArmorDamage);
                                     gameObjects[i] = sub;
 
                                     return true;
                                 }
 
                                 return false;
-                            }                           
+                            }
+
+                            // При столкновении бонуса с лодкой.
+                            if (go is BonusGenerator && gameObjects[i] is Submarine)
+                            {
+                                var sub = (Submarine)gameObjects[i];
+                                var bonusGenerator = (BonusGenerator)go;
+
+                                var oldPosition = sub.Transform.Position;
+                                var oldScale = sub.Transform.Scale;
+
+                                var bonus = bonusGenerator.GenerateBonus();
+                                sub = bonus.Activation(sub);
+
+                                sub.Transform.Position = oldPosition;
+                                sub.Transform.Scale = oldScale;
+
+                                gameObjects[i] = sub;
+
+                                return true;
+                            }
+
+                            // При столкновении мины с лодкой.
+                            if (go is Mina && gameObjects[i] is Submarine)
+                            {
+                                var sub = (Submarine)gameObjects[i];
+                                var mina = (Mina)go;
+
+                                sub.TakingDamage(mina.LifeDamage, mina.ArmorDamage);
+                                gameObjects[i] = sub;
+
+                                return true;
+                            }
                         }
                     }
                 }
@@ -390,16 +395,11 @@ namespace BattleOfTheSubmarinesGames
             GL.Clear(ClearBufferMask.ColorBufferBit);
             base.OnRenderFrame(e);
 
-            // try
-
-            lock (locker)
+            foreach (GameObject gameObject in gameObjects)
             {
-                foreach (GameObject gameObject in gameObjects)
+                if (gameObject.GetComponent<Texture2D>() != null)
                 {
-                    if (gameObject.GetComponent<Texture2D>() != null)
-                    {
-                        SpriteRendering.Draw((Texture2D)gameObject.GetComponent<Texture2D>(), gameObject.Transform);
-                    }
+                    SpriteRendering.Draw((Texture2D)gameObject.GetComponent<Texture2D>(), gameObject.Transform);
                 }
             }
 
@@ -414,87 +414,102 @@ namespace BattleOfTheSubmarinesGames
         {
             base.OnUpdateFrame(e);
 
-            // try
             var property = String.Empty;
             int numberSubmarine = 0;
 
-            lock (locker)
+            var gameObjectOrderRemove = new List<GameObject>();
+
+            for (var i = 0; i < gameObjects.Count; i++)
             {
-                try
+                if (gameObjects[i] is Submarine)
                 {
-                    for (var i = 0; i < gameObjects.Count; i++)
+                    var sub = (Submarine)gameObjects[i];
+                    numberSubmarine++;
+
+                    if (numberSubmarine == 1)
                     {
-                        if (gameObjects[i] is Destroyer)
-                        {
-                            var destroyer = (Destroyer)gameObjects[i];
-                            destroyer.Move(e.Time * destroyer.Speed);
+                        ControllingFirstPlayer(e, sub);
+                    }
+                    if (numberSubmarine == 2)
+                    {
+                        ControllingSecondPlayer(e, sub);
+                    }
 
-                            var random = new Random();
-                            var sub = (Submarine)gameObjects[SearchSubmarineId(random.Next(1, 3))];
+                    if (sub.Health <= 0)
+                    {
+                        GameWin(numberSubmarine);
 
-                            if (destroyer.Transform.Position.X <= sub.Transform.Position.X && !activeMina)
-                            {
-                                CreateMina(destroyer.Transform);
-                                activeMina = true;
-                            }
-                        }
+                        gameObjectOrderRemove.Add(gameObjects[i]);
+                    }
 
-                        if (gameObjects[i] is Rocket)
-                        {
-                            var rocket = (Rocket)gameObjects[i];
-                            rocket.Move(e.Time * rocket.Speed);
+                    property += sub.ToString() +
+                        "                                                                          " +
+                        "                                                                          ";
+                }
 
-                            if (CheckingColliders(rocket, i))
-                            {
-                                gameObjects.RemoveAt(i);
-                            }
-                        }
+                if (gameObjects[i] is Rocket)
+                {
+                    var rocket = (Rocket)gameObjects[i];
 
-                        if (gameObjects[i] is Mina)
-                        {
-                            var mina = (Mina)gameObjects[i];
-                            mina.Move(e.Time * mina.Speed);
+                    rocket.Move(e.Time * rocket.Speed);
 
-                            if (CheckingColliders(gameObjects[i], i))
-                            {
-                                gameObjects.RemoveAt(i);
-                                activeMina = false;
-                            }
-                        }
-
-                        if (gameObjects[i] is Submarine)
-                        {
-                            var sub = (Submarine)gameObjects[i];
-                            numberSubmarine++;
-
-                            if (numberSubmarine == 1)
-                            {
-                                ControllingFirstPlayer(e, sub, i);
-                            }
-                            if (numberSubmarine == 2)
-                            {
-                                ControllingSecondPlayer(e, sub, i);
-                            }
-
-                            if (sub.Health <= 0)
-                            {
-                                GameWin(numberSubmarine);
-                                gameObjects.RemoveAt(i);
-                            }
-
-                            property += sub.ToString() + 
-                                "                                                " +
-                                "                                                " +
-                                "                                                ";
-                        }
+                    if (CheckingColliders(rocket))
+                    {
+                        gameObjectOrderRemove.Add(gameObjects[i]);
                     }
                 }
-                catch { }
+
+                if (gameObjects[i] is BonusGenerator)
+                {
+                    var bonus = (BonusGenerator)gameObjects[i];
+
+                    if (CheckingColliders(bonus))
+                    {
+                        gameObjectOrderRemove.Add(gameObjects[i]);
+                    }
+                }
+
+                if (gameObjects[i] is Destroyer)
+                {
+                    var destroyer = (Destroyer)gameObjects[i];
+
+                    destroyer.Move(e.Time * destroyer.Speed);
+
+                    var random = new Random();
+
+                    // Проверять на существование двух лодок, только потоим рандомить.
+                    var sub = (Submarine)gameObjects[SearchSubmarineId(random.Next(1, 2))];
+
+                    if (destroyer.Transform.Position.X <= sub.Transform.Position.X && !activeMina)
+                    {
+                        CreateMina(destroyer.Transform);
+                        activeMina = true;
+                    }
+                }               
+
+                if (gameObjects[i] is Mina)
+                {
+                    var mina = (Mina)gameObjects[i];
+
+                    mina.Move(e.Time * mina.Speed);
+
+                    if (CheckingColliders(mina))
+                    {
+                        gameObjectOrderRemove.Add(gameObjects[i]);
+
+                        activeMina = false;
+                    }
+                }
+               
+            }
+
+            foreach (GameObject go in gameObjectOrderRemove)
+            {
+                gameObjects.Remove(go);
             }
 
             Title = property;
         }
-
 
         /// <summary>
         /// Поиск айди лодки в коллекции.
@@ -504,7 +519,7 @@ namespace BattleOfTheSubmarinesGames
         /// <returns></returns>
         private int SearchSubmarineId(int numberOject)
         {
-            int id = 0, num = 0;
+            int id = 1, num = 0;
 
             if (numberOject < 0 || numberOject > 2)
             {
@@ -528,19 +543,10 @@ namespace BattleOfTheSubmarinesGames
         }
 
         /// <summary>
-        /// Контроль игровых объектов.
-        /// </summary>
-        /// <param name="e"></param>
-        private void ControllingGameObjects(FrameEventArgs e)
-        {
-            
-        }
-
-        /// <summary>
         /// Управление первого игрока.
         /// </summary>
         /// <param name="e"></param>
-        private void ControllingFirstPlayer(FrameEventArgs e, Submarine submarine, int submarine_id)
+        private void ControllingFirstPlayer(FrameEventArgs e, Submarine submarine)
         {
             KeyboardState kb = Keyboard.GetState();
 
@@ -548,13 +554,31 @@ namespace BattleOfTheSubmarinesGames
             var scaleY = submarine.Transform.Scale.Y;
 
             Vector2 oldPosition = submarine.Transform.Position;
-           
+
+            if (kb.IsKeyDown(Key.Number1))
+            {
+                firstRocketType = RocketType.FieryRocket;
+                rocketCooldown_1 = 750;
+            }
+
+            if (kb.IsKeyDown(Key.Number2))
+            {
+                firstRocketType = RocketType.IceRocket;
+                rocketCooldown_1 = 1000;
+            }
+
+            if (kb.IsKeyDown(Key.Number3))
+            {
+                firstRocketType = RocketType.AtomicRocket;
+                rocketCooldown_1 = 1500;
+            }
+
             if (kb.IsKeyDown(Key.Space) && activeRocket_1 && submarine.Ammunition > 0)
             {
-                CreateRocket(submarine.Transform, submarine.GetType());
+                CreateRocket(submarine.Transform, submarine.GetType(), firstRocketType);
                 submarine.Shoot();
                 activeRocket_1 = false;
-                submarineCooldown_1.Start(rocketCooldown, ActivateCooldown_1);
+                submarineCooldown_1.Start(rocketCooldown_1, ActivateCooldown_1);
             }
 
             if (kb.IsKeyDown(Key.W) ^ kb.IsKeyDown(Key.S))
@@ -568,7 +592,7 @@ namespace BattleOfTheSubmarinesGames
                     submarine.Move(Direction.Down, e.Time * submarine.Speed);
                 }
 
-                if (CheckingColliders(submarine, submarine_id))
+                if (CheckingColliders(submarine))
                 {
                     submarine.Transform.Position = oldPosition;
                 }
@@ -587,7 +611,7 @@ namespace BattleOfTheSubmarinesGames
                     submarine.Move(Direction.Right, e.Time * submarine.Speed);
                 }
 
-                if (CheckingColliders(submarine, submarine_id))
+                if (CheckingColliders(submarine))
                 {
                     submarine.Transform.Position = oldPosition;
                 }
@@ -598,7 +622,7 @@ namespace BattleOfTheSubmarinesGames
         /// Управление второго игрока.
         /// </summary>
         /// <param name="e"> Данные события. </param>
-        private void ControllingSecondPlayer(FrameEventArgs e, Submarine submarine, int submarine_id)
+        private void ControllingSecondPlayer(FrameEventArgs e, Submarine submarine)
         {
             KeyboardState kb = Keyboard.GetState();           
 
@@ -607,12 +631,30 @@ namespace BattleOfTheSubmarinesGames
 
             Vector2 oldPosition = submarine.Transform.Position;
 
+            if (kb.IsKeyDown(Key.Keypad1))
+            {
+                secondRocketType = RocketType.FieryRocket;
+                rocketCooldown_2 = 750;
+            }
+
+            if (kb.IsKeyDown(Key.Keypad2))
+            {
+                secondRocketType = RocketType.IceRocket;
+                rocketCooldown_2 = 1000;
+            }
+
+            if (kb.IsKeyDown(Key.Keypad3))
+            {
+                secondRocketType = RocketType.AtomicRocket;
+                rocketCooldown_2 = 1500;
+            }
+
             if (kb.IsKeyDown(Key.KeypadEnter) && activeRocket_2 && submarine.Ammunition > 0)
             {
-                CreateRocket(submarine.Transform, submarine.GetType());
+                CreateRocket(submarine.Transform, submarine.GetType(), secondRocketType);
                 submarine.Shoot();
                 activeRocket_2 = false;
-                submarineCooldown_2.Start(rocketCooldown, ActivateCooldown_2);
+                submarineCooldown_2.Start(rocketCooldown_2, ActivateCooldown_2);
             }          
 
             if (kb.IsKeyDown(Key.Up) ^ kb.IsKeyDown(Key.Down))
@@ -626,7 +668,7 @@ namespace BattleOfTheSubmarinesGames
                     submarine.Move(Direction.Down, e.Time * submarine.Speed);
                 }
 
-                if (CheckingColliders(submarine, submarine_id))
+                if (CheckingColliders(submarine))
                 {
                     submarine.Transform.Position = oldPosition;
                 }
@@ -645,7 +687,7 @@ namespace BattleOfTheSubmarinesGames
                     submarine.Move(Direction.Right, e.Time * submarine.Speed);
                 }
 
-                if (CheckingColliders(submarine, submarine_id))
+                if (CheckingColliders(submarine))
                 {
                     submarine.Transform.Position = oldPosition;
                 }

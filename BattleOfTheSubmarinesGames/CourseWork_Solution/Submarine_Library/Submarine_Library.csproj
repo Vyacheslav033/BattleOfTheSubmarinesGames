@@ -52,6 +52,7 @@
     <Compile Include="GameObjectComponent\Collider.cs" />
     <Compile Include="GameObjectComponent\GameComponents.cs" />
     <Compile Include="GameObjectComponent\Direction.cs" />
+    <Compile Include="GameObjectComponent\RocketType.cs" />
     <Compile Include="GameObjectComponent\Timerr.cs" />
     <Compile Include="GameObjectComponent\Transform.cs" />
     <Compile Include="Interfaces\IMovable.cs" />
