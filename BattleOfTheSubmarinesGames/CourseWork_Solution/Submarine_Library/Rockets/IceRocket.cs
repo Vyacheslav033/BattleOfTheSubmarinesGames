@@ -1,5 +1,6 @@
 ﻿using System;
 using Submarine_Library.GameObjectComponent;
+using Submarine_Library.Submarines;
 
 namespace Submarine_Library.Rockets
 {
@@ -8,6 +9,6 @@ namespace Submarine_Library.Rockets
     /// </summary>
     public class IceRocket : Rocket
     {      
-        public IceRocket(Direction direction, Type owner) : base(30, 25, 20, 1000, direction, owner) { }
+        public IceRocket(Direction direction, Type owner) : base(30, 60, 55, 1000, direction, owner) { }
     }
 }

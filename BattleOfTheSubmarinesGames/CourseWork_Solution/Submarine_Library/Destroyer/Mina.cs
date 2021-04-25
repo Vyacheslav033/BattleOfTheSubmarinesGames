@@ -33,7 +33,6 @@ namespace Submarine_Library.Destroyer
             ArmorDamage = 20;
             Speed = 20;
         }
-
         public void Move(double time)
         {
             float x = Transform.Position.X;

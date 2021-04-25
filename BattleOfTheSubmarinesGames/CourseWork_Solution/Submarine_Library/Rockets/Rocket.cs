@@ -2,6 +2,7 @@
 using OpenTK;
 using Submarine_Library.GameObjectComponent;
 using Submarine_Library.Interfaces;
+using Submarine_Library.Submarines;
 
 namespace Submarine_Library.Rockets
 {

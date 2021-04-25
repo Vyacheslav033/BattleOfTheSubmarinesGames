@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Submarine_Library.Submarines
 {
-    public class SecondSubmarine : Submarine
+    public class BlueSubmarine : Submarine
     {
+        //public FirstSubmarine() : base("blue")
+        //{
+
+        //}
     }
 }

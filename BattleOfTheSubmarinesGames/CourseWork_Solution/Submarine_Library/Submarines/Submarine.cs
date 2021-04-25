@@ -30,6 +30,8 @@ namespace Submarine_Library.Submarines
         /// </summary>
         public int Ammunition { get; protected set; }
 
+        public Type BasicType { get; protected set; }
+
         /// <summary>
         /// Инициализатор лодки.
         /// </summary>
@@ -38,7 +40,8 @@ namespace Submarine_Library.Submarines
             Health = 100;
             Speed = 18;
             Armor = 100;
-            Ammunition = 15;
+            Ammunition = 12;
+            BasicType = this.GetType();
         }
 
         /// <summary>
@@ -48,8 +51,20 @@ namespace Submarine_Library.Submarines
         /// <param name="armorDamage"> Урон по броне. </param>
         public void TakingDamage(int lifeDamage, int armorDamage)
         {
-            Health -= lifeDamage;
-            Armor -= armorDamage;
+            if(Armor == 0)
+            {
+                Health -= lifeDamage;
+            }
+            else
+            {
+                Armor -= armorDamage;
+
+                if (Armor < 0)
+                {  
+                    Health -= lifeDamage - (-Armor);
+                    Armor = 0;
+                }
+            }   
         }
 
         /// <summary>
@@ -60,6 +75,11 @@ namespace Submarine_Library.Submarines
             Ammunition--;
         }
 
+        /// <summary>
+        /// Движение лодки.
+        /// </summary>
+        /// <param name="direction"> Направление. </param>
+        /// <param name="time"> Время. </param>
         public void Move(Direction direction, double time)
         {
             float x = Transform.Position.X;

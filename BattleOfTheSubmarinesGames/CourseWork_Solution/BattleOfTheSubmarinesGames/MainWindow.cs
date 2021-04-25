@@ -10,6 +10,7 @@ using Submarine_Library.Submarines;
 using Submarine_Library.Rockets;
 using Submarine_Library.OpenTK_Graphics;
 using Submarine_Library.Destroyer;
+using Submarine_Library.SubmarineDecorator;
 
 namespace BattleOfTheSubmarinesGames
 {
@@ -22,7 +23,6 @@ namespace BattleOfTheSubmarinesGames
         Timerr submarineCooldown_1 = new Timerr();
         Timerr submarineCooldown_2 = new Timerr();
         Timerr destroyerTimer = new Timerr();
-        Timerr stopGame = new Timerr();
         //static object locker = new object();
         RocketType firstRocketType = RocketType.FieryRocket;
         RocketType secondRocketType = RocketType.FieryRocket;
@@ -50,8 +50,8 @@ namespace BattleOfTheSubmarinesGames
             sprites = new List<string>()
             {
                 "seaFloor.jpg",
-                "firstSubmarine.png",
-                "secondSubmarine.png",
+                "blueSubmarine.png",
+                "redSubmarine.png",
                 "health.png",
                 "armor.png",
                 "speed.png",
@@ -65,31 +65,38 @@ namespace BattleOfTheSubmarinesGames
                 "win_2.png"
             };
 
-            LoadingGameObjects();        
-  
-            bonusTimer.Start(10000, CreateBonus);
+            LoadingGameObjects();
+
+            bonusTimer.Start(4000, CreateBonus);
             destroyerTimer.Start(12000, CreateDestroyer);
         }
         
-        public void GameWin(int numberSubmarine)
+        /// <summary>
+        /// Завершение игры.
+        /// </summary>
+        /// <param name="typeSubmarine"> Тип победившей лодки.</param>
+        public void GameWin(Type typeSubmarine)
         {
             var texture = string.Empty;
 
-            if (numberSubmarine == 1)
+            if (typeSubmarine.Name.ToString() == nameof(BlueSubmarine))
             {
                 texture = "win_2.png";
             }
-            else
+            else if (typeSubmarine.Name.ToString() == nameof(RedSubmarine))
             {
                 texture = "win_1.png";
             }
 
+            var stopGame = new Timerr();
+            stopGame.Start(7000, StopGame);
             bonusTimer.Stop();
             destroyerTimer.Stop();
+            activeMina = true;
+
             var win = new Background();
             win.Components.Add(textures[texture]);
-            gameObjects.Add(win);
-            stopGame.Start(7000, StopGame);
+            gameObjects.Add(win); 
         }
 
         /// <summary>
@@ -160,7 +167,7 @@ namespace BattleOfTheSubmarinesGames
             side = (side == 0) ? (1) : (-1);
 
             var destroyer = new Destroyer(direction);
-            //RemoveGameObjects(destroyer);
+            RemoveGameObjects(destroyer);
             destroyer.Transform.Scale = new Vector2(destroyer.Transform.Scale.X * side, destroyer.Transform.Scale.Y);           
             destroyer.Transform.Position = new Vector2((-(ClientSize.Width + textures["destroyer.png"].Width) / 2) * side, (ClientSize.Height - textures["destroyer.png"].Height) / 2);
             destroyer.Components.Add(textures["destroyer.png"]);
@@ -275,17 +282,17 @@ namespace BattleOfTheSubmarinesGames
             var bottomBorder = new Border(Width, Height, Direction.Down);
             gameObjects.Add(bottomBorder);
 
-            // Первая лодка.
-            var firstSubmarine = new FirstSubmarine();
-            var sub2_Texture = textures["firstSubmarine.png"];
+            // Синяя лодка.
+            var firstSubmarine = new BlueSubmarine();
+            var sub2_Texture = textures["blueSubmarine.png"];
             firstSubmarine.Transform.Position = new Vector2(-(ClientSize.Width / 2) + sub2_Texture.Width, 0);
             firstSubmarine.Components.Add(sub2_Texture);
             firstSubmarine.Components.Add(new BoxCollider(sub2_Texture.Width, sub2_Texture.Height));
             gameObjects.Add(firstSubmarine);
 
-            // Вторая  лодка.
-            var secondSubmarine = new SecondSubmarine();
-            var sub1_Texture = textures["secondSubmarine.png"];
+            // Красная лодка.
+            var secondSubmarine = new RedSubmarine();
+            var sub1_Texture = textures["redSubmarine.png"];
             secondSubmarine.Transform.Position = new Vector2((ClientSize.Width / 2) - sub1_Texture.Width, 0);
             secondSubmarine.Transform.Scale = new Vector2(-secondSubmarine.Transform.Scale.X, secondSubmarine.Transform.Scale.Y);
             secondSubmarine.Components.Add(sub1_Texture);
@@ -324,8 +331,8 @@ namespace BattleOfTheSubmarinesGames
                             {
                                 var sub = (Submarine)gameObjects[i];
                                 var rocket = (Rocket)go;
-
-                                if (sub.GetType() != rocket.Owner)
+                        
+                                if (rocket.Owner != sub.BasicType)
                                 {
                                     sub.TakingDamage(rocket.LifeDamage, rocket.ArmorDamage);
                                     gameObjects[i] = sub;
@@ -395,12 +402,19 @@ namespace BattleOfTheSubmarinesGames
             GL.Clear(ClearBufferMask.ColorBufferBit);
             base.OnRenderFrame(e);
 
-            foreach (GameObject gameObject in gameObjects)
+            try
             {
-                if (gameObject.GetComponent<Texture2D>() != null)
+                foreach (GameObject gameObject in gameObjects)
                 {
-                    SpriteRendering.Draw((Texture2D)gameObject.GetComponent<Texture2D>(), gameObject.Transform);
+                    if (gameObject.GetComponent<Texture2D>() != null)
+                    {
+                        SpriteRendering.Draw((Texture2D)gameObject.GetComponent<Texture2D>(), gameObject.Transform);
+                    }
                 }
+            }
+            catch
+            {
+
             }
 
             SwapBuffers(); 
@@ -415,8 +429,6 @@ namespace BattleOfTheSubmarinesGames
             base.OnUpdateFrame(e);
 
             var property = String.Empty;
-            int numberSubmarine = 0;
-
             var gameObjectOrderRemove = new List<GameObject>();
 
             for (var i = 0; i < gameObjects.Count; i++)
@@ -424,20 +436,19 @@ namespace BattleOfTheSubmarinesGames
                 if (gameObjects[i] is Submarine)
                 {
                     var sub = (Submarine)gameObjects[i];
-                    numberSubmarine++;
 
-                    if (numberSubmarine == 1)
+                    if (sub.BasicType.Name.ToString() == nameof(BlueSubmarine))
                     {
                         ControllingFirstPlayer(e, sub);
                     }
-                    if (numberSubmarine == 2)
+                    else if (sub.BasicType.Name.ToString() == nameof(RedSubmarine))
                     {
                         ControllingSecondPlayer(e, sub);
                     }
 
                     if (sub.Health <= 0)
                     {
-                        GameWin(numberSubmarine);
+                        GameWin(sub.BasicType);
 
                         gameObjectOrderRemove.Add(gameObjects[i]);
                     }
@@ -476,15 +487,18 @@ namespace BattleOfTheSubmarinesGames
                     destroyer.Move(e.Time * destroyer.Speed);
 
                     var random = new Random();
+                    var subId = SearchSubmarineId(random.Next(1, 3));
 
-                    // Проверять на существование двух лодок, только потоим рандомить.
-                    var sub = (Submarine)gameObjects[SearchSubmarineId(random.Next(1, 2))];
-
-                    if (destroyer.Transform.Position.X <= sub.Transform.Position.X && !activeMina)
+                    if (subId != -1)
                     {
-                        CreateMina(destroyer.Transform);
-                        activeMina = true;
-                    }
+                        var sub = (Submarine)gameObjects[subId];
+
+                        if (destroyer.Transform.Position.X <= sub.Transform.Position.X && !activeMina)
+                        {
+                            CreateMina(destroyer.Transform);
+                            activeMina = true;
+                        }
+                    }   
                 }               
 
                 if (gameObjects[i] is Mina)
@@ -512,34 +526,30 @@ namespace BattleOfTheSubmarinesGames
         }
 
         /// <summary>
-        /// Поиск айди лодки в коллекции.
-        /// Вывод своств лодок в Title.
+        /// Поиск лодки в коллекции.
         /// </summary>
-        /// <param name="numberOject"> Айди лодки. </param>
+        /// <param name="numberOject"></param>
         /// <returns></returns>
         private int SearchSubmarineId(int numberOject)
         {
-            int id = 1, num = 0;
-
-            if (numberOject < 0 || numberOject > 2)
-            {
-                throw new ArgumentException("Необходимо выбрать объект 1 или 2 !", nameof(numberOject));
-            }
-
             for (var i = 0; i < gameObjects.Count; i++)
             {
                 if (gameObjects[i] is Submarine)
                 {
-                    num++;
-                    if (num == numberOject)
+                    var sub = (Submarine)gameObjects[i];
+
+                    if (sub.BasicType.Name.ToString() == nameof(BlueSubmarine) && numberOject == 1)
                     {
-                        id = i;
-                        break;
+                        return i;
+                    }
+                    else if (sub.BasicType.Name.ToString() == nameof(RedSubmarine) && numberOject == 2)
+                    {
+                        return i;
                     }
                 }
             }
 
-            return id;
+            return -1;
         }
 
         /// <summary>
@@ -575,7 +585,7 @@ namespace BattleOfTheSubmarinesGames
 
             if (kb.IsKeyDown(Key.Space) && activeRocket_1 && submarine.Ammunition > 0)
             {
-                CreateRocket(submarine.Transform, submarine.GetType(), firstRocketType);
+                CreateRocket(submarine.Transform, submarine.BasicType, firstRocketType);
                 submarine.Shoot();
                 activeRocket_1 = false;
                 submarineCooldown_1.Start(rocketCooldown_1, ActivateCooldown_1);
@@ -651,7 +661,7 @@ namespace BattleOfTheSubmarinesGames
 
             if (kb.IsKeyDown(Key.KeypadEnter) && activeRocket_2 && submarine.Ammunition > 0)
             {
-                CreateRocket(submarine.Transform, submarine.GetType(), secondRocketType);
+                CreateRocket(submarine.Transform, submarine.BasicType, secondRocketType);
                 submarine.Shoot();
                 activeRocket_2 = false;
                 submarineCooldown_2.Start(rocketCooldown_2, ActivateCooldown_2);

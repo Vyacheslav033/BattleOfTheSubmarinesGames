@@ -81,8 +81,8 @@
     <Compile Include="FactoryMethod\HealthBonus.cs" />
     <Compile Include="FactoryMethod\SpeedBonus.cs" />
     <Compile Include="Interfaces\IMovableSubmarine.cs" />
-    <Compile Include="Submarines\FirstSubmarine.cs" />
-    <Compile Include="Submarines\SecondSubmarine.cs" />
+    <Compile Include="Submarines\BlueSubmarine.cs" />
+    <Compile Include="Submarines\RedSubmarine.cs" />
     <Compile Include="Submarines\Submarine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rockets\AtomicRocket.cs" />
