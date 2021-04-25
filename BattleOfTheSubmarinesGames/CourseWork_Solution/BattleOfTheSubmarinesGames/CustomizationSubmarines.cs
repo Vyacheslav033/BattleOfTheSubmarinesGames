@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Submarine_Library.Rockets;
 using Submarine_Library.GameObjectComponent;
@@ -15,13 +10,20 @@ namespace BattleOfTheSubmarinesGames
 {
     public partial class CustomizationSubmarines : Form
     {
+        Dictionary<RocketType, int> testAmmo = new Dictionary<RocketType, int>();      
         BlueSubmarine submarine;
+        RocketAmmunition blueAmmunition;
+        RocketAmmunition redAmmunition;
         int submarines = 0;
 
         public CustomizationSubmarines(int width, int height)
         {
             InitializeComponent();
-            submarine = new BlueSubmarine();
+
+            testAmmo.Add(RocketType.FieryRocket, (int)FieryRocketSum.Value);
+            var ammo = new RocketAmmunition(testAmmo);
+            submarine = new BlueSubmarine(ammo);
+
             Width = width;
             Height = height;
             CangePosition(NameGame, (Width - NameGame.Size.Width) / 2, (Height / 2) - 200 );
@@ -29,6 +31,11 @@ namespace BattleOfTheSubmarinesGames
             CangePosition(Customization_panel, (Width - Customization_panel.Size.Width)  / 2, (Height - Customization_panel.Size.Width) / 2);
         }
 
+        /// <summary>
+        /// Открытие панели с настройкой лодки.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void StartGame_Button_Click(object sender, EventArgs e)
         {
             Customization_panel.Visible = true;
@@ -44,13 +51,18 @@ namespace BattleOfTheSubmarinesGames
             var atomicRocket = new AtomicRocket(Direction.Up, typeof(Rocket));
             AddRocketPropertys(atomicRocketPanel, atomicRocket);          
 
-            SubmarineAmunitionPanel.Text = $"Выберите {submarine.Ammunition.ToString()} снарядов";
+            SubmarineAmunitionPanel.Text = $"Выберите {submarine.AmmunitionCount} снарядов";
 
-            FieryRocketSum.Maximum = submarine.Ammunition;
-            IceRocketSum.Maximum = submarine.Ammunition;
-            AtomicRocketSum.Maximum = submarine.Ammunition;
+            FieryRocketSum.Maximum = submarine.AmmunitionCount;
+            IceRocketSum.Maximum = submarine.AmmunitionCount;
+            AtomicRocketSum.Maximum = submarine.AmmunitionCount;
         }
 
+        /// <summary>
+        /// Вывод информации о ракетах.
+        /// </summary>
+        /// <param name="panel"></param>
+        /// <param name="rocket"></param>
         private void AddRocketPropertys(Control panel, Rocket rocket)
         {
             int positionY = 0;
@@ -101,22 +113,38 @@ namespace BattleOfTheSubmarinesGames
             element.Location = new Point(x, y);
         }
 
+        /// <summary>
+        /// Выбор боекоплекта для лодок.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void EquipSubmarinePanel_Click(object sender, EventArgs e)
         {
             var sumAmmunition = FieryRocketSum.Value + IceRocketSum.Value + AtomicRocketSum.Value;
 
-            if (sumAmmunition == submarine.Ammunition)
+            if (sumAmmunition == submarine.AmmunitionCount)
             {
-                SubmarineType.Text = "Снарядите второго игрока";
-                SubmarineType.ForeColor = Color.Red;
-                submarines++;
+                Dictionary<RocketType, int> ammo = new Dictionary<RocketType, int>();
 
-                if (submarines == 2)
+                ammo.Add(RocketType.FieryRocket, (int)FieryRocketSum.Value);
+                ammo.Add(RocketType.IceRocket, (int)IceRocketSum.Value);
+                ammo.Add(RocketType.AtomicRocket, (int)AtomicRocketSum.Value);
+
+                if (submarines == 1)
                 {
+                    redAmmunition = new RocketAmmunition(ammo);
                     this.Close();
-                    var mainWindow = new MainWindow(1920, 1080);
+                    var mainWindow = new MainWindow(1920, 1080, blueAmmunition, redAmmunition);
                     mainWindow.Run(60);
-                }  
+                }
+                else
+                {
+                    blueAmmunition = new RocketAmmunition(ammo);
+
+                    SubmarineType.Text = "Снарядите второго игрока";
+                    SubmarineType.ForeColor = Color.Red;                 
+                }
+                submarines++;
             }
         }
     }

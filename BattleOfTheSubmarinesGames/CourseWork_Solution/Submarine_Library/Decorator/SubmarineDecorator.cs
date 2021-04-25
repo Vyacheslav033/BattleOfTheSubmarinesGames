@@ -12,7 +12,7 @@ namespace Submarine_Library.SubmarineDecorator
         /// Инициализатор.
         /// </summary>
         /// <param name="submarine"> Декорируемая лодка. </param>
-        protected SubmarineDecorator(Submarine submarine)
+        protected SubmarineDecorator(Submarine submarine) : base(submarine.Ammunition)
         {
             if (submarine == null)
             {
@@ -24,7 +24,7 @@ namespace Submarine_Library.SubmarineDecorator
             Health = submarine.Health;
             Armor = submarine.Armor;
             Speed = submarine.Speed;
-            Ammunition = submarine.Ammunition;
+            AmmunitionCount = submarine.AmmunitionCount;
             BasicType = submarine.BasicType;
 
             foreach (GameComponents goc in submarine.Components)

@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Submarine_Library.GameObjectComponent;
 
 namespace Submarine_Library.Submarines
 {
     public class BlueSubmarine : Submarine
     {
-        //public FirstSubmarine() : base("blue")
-        //{
-
-        //}
+        public BlueSubmarine(RocketAmmunition ammo) : base(ammo) { }
     }
 }

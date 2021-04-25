@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Destroyer\Destroyer.cs" />
     <Compile Include="Destroyer\Mina.cs" />
+    <Compile Include="GameObjectComponent\RocketAmmunition.cs" />
     <Compile Include="GameObjectComponent\BoxCollider.cs" />
     <Compile Include="GameObjectComponent\Collider.cs" />
     <Compile Include="GameObjectComponent\GameComponents.cs" />
