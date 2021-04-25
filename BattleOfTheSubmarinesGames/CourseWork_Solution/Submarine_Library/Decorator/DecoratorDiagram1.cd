@@ -1,60 +1,60 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="Submarine_Library.SubmarineDecorator.SubmarineDecorator" Collapsed="true">
-    <Position X="9" Y="1.5" Width="1.5" />
+    <Position X="9" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAACAAAAAAAAAAAAAAAAAAlAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Decorator\SubmarineDecorator.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Submarine_Library.Submarines.Submarine" Collapsed="true">
-    <Position X="3.25" Y="1.5" Width="1.5" />
+    <Position X="2.75" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAACAAAAIAAAAAEAAQAAAAFAAIAAQAAEAAAABAAAAg=</HashCode>
+      <HashCode>AAAACAAAAIAABAAEAAAAAAAFAAIAAAAAEAAAAAAAQAA=</HashCode>
       <FileName>Submarines\Submarine.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="Submarine_Library.Submarines.FirstSubmarine" Collapsed="true">
-    <Position X="1.75" Y="3" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Submarines\FirstSubmarine.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Submarine_Library.Submarines.SecondSubmarine" Collapsed="true">
-    <Position X="4.5" Y="3" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Submarines\SecondSubmarine.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="Submarine_Library.SubmarineDecorator.AdditionalAmmunition" Collapsed="true">
     <Position X="6.5" Y="3" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Decorator\AdditionalAmmunition.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Submarine_Library.SubmarineDecorator.AdditionalArmor" Collapsed="true">
     <Position X="8.25" Y="3" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Decorator\AdditionalArmor.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Submarine_Library.SubmarineDecorator.AdditionalHealth" Collapsed="true">
     <Position X="10" Y="3" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Decorator\AdditionalHealth.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Submarine_Library.SubmarineDecorator.AdditionalSpeed" Collapsed="true">
     <Position X="11.75" Y="3" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Decorator\AdditionalSpeed.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Submarine_Library.Submarines.BlueSubmarine" Collapsed="true">
+    <Position X="4.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Submarines\BlueSubmarine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Submarine_Library.Submarines.RedSubmarine" Collapsed="true">
+    <Position X="1" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Submarines\RedSubmarine.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

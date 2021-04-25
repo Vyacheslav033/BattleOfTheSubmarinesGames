@@ -40,7 +40,7 @@ namespace Submarine_Library.Submarines
             Health = 100;
             Speed = 18;
             Armor = 100;
-            Ammunition = 12;
+            Ammunition = 15;
             BasicType = this.GetType();
         }
 

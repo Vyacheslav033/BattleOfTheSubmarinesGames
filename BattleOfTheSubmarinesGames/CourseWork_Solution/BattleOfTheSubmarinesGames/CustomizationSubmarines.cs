@@ -9,25 +9,31 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Submarine_Library.Rockets;
 using Submarine_Library.GameObjectComponent;
+using Submarine_Library.Submarines;
 
 namespace BattleOfTheSubmarinesGames
 {
     public partial class CustomizationSubmarines : Form
     {
+        BlueSubmarine submarine;
+        int submarines = 0;
+
         public CustomizationSubmarines(int width, int height)
         {
             InitializeComponent();
+            submarine = new BlueSubmarine();
             Width = width;
             Height = height;
+            CangePosition(NameGame, (Width - NameGame.Size.Width) / 2, (Height / 2) - 200 );
             CangePosition(StartGame_Button, (Width - StartGame_Button.Size.Width)  / 2, Height / 2);
             CangePosition(Customization_panel, (Width - Customization_panel.Size.Width)  / 2, (Height - Customization_panel.Size.Width) / 2);
-           
         }
 
         private void StartGame_Button_Click(object sender, EventArgs e)
         {
             Customization_panel.Visible = true;
             StartGame_Button.Visible = false;
+            NameGame.Visible = false;
 
             var fieryRocket = new FieryRocket(Direction.Up, typeof(Rocket));
             AddRocketPropertys(fieryRocketPanel, fieryRocket);
@@ -36,13 +42,14 @@ namespace BattleOfTheSubmarinesGames
             AddRocketPropertys(iceRocketPanel, iceRocket);
 
             var atomicRocket = new AtomicRocket(Direction.Up, typeof(Rocket));
-            AddRocketPropertys(atomicRocketPanel, atomicRocket);
+            AddRocketPropertys(atomicRocketPanel, atomicRocket);          
 
+            SubmarineAmunitionPanel.Text = $"Выберите {submarine.Ammunition.ToString()} снарядов";
 
-
+            FieryRocketSum.Maximum = submarine.Ammunition;
+            IceRocketSum.Maximum = submarine.Ammunition;
+            AtomicRocketSum.Maximum = submarine.Ammunition;
         }
-
-
 
         private void AddRocketPropertys(Control panel, Rocket rocket)
         {
@@ -94,6 +101,23 @@ namespace BattleOfTheSubmarinesGames
             element.Location = new Point(x, y);
         }
 
-        
+        private void EquipSubmarinePanel_Click(object sender, EventArgs e)
+        {
+            var sumAmmunition = FieryRocketSum.Value + IceRocketSum.Value + AtomicRocketSum.Value;
+
+            if (sumAmmunition == submarine.Ammunition)
+            {
+                SubmarineType.Text = "Снарядите второго игрока";
+                SubmarineType.ForeColor = Color.Red;
+                submarines++;
+
+                if (submarines == 2)
+                {
+                    this.Close();
+                    var mainWindow = new MainWindow(1920, 1080);
+                    mainWindow.Run(60);
+                }  
+            }
+        }
     }
 }

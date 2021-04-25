@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using OpenTK;
 using OpenTK.Graphics.OpenGL;
 using OpenTK.Input;
-using System.Windows.Forms;
 using Submarine_Library.GameObjectComponent;
 using Submarine_Library.Submarines;
 using Submarine_Library.Rockets;
@@ -20,14 +19,11 @@ namespace BattleOfTheSubmarinesGames
         Dictionary<string, Texture2D> textures;
         List<string> sprites;
         Timerr bonusTimer = new Timerr();
-        Timerr submarineCooldown_1 = new Timerr();
-        Timerr submarineCooldown_2 = new Timerr();
+        Timerr blueSubmarineCooldown = new Timerr();
+        Timerr redSubmarineCooldown = new Timerr();
         Timerr destroyerTimer = new Timerr();
-        //static object locker = new object();
         RocketType firstRocketType = RocketType.FieryRocket;
-        RocketType secondRocketType = RocketType.FieryRocket;
-        int rocketCooldown_1 = 750;
-        int rocketCooldown_2 = 750;
+        RocketType secondRocketType = RocketType.FieryRocket;       
         bool activeRocket_1 = true;
         bool activeRocket_2 = true;
         bool activeMina = false;      
@@ -38,7 +34,7 @@ namespace BattleOfTheSubmarinesGames
         /// <param name="width"> Ширина. </param>
         /// <param name="height"> Высота. </param>
         public MainWindow(int width, int height) : base(width, height)
-        {
+        {        
             this.Location = new Point(-10, 0);
 
             GL.Enable(EnableCap.Texture2D);
@@ -67,8 +63,8 @@ namespace BattleOfTheSubmarinesGames
 
             LoadingGameObjects();
 
-            bonusTimer.Start(4000, CreateBonus);
-            destroyerTimer.Start(12000, CreateDestroyer);
+            bonusTimer.Start(10000, CreateBonus);
+            destroyerTimer.Start(9000, CreateDestroyer);
         }
         
         /// <summary>
@@ -127,7 +123,7 @@ namespace BattleOfTheSubmarinesGames
         /// </summary>
         private void ActivateCooldown_1()
         {
-            submarineCooldown_1.Stop();
+            blueSubmarineCooldown.Stop();
             activeRocket_1 = true;
         }
 
@@ -136,7 +132,7 @@ namespace BattleOfTheSubmarinesGames
         /// </summary>
         private void ActivateCooldown_2()
         {
-            submarineCooldown_2.Stop();
+            redSubmarineCooldown.Stop();
             activeRocket_2 = true;
         }
 
@@ -215,7 +211,10 @@ namespace BattleOfTheSubmarinesGames
         /// Создание ракеты.
         /// </summary>
         /// <param name="transform"> Позиция стреляющей лодки. </param>
-        private void CreateRocket(Transform transform, Type owner, RocketType rocketType)
+        /// <param name="owner"> Тип стреляющей лодки. </param>
+        /// <param name="rocketType"> Тип ракеты. </param>
+        /// <returns> Скорострельность запускаемой ракеты. </returns>
+        private int CreateRocket(Transform transform, Type owner, RocketType rocketType)
         {
             int sign = (transform.Scale.X < 0) ? (-1) : (1);
             Direction direction = (transform.Scale.X < 0) ? (Direction.Left) : (Direction.Right);
@@ -246,6 +245,8 @@ namespace BattleOfTheSubmarinesGames
             rocket.Transform.Position = new Vector2(transform.Position.X, transform.Position.Y - 50);
             rocket.Transform.Scale = new Vector2(rocket.Transform.Scale.X * sign, rocket.Transform.Scale.Y);  
             gameObjects.Add(rocket);
+
+            return rocket.FiringRate;
         } 
 
         /// <summary>
@@ -253,8 +254,6 @@ namespace BattleOfTheSubmarinesGames
         /// </summary>
         private void LoadingGameObjects()
         {
-            // try
-
             //Загрузка текстур.
             for (var i = 0; i < sprites.Count; i++)
             {
@@ -412,10 +411,7 @@ namespace BattleOfTheSubmarinesGames
                     }
                 }
             }
-            catch
-            {
-
-            }
+            catch { }
 
             SwapBuffers(); 
         }
@@ -491,9 +487,7 @@ namespace BattleOfTheSubmarinesGames
 
                     if (subId != -1)
                     {
-                        var sub = (Submarine)gameObjects[subId];
-
-                        if (destroyer.Transform.Position.X <= sub.Transform.Position.X && !activeMina)
+                        if (destroyer.Transform.Position.X <= gameObjects[subId].Transform.Position.X && !activeMina)
                         {
                             CreateMina(destroyer.Transform);
                             activeMina = true;
@@ -568,27 +562,24 @@ namespace BattleOfTheSubmarinesGames
             if (kb.IsKeyDown(Key.Number1))
             {
                 firstRocketType = RocketType.FieryRocket;
-                rocketCooldown_1 = 750;
             }
 
             if (kb.IsKeyDown(Key.Number2))
             {
                 firstRocketType = RocketType.IceRocket;
-                rocketCooldown_1 = 1000;
             }
 
             if (kb.IsKeyDown(Key.Number3))
             {
                 firstRocketType = RocketType.AtomicRocket;
-                rocketCooldown_1 = 1500;
             }
 
             if (kb.IsKeyDown(Key.Space) && activeRocket_1 && submarine.Ammunition > 0)
             {
-                CreateRocket(submarine.Transform, submarine.BasicType, firstRocketType);
+                var colldown = CreateRocket(submarine.Transform, submarine.BasicType, firstRocketType);               
+                blueSubmarineCooldown.Start(colldown, ActivateCooldown_1);
                 submarine.Shoot();
                 activeRocket_1 = false;
-                submarineCooldown_1.Start(rocketCooldown_1, ActivateCooldown_1);
             }
 
             if (kb.IsKeyDown(Key.W) ^ kb.IsKeyDown(Key.S))
@@ -644,27 +635,24 @@ namespace BattleOfTheSubmarinesGames
             if (kb.IsKeyDown(Key.Keypad1))
             {
                 secondRocketType = RocketType.FieryRocket;
-                rocketCooldown_2 = 750;
             }
 
             if (kb.IsKeyDown(Key.Keypad2))
             {
                 secondRocketType = RocketType.IceRocket;
-                rocketCooldown_2 = 1000;
             }
 
             if (kb.IsKeyDown(Key.Keypad3))
             {
                 secondRocketType = RocketType.AtomicRocket;
-                rocketCooldown_2 = 1500;
             }
 
             if (kb.IsKeyDown(Key.KeypadEnter) && activeRocket_2 && submarine.Ammunition > 0)
             {
-                CreateRocket(submarine.Transform, submarine.BasicType, secondRocketType);
+                var colldown = CreateRocket(submarine.Transform, submarine.BasicType, secondRocketType);              
+                redSubmarineCooldown.Start(colldown, ActivateCooldown_2);
                 submarine.Shoot();
                 activeRocket_2 = false;
-                submarineCooldown_2.Start(rocketCooldown_2, ActivateCooldown_2);
             }          
 
             if (kb.IsKeyDown(Key.Up) ^ kb.IsKeyDown(Key.Down))

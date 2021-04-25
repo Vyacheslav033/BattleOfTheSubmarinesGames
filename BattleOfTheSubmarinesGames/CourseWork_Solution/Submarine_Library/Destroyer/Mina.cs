@@ -29,9 +29,9 @@ namespace Submarine_Library.Destroyer
         /// </summary>
         public Mina()
         {
-            LifeDamage = 20;
-            ArmorDamage = 20;
-            Speed = 20;
+            LifeDamage = 30;
+            ArmorDamage = 30;
+            Speed = 22;
         }
         public void Move(double time)
         {
