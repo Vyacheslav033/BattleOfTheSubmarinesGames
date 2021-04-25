@@ -14,7 +14,6 @@ D:\CourseWorkRepos\BattleOfTheSubmarinesGames\CourseWork_Solution\BattleOfTheSub
 D:\CourseWorkRepos\BattleOfTheSubmarinesGames\CourseWork_Solution\BattleOfTheSubmarinesGames\bin\Debug\Submarine_Library.dll
 D:\CourseWorkRepos\BattleOfTheSubmarinesGames\CourseWork_Solution\BattleOfTheSubmarinesGames\bin\Debug\Submarine_Library.pdb
 D:\CourseWorkRepos\BattleOfTheSubmarinesGames\CourseWork_Solution\BattleOfTheSubmarinesGames\bin\Debug\Sprites\seaFloor.jpg
-D:\CourseWorkRepos\BattleOfTheSubmarinesGames\CourseWork_Solution\BattleOfTheSubmarinesGames\bin\Debug\Sprites\seaFloor2.jpg
 D:\CourseWorkRepos\BattleOfTheSubmarinesGames\CourseWork_Solution\BattleOfTheSubmarinesGames\bin\Debug\Sprites\ammunition.png
 D:\CourseWorkRepos\BattleOfTheSubmarinesGames\CourseWork_Solution\BattleOfTheSubmarinesGames\bin\Debug\Sprites\armor.png
 D:\CourseWorkRepos\BattleOfTheSubmarinesGames\CourseWork_Solution\BattleOfTheSubmarinesGames\bin\Debug\Sprites\health.png
@@ -28,3 +27,5 @@ D:\CourseWorkRepos\BattleOfTheSubmarinesGames\CourseWork_Solution\BattleOfTheSub
 D:\CourseWorkRepos\BattleOfTheSubmarinesGames\CourseWork_Solution\BattleOfTheSubmarinesGames\bin\Debug\Sprites\iceRocket.png
 D:\CourseWorkRepos\BattleOfTheSubmarinesGames\CourseWork_Solution\BattleOfTheSubmarinesGames\bin\Debug\Sprites\blueSubmarine.png
 D:\CourseWorkRepos\BattleOfTheSubmarinesGames\CourseWork_Solution\BattleOfTheSubmarinesGames\bin\Debug\Sprites\redSubmarine.png
+D:\CourseWorkRepos\BattleOfTheSubmarinesGames\CourseWork_Solution\BattleOfTheSubmarinesGames\obj\Debug\BattleOfTheSubmarinesGames.CustomizationSubmarines.resources
+D:\CourseWorkRepos\BattleOfTheSubmarinesGames\CourseWork_Solution\BattleOfTheSubmarinesGames\bin\Debug\Sprites\gameFone.jpg

@@ -123,7 +123,7 @@ namespace BattleOfTheSubmarinesGames
         }
 
         /// <summary>
-        /// Контроль перезарядки первой лодки.
+        /// Контроль перезарядки синей лодки.
         /// </summary>
         private void ActivateCooldown_1()
         {
@@ -132,7 +132,7 @@ namespace BattleOfTheSubmarinesGames
         }
 
         /// <summary>
-        /// Контроль перезарядки второй лодки
+        /// Контроль перезарядки красной лодки
         /// </summary>
         private void ActivateCooldown_2()
         {
@@ -439,11 +439,11 @@ namespace BattleOfTheSubmarinesGames
 
                     if (sub.BasicType.Name.ToString() == nameof(BlueSubmarine))
                     {
-                        ControllingFirstPlayer(e, sub);
+                        ControllingBluePlayer(e, sub);
                     }
                     else if (sub.BasicType.Name.ToString() == nameof(RedSubmarine))
                     {
-                        ControllingSecondPlayer(e, sub);
+                        ControllingRedPlayer(e, sub);
                     }
 
                     if (sub.Health <= 0)
@@ -553,10 +553,10 @@ namespace BattleOfTheSubmarinesGames
         }
 
         /// <summary>
-        /// Управление первого игрока.
+        /// Управление синего игрока.
         /// </summary>
         /// <param name="e"></param>
-        private void ControllingFirstPlayer(FrameEventArgs e, Submarine submarine)
+        private void ControllingBluePlayer(FrameEventArgs e, Submarine submarine)
         {
             KeyboardState kb = Keyboard.GetState();
 
@@ -629,10 +629,10 @@ namespace BattleOfTheSubmarinesGames
         }
 
         /// <summary>
-        /// Управление второго игрока.
+        /// Управление красного игрока.
         /// </summary>
         /// <param name="e"> Данные события. </param>
-        private void ControllingSecondPlayer(FrameEventArgs e, Submarine submarine)
+        private void ControllingRedPlayer(FrameEventArgs e, Submarine submarine)
         {
             KeyboardState kb = Keyboard.GetState();           
 
