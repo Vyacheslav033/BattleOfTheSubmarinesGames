@@ -24,8 +24,8 @@ namespace Submarine_Library.SubmarineDecorator
             Health = submarine.Health;
             Armor = submarine.Armor;
             Speed = submarine.Speed;
-            AmmunitionCount = submarine.AmmunitionCount;
             BasicType = submarine.BasicType;
+            AmmunitionCount = submarine.AmmunitionCount;
 
             foreach (GameComponents goc in submarine.Components)
             {

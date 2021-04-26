@@ -31,7 +31,7 @@ namespace Submarine_Library.Submarines
         public RocketAmmunition Ammunition { get; protected set; }
 
         /// <summary>
-        /// Количесто боеприпасов.
+        /// Начальное количество ракет.
         /// </summary>
         public int AmmunitionCount { get; protected set; }
 
@@ -82,7 +82,7 @@ namespace Submarine_Library.Submarines
         /// <param name="rocketType"> Тип ракеты. </param>
         public void Shoot(RocketType rocketType)
         {
-            Ammunition.Ammo[rocketType] -= 1;
+            Ammunition.ChangeRockets(rocketType, -1);
         }
 
         /// <summary>
@@ -126,7 +126,7 @@ namespace Submarine_Library.Submarines
         /// <returns> Характеристика лодки. </returns>
         public override string ToString()
         {
-            return $"Жизни: {Health} | Броня: {Armor} | Скорость: {Speed} | Снаряды: {Ammunition.Count()}";
+            return $"Жизни: {Health} | Броня: {Armor} | Скорость: {Speed} | Снаряды: {Ammunition.Count()} - ({Ammunition.GetRockets(RocketType.FieryRocket)},{Ammunition.GetRockets(RocketType.IceRocket)},{Ammunition.GetRockets(RocketType.AtomicRocket)})";
         }
     }
 }

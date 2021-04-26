@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace Submarine_Library.GameObjectComponent
 {
@@ -8,37 +7,68 @@ namespace Submarine_Library.GameObjectComponent
     /// </summary>
     public class RocketAmmunition
     {
-        private Dictionary<RocketType, int> ammo;
+        private Dictionary<RocketType, int> ammunition;
 
         /// <summary>
         /// Инициализатор снаряжения.
         /// </summary>
-        /// <param name="ammo"></param>
-        public RocketAmmunition(Dictionary<RocketType, int> ammo)
+        public RocketAmmunition()
         {
-            if (ammo == null)
+            ammunition = new Dictionary<RocketType, int>();
+        }
+
+        /// <summary>
+        /// Количестов ракет заданного типа.
+        /// </summary>
+        public int GetRockets(RocketType rocketType)
+        {
+            if (ammunition.ContainsKey(rocketType))
             {
-                throw new ArgumentNullException("Снаряжении лодки не может быть пустым!");
+                return ammunition[rocketType];
             }
 
-            this.ammo = ammo;
+            return 0;
         }
 
         /// <summary>
-        /// Боекомплкет ракет.
+        /// Количество всех ракет.
         /// </summary>
-        public Dictionary<RocketType, int> Ammo
-        {
-            get { return ammo; }
-        }
-
-        /// <summary>
-        /// Количество боеприпасов.
-        /// </summary>
-        /// <returns> Количество боеприпасов. </returns>
+        /// <returns> Количество всех ракет. </returns>
         public int Count()
         {
-            return ammo[RocketType.FieryRocket] + ammo[RocketType.IceRocket] + ammo[RocketType.AtomicRocket];
+            int count = 0;
+
+            foreach (KeyValuePair<RocketType, int> ammo in ammunition)
+            {
+                count += ammo.Value;
+            }
+
+            return count;
+        }
+
+        /// <summary>
+        /// Добвление ракет заданного типа.
+        /// </summary>
+        /// <param name="rocketType"></param>
+        /// <param name="rocketCount"></param>
+        public void AddRockets(RocketType rocketType, int rocketCount)
+        {
+            if (!ammunition.ContainsKey(rocketType))
+            {
+                ammunition.Add(rocketType, rocketCount);
+            }          
+        }
+
+        /// <summary>
+        /// Изменение ракет заданного типа, (добавить/отнять).
+        /// </summary>
+        /// <param name="rocketType"></param>
+        public void ChangeRockets(RocketType rocketType, int countRockets)
+        {
+            if (ammunition.ContainsKey(rocketType))
+            {
+                ammunition[rocketType] += countRockets;
+            }   
         }
     }
 }

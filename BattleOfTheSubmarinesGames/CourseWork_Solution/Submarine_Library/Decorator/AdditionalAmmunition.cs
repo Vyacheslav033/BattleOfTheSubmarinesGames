@@ -12,9 +12,9 @@ namespace Submarine_Library.SubmarineDecorator
 
         public AdditionalAmmunition(Submarine submarine) : base(submarine)
         {
-            Ammunition.Ammo[RocketType.FieryRocket] += boostAmmunition;
-            Ammunition.Ammo[RocketType.IceRocket] += boostAmmunition;
-            Ammunition.Ammo[RocketType.AtomicRocket] += boostAmmunition;
+            Ammunition.ChangeRockets(RocketType.FieryRocket, boostAmmunition);
+            Ammunition.ChangeRockets(RocketType.IceRocket, boostAmmunition);
+            Ammunition.ChangeRockets(RocketType.AtomicRocket, boostAmmunition);
         }  
     }
 }
