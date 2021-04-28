@@ -7,28 +7,43 @@ namespace Submarine_Library.GameObjectComponent
     /// </summary>
     public abstract class GameObject
     {
-        public Transform Transform { get; }
+        private Transform transform;
 
-        public List<GameComponents> Components { get;}
+        private List<GameComponents> components;
 
         /// <summary>
         /// Инициализатор игрового объекта.
         /// </summary>
         public GameObject()
         {
-            Transform = new Transform();
-            Components = new List<GameComponents>();
+            transform = new Transform();
+            components = new List<GameComponents>();
         }
 
         /// <summary>
-        /// Проверка классов компонентов.
+        /// Позиция, вращение, масштаб объекта.
+        /// </summary>
+        public Transform Transform
+        {
+            get { return transform; }
+        }
+
+        /// <summary>
+        /// Компоненты объекта.
+        /// </summary>
+        public List<GameComponents> Components
+        {
+            get { return components; }
+        }
+
+        /// <summary>
+        /// Проверка типов компонентов.
         /// </summary>
         /// <typeparam name="TComponent"></typeparam>
         /// <returns></returns>
-        public GameComponents GetComponent<TComponent>()
-            where TComponent : GameComponents
+        public GameComponents GetComponent<TComponent>() where TComponent : GameComponents
         {
-            foreach (GameComponents component in Components)
+            foreach (GameComponents component in components)
             {
                 if (component is TComponent)
                 {

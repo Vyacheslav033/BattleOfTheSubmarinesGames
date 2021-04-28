@@ -46,10 +46,10 @@ namespace Submarine_Library.Rockets
         /// </summary>
         /// <param name="speed"> Скорость. </param>
         /// <param name="lifeDamage"> Урон по жизням. </param>
-        /// <param name="armorDamage"> Урон по броне. </param>
+        /// <param name="armorDamage"> Бронепробиваемость. </param>
         /// <param name="firingRate"> Скорострельность </param>
         /// <param name="direction"> Направление. </param>
-        /// <param name="owner"> Хозяин ракеты. </param>
+        /// <param name="owner"> Тип стреляющей лодки. </param>
         public Rocket(float speed, int lifeDamage, int armorDamage, int firingRate, Direction direction, Type owner)
         {          
             Speed = speed;
@@ -71,12 +71,12 @@ namespace Submarine_Library.Rockets
 
             if (Direction == Direction.Right)
             {
-                x += Speed * (float)time;
+                x += (float)(Math.Pow(Speed, 2) * time);
             }
 
             if (Direction == Direction.Left)
             {
-                x -= Speed * (float)time;
+                x -= (float)(Math.Pow(Speed, 2) * time);
             }
 
             Transform.Position = new Vector2(x, y);

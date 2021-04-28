@@ -3,7 +3,7 @@
 namespace Submarine_Library.GameObjectComponent
 {
     /// <summary>
-    /// Направление движений.
+    /// Направление движения.
     /// </summary>
     public enum  Direction : int
     {

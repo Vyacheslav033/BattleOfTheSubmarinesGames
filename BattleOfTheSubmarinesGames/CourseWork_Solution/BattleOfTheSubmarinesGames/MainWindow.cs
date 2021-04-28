@@ -351,34 +351,32 @@ namespace BattleOfTheSubmarinesGames
                             // При столкновении бонуса с лодкой.
                             if (go is BonusGenerator && gameObjects[i] is Submarine)
                             {
-                                var sub = (Submarine)gameObjects[i];
-                                var bonusGenerator = (BonusGenerator)go;
-
-                                var oldPosition = sub.Transform.Position;
-                                var oldScale = sub.Transform.Scale;
-
-                                var bonus = bonusGenerator.GenerateBonus();
-                                sub = bonus.Activation(sub);
-
-                                sub.Transform.Position = oldPosition;
-                                sub.Transform.Scale = oldScale;
-
-                                gameObjects[i] = sub;
+                                gameObjects[i] = DecorationSubmarine(gameObjects[i], go);
 
                                 return true;
                             }
 
                             // При столкновении мины с лодкой.
-                            if (go is Mina && gameObjects[i] is Submarine)
+                            if (go is Mina)
                             {
-                                var sub = (Submarine)gameObjects[i];
-                                var mina = (Mina)go;
+                                if (gameObjects[i] is Submarine)
+                                {
+                                    var sub = (Submarine)gameObjects[i];
+                                    var mina = (Mina)go;
 
-                                sub.TakingDamage(mina.LifeDamage, mina.ArmorDamage);
-                                gameObjects[i] = sub;
+                                    sub.TakingDamage(mina.LifeDamage, mina.ArmorDamage);
+                                    gameObjects[i] = sub;
 
-                                return true;
-                            }
+                                    
+
+                                    return true;
+                                }
+
+                                if (gameObjects[i] is Rocket)
+                                {
+                                    return true;
+                                }
+                            }                        
                         }
                     }
                 }
@@ -386,6 +384,29 @@ namespace BattleOfTheSubmarinesGames
 
             return false;
         }    
+
+        /// <summary>
+        /// Декарирование лодки.
+        /// </summary>
+        /// <param name="goSub"> Лодка. </param>
+        /// <param name="goBonus"> Бонус. </param>
+        /// <returns> Декарированную лодку.</returns>
+        private Submarine DecorationSubmarine(GameObject goSub, GameObject goBonus)
+        {
+            var sub = (Submarine)goSub;
+            var bonusGenerator = (BonusGenerator)goBonus;
+
+            var oldPosition = sub.Transform.Position;
+            var oldScale = sub.Transform.Scale;
+
+            var bonus = bonusGenerator.GenerateBonus();
+            sub = bonus.Activation(sub);
+
+            sub.Transform.Position = oldPosition;
+            sub.Transform.Scale = oldScale;
+
+            return sub; 
+        }
 
         /// <summary>
         /// OnRenderFrame.
@@ -464,7 +485,7 @@ namespace BattleOfTheSubmarinesGames
                 {
                     var rocket = (Rocket)gameObjects[i];
 
-                    rocket.Move(e.Time * rocket.Speed);
+                    rocket.Move(e.Time);
 
                     if (CheckingColliders(rocket))
                     {
@@ -486,7 +507,7 @@ namespace BattleOfTheSubmarinesGames
                 {
                     var destroyer = (Destroyer)gameObjects[i];
 
-                    destroyer.Move(e.Time * destroyer.Speed);
+                    destroyer.Move(e.Time);
 
                     var random = new Random();
                     var subId = SearchSubmarineId(random.Next(1, 3));
@@ -505,7 +526,7 @@ namespace BattleOfTheSubmarinesGames
                 {
                     var mina = (Mina)gameObjects[i];
 
-                    mina.Move(e.Time * mina.Speed);
+                    mina.Move(e.Time);
 
                     if (CheckingColliders(mina))
                     {
@@ -513,7 +534,6 @@ namespace BattleOfTheSubmarinesGames
                         activeMina = false;
                     }
                 }
-               
             }
 
             foreach (GameObject go in gameObjectOrderRemove)
@@ -591,11 +611,11 @@ namespace BattleOfTheSubmarinesGames
             {
                 if (kb.IsKeyDown(Key.W))
                 {
-                    submarine.Move(Direction.Up, e.Time * submarine.Speed);
+                    submarine.Move(Direction.Up, e.Time);
                 }
                 else
                 {
-                    submarine.Move(Direction.Down, e.Time * submarine.Speed);
+                    submarine.Move(Direction.Down, e.Time);
                 }
 
                 if (CheckingColliders(submarine))
@@ -609,12 +629,12 @@ namespace BattleOfTheSubmarinesGames
                 if (kb.IsKeyDown(Key.A))
                 {
                     submarine.Transform.Scale = new Vector2(-scaleX, scaleY);
-                    submarine.Move(Direction.Left, e.Time * submarine.Speed);
+                    submarine.Move(Direction.Left, e.Time);
                 }
                 else
                 {
                     submarine.Transform.Scale = new Vector2(scaleX, scaleY);
-                    submarine.Move(Direction.Right, e.Time * submarine.Speed);
+                    submarine.Move(Direction.Right, e.Time);
                 }
 
                 if (CheckingColliders(submarine))
@@ -664,11 +684,11 @@ namespace BattleOfTheSubmarinesGames
             {
                 if (kb.IsKeyDown(Key.Up))
                 {
-                    submarine.Move(Direction.Up, e.Time * submarine.Speed);
+                    submarine.Move(Direction.Up, e.Time);
                 }
                 else
                 {
-                    submarine.Move(Direction.Down, e.Time * submarine.Speed);
+                    submarine.Move(Direction.Down, e.Time);
                 }
 
                 if (CheckingColliders(submarine))
@@ -682,12 +702,12 @@ namespace BattleOfTheSubmarinesGames
                 if (kb.IsKeyDown(Key.Left))
                 {
                     submarine.Transform.Scale = new Vector2(-scaleX, scaleY);
-                    submarine.Move(Direction.Left, e.Time * submarine.Speed);
+                    submarine.Move(Direction.Left, e.Time);
                 }
                 else
                 {
                     submarine.Transform.Scale = new Vector2(scaleX, scaleY);
-                    submarine.Move(Direction.Right, e.Time * submarine.Speed);
+                    submarine.Move(Direction.Right, e.Time);
                 }
 
                 if (CheckingColliders(submarine))

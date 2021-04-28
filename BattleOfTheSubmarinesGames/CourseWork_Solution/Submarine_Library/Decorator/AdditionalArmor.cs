@@ -8,6 +8,7 @@ namespace Submarine_Library.SubmarineDecorator
     public class AdditionalArmor : SubmarineDecorator
     {
         static int boostArmor = 20;
+
         public AdditionalArmor(Submarine submarine) : base( submarine )
         {
             Armor += boostArmor;

@@ -2,10 +2,13 @@
 
 namespace Submarine_Library.GameObjectComponent
 {
+    /// <summary>
+    /// Значения позиции, вращения, масштаба объекта.
+    /// </summary>
     public class Transform
     {
         /// <summary>
-        /// Положение.
+        /// Позиция.
         /// </summary>
         public Vector2 Position { get; set; }
 
@@ -20,7 +23,7 @@ namespace Submarine_Library.GameObjectComponent
         public Vector2 Scale { get; set; }
 
         /// <summary>
-        /// Конструктор.
+        /// Инициализатор.
         /// </summary>
         public Transform()
         {

@@ -98,19 +98,19 @@ namespace Submarine_Library.Submarines
             switch (direction)
             {
                 case Direction.Up:
-                    y += Speed * (float)time;
+                    y += (float)(Math.Pow(Speed, 2) * time);
                     break;
 
                 case Direction.Down:
-                    y -= Speed * (float)time;
+                    y -= (float)(Math.Pow(Speed, 2) * time);
                     break;
 
                 case Direction.Left:
-                    x -= Speed * (float)time;
+                    x -= (float)(Math.Pow(Speed, 2) * time);
                     break;
 
                 case Direction.Right:
-                    x += Speed * (float)time;
+                    x += (float)(Math.Pow(Speed, 2) * time);
                     break;
 
                 default:

@@ -92,7 +92,7 @@ namespace BattleOfTheSubmarinesGames
                         label.Text = $"Урон по жизням = {rocket.LifeDamage}";
                         break;
                     case 1:
-                        label.Text = $"Урон по броне = {rocket.ArmorDamage}";
+                        label.Text = $"Бронепробиваемость = {rocket.ArmorDamage}";
                         break;
                     case 2:
                         label.Text = $"Скорость = {rocket.Speed}";
@@ -137,9 +137,9 @@ namespace BattleOfTheSubmarinesGames
                     redAmmunition.AddRockets(RocketType.IceRocket, (int)IceRocketSum.Value);
                     redAmmunition.AddRockets(RocketType.AtomicRocket, (int)AtomicRocketSum.Value);
 
-                    var mainWindow = new MainWindow(1920, 1080, blueAmmunition, redAmmunition);
-                    mainWindow.Run(60);
                     this.Close();
+                    var mainWindow = new MainWindow(1920, 1080, blueAmmunition, redAmmunition);
+                    mainWindow.Run(60);                   
                 }
                 else
                 {

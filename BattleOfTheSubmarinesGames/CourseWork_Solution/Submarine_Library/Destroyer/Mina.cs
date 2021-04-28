@@ -1,4 +1,5 @@
-﻿using OpenTK;
+﻿using System;
+using OpenTK;
 using Submarine_Library.GameObjectComponent;
 using Submarine_Library.Interfaces;
 
@@ -9,36 +10,48 @@ namespace Submarine_Library.Destroyer
     /// </summary>
     public class Mina : GameObject, IMovable
     {
-        /// <summary>
-        /// Урон мины.
-        /// </summary>
-        public int LifeDamage { get; }
+        private int lifeDamage;
 
-        /// <summary>
-        /// Бронепробиваемость.
-        /// </summary>
-        public int ArmorDamage { get; }
+        private int armorDamage;
 
-        /// <summary>
-        /// Скорость.
-        /// </summary>
-        public float Speed { get; }
+        private float speed;
 
         /// <summary>
         /// Инициализатор мины.
         /// </summary>
         public Mina()
         {
-            LifeDamage = 30;
-            ArmorDamage = 30;
-            Speed = 22;
+            lifeDamage = 30;
+            armorDamage = 30;
+            speed = 20;
         }
+
+        /// <summary>
+        /// Урон по здоровью.
+        /// </summary>
+        public int LifeDamage
+        {
+            get { return lifeDamage; }
+        }
+
+        /// <summary>
+        /// Бронепробиваемость.
+        /// </summary>
+        public int ArmorDamage
+        {
+            get { return armorDamage; }
+        }
+
+        /// <summary>
+        /// Движение мины.
+        /// </summary>
+        /// <param name="time"> Время. </param>
         public void Move(double time)
         {
             float x = Transform.Position.X;
             float y = Transform.Position.Y;
 
-            y -= Speed * (float)time;
+            y -= (float)(Math.Pow(speed, 2) * time);
 
             Transform.Position = new Vector2(x, y);
         }

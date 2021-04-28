@@ -1,4 +1,5 @@
-﻿using OpenTK;
+﻿using System;
+using OpenTK;
 using Submarine_Library.GameObjectComponent;
 using Submarine_Library.Interfaces;
 
@@ -9,35 +10,37 @@ namespace Submarine_Library.Destroyer
     /// </summary>
     public class Destroyer : GameObject, IMovable
     {
-        /// <summary>
-        /// Скорость.
-        /// </summary>
-        public float Speed { get; }
+        private float speed;
+
+        private Direction direction;
 
         /// <summary>
-        /// Направление.
+        /// Инициализатор миноносца.
         /// </summary>
-        public Direction Direction { get; }
-
+        /// <param name="direction"></param>
         public Destroyer(Direction direction)
-        {
-            Direction = direction;
-            Speed = 20;
+        {          
+            speed = 20;
+            this.direction = direction;
         }
 
+        /// <summary>
+        /// Движение миноносца.
+        /// </summary>
+        /// <param name="time"> Время. </param>
         public void Move(double time)
         {
             float x = Transform.Position.X;
             float y = Transform.Position.Y;
 
-            if (Direction == Direction.Right)
+            if (direction == Direction.Right)
             {
-                x += Speed * (float)time;
+                x += (float)(Math.Pow(speed, 2) * time);
             }
 
-            if (Direction == Direction.Left)
+            if (direction == Direction.Left)
             {
-                x -= Speed * (float)time;
+                x -= (float)(Math.Pow(speed, 2) * time);
             }
 
             Transform.Position = new Vector2(x, y);
