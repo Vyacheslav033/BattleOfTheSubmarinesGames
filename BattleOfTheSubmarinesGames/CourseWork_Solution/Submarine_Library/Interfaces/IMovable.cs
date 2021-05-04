@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Submarine_Library.Interfaces
+namespace Submarine_Library
 {
     /// <summary>
     /// Движение ракеты.

@@ -1,9 +1,7 @@
 ﻿using System;
 using OpenTK;
-using Submarine_Library.GameObjectComponent;
-using Submarine_Library.Interfaces;
 
-namespace Submarine_Library.Destroyer
+namespace Submarine_Library
 {
     /// <summary>
     /// Мина.

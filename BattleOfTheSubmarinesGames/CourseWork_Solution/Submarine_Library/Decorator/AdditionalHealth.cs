@@ -1,6 +1,6 @@
-﻿using Submarine_Library.Submarines;
+﻿using System;
 
-namespace Submarine_Library.SubmarineDecorator
+namespace Submarine_Library
 {
     /// <summary>
     /// Увеличение жизней лодки.

@@ -1,8 +1,7 @@
 ﻿using OpenTK;
 using OpenTK.Graphics.OpenGL;
-using Submarine_Library.GameObjectComponent;
 
-namespace Submarine_Library.OpenTK_Graphics
+namespace Submarine_Library
 {
     /// <summary>
     /// Работа с текстурой, отрисовка.

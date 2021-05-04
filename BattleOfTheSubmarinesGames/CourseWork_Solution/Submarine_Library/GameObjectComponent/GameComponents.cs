@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Submarine_Library.GameObjectComponent
+namespace Submarine_Library
 {
     public abstract class GameComponents { }
 }

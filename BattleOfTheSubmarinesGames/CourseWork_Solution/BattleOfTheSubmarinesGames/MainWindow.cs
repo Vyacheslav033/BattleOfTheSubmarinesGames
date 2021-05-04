@@ -1,15 +1,10 @@
 ﻿using System;
+using OpenTK;
 using System.Drawing;
 using System.Collections.Generic;
-using OpenTK;
 using OpenTK.Graphics.OpenGL;
 using OpenTK.Input;
-using Submarine_Library.GameObjectComponent;
-using Submarine_Library.Submarines;
-using Submarine_Library.Rockets;
-using Submarine_Library.OpenTK_Graphics;
-using Submarine_Library.Destroyer;
-using Submarine_Library.SubmarineDecorator;
+using Submarine_Library;
 using System.Windows.Forms;
 
 namespace BattleOfTheSubmarinesGames

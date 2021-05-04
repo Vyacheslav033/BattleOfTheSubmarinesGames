@@ -2,7 +2,7 @@
 using System.Timers;
 using Timer = System.Timers.Timer;
 
-namespace Submarine_Library.GameObjectComponent
+namespace Submarine_Library
 {
     /// <summary>
     /// Таймер.

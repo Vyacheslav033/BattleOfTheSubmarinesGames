@@ -1,7 +1,6 @@
 ﻿using System;
-using Submarine_Library.SubmarineFactoryMethod;
 
-namespace Submarine_Library.GameObjectComponent
+namespace Submarine_Library
 {
     /// <summary>
     /// Генератор бонусов.

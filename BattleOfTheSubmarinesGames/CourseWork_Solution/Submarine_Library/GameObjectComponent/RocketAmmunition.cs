@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Submarine_Library.GameObjectComponent
+namespace Submarine_Library
 {
     /// <summary>
     /// Снаряжение подводной лодки.

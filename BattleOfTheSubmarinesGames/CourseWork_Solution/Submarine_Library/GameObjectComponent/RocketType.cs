@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Submarine_Library.GameObjectComponent
+namespace Submarine_Library
 {
     /// <summary>
     /// Типы рокет.

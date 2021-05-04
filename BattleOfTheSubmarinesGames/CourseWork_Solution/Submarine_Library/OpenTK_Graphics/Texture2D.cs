@@ -1,7 +1,6 @@
 ﻿using System;
-using Submarine_Library.GameObjectComponent;
 
-namespace Submarine_Library.OpenTK_Graphics
+namespace Submarine_Library
 {
     /// <summary>
     /// Свойства текстуры.

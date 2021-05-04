@@ -4,7 +4,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using OpenTK.Graphics.OpenGL;
 
-namespace Submarine_Library.OpenTK_Graphics
+namespace Submarine_Library
 {
     public class Animator
     {

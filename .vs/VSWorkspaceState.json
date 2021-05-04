@@ -1,5 +1,10 @@
 {
-  "ExpandedNodes": [],
-  "SelectedNode": "\\CourseWork_Solution.sln",
+  "ExpandedNodes": [
+    "",
+    "\\BattleOfTheSubmarinesGames",
+    "\\BattleOfTheSubmarinesGames\\CourseWork_Solution",
+    "\\BattleOfTheSubmarinesGames\\CourseWork_Solution\\BattleOfTheSubmarinesGames"
+  ],
+  "SelectedNode": "\\BattleOfTheSubmarinesGames\\CourseWork_Solution\\BattleOfTheSubmarinesGames\\CustomizationSubmarines.cs",
   "PreviewInSolutionExplorer": false
 }

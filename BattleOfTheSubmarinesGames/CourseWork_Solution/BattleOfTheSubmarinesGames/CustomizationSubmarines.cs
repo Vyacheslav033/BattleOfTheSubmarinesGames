@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-using Submarine_Library.Rockets;
-using Submarine_Library.GameObjectComponent;
-using Submarine_Library.Submarines;
+using Submarine_Library;
 
 namespace BattleOfTheSubmarinesGames
 {

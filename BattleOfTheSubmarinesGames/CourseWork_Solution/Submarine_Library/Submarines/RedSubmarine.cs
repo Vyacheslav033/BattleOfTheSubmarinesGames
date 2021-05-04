@@ -1,6 +1,6 @@
-﻿using Submarine_Library.GameObjectComponent;
+﻿using System;
 
-namespace Submarine_Library.Submarines
+namespace Submarine_Library
 {
     public class RedSubmarine : Submarine
     {

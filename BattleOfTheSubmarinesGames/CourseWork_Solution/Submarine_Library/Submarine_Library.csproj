@@ -62,7 +62,6 @@
     <Compile Include="OpenTK_Graphics\Background.cs" />
     <Compile Include="GameObjectComponent\BonusGenerator.cs" />
     <Compile Include="OpenTK_Graphics\Border.cs" />
-    <Compile Include="OpenTK_Graphics\MainWindow.cs" />
     <Compile Include="OpenTK_Graphics\SpriteRendering.cs" />
     <Compile Include="OpenTK_Graphics\TextureProcessing.cs" />
     <Compile Include="OpenTK_Graphics\Texture2D.cs" />

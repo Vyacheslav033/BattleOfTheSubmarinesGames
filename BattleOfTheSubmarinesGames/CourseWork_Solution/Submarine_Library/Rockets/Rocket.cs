@@ -1,10 +1,7 @@
 ﻿using System;
 using OpenTK;
-using Submarine_Library.GameObjectComponent;
-using Submarine_Library.Interfaces;
-using Submarine_Library.Submarines;
 
-namespace Submarine_Library.Rockets
+namespace Submarine_Library
 {
     /// <summary>
     /// Ракета.

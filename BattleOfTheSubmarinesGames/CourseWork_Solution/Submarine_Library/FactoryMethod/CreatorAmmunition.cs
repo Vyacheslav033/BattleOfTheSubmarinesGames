@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Submarine_Library.SubmarineFactoryMethod
+namespace Submarine_Library
 {
     public class CreatorAmmunition : BonusCreator
     {

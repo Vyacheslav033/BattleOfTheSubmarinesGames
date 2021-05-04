@@ -1,8 +1,6 @@
-﻿using Submarine_Library.Submarines;
-using Submarine_Library.GameObjectComponent;
-using System;
+﻿using System;
 
-namespace Submarine_Library.SubmarineDecorator
+namespace Submarine_Library
 {
     public abstract class SubmarineDecorator : Submarine
     {

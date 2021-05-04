@@ -1,6 +1,6 @@
-﻿using Submarine_Library.Submarines;
+﻿using System;
 
-namespace Submarine_Library.SubmarineFactoryMethod
+namespace Submarine_Library
 {
     public abstract class Bonus
     {

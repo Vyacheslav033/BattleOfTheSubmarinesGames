@@ -1,7 +1,6 @@
 ﻿using System;
-using Submarine_Library.GameObjectComponent;
 
-namespace Submarine_Library.Interfaces
+namespace Submarine_Library
 {
     /// <summary>
     /// Движение игровых объектов.

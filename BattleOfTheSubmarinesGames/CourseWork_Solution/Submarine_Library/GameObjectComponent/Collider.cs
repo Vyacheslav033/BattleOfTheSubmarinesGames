@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using OpenTK;
 
-namespace Submarine_Library.GameObjectComponent
+namespace Submarine_Library
 {
     public abstract class Collider : GameComponents
     {

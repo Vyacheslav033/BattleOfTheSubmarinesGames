@@ -1,6 +1,6 @@
 ﻿using OpenTK;
 
-namespace Submarine_Library.GameObjectComponent
+namespace Submarine_Library
 {
     /// <summary>
     /// Значения позиции, вращения, масштаба объекта.
