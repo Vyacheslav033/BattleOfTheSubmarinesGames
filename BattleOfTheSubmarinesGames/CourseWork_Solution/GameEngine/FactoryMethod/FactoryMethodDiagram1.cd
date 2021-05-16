@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="GameEngine.Bonus" Collapsed="true">
+    <Position X="9" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>FactoryMethod\Bonus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameEngine.BonusCreator" Collapsed="true">
+    <Position X="9" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>FactoryMethod\BonusCreator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameEngine.AmmunitionBonus" Collapsed="true">
+    <Position X="6" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>FactoryMethod\AmmunitionBonus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameEngine.ArmorBonus" Collapsed="true">
+    <Position X="8" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>FactoryMethod\ArmorBonus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameEngine.HealthBonus" Collapsed="true">
+    <Position X="10" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>FactoryMethod\HealthBonus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameEngine.SpeedBonus" Collapsed="true">
+    <Position X="12" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>FactoryMethod\SpeedBonus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameEngine.CreatorAmmunition" Collapsed="true">
+    <Position X="6" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>FactoryMethod\CreatorAmmunition.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameEngine.CreatorArmor" Collapsed="true">
+    <Position X="8" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>FactoryMethod\CreatorArmor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameEngine.CreatorHealth" Collapsed="true">
+    <Position X="10" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>FactoryMethod\CreatorHealth.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameEngine.CreatorSpeed" Collapsed="true">
+    <Position X="12" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>FactoryMethod\CreatorSpeed.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

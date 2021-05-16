@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-using Submarine_Library;
+using GameEngine;
 
 namespace BattleOfTheSubmarinesGames
 {

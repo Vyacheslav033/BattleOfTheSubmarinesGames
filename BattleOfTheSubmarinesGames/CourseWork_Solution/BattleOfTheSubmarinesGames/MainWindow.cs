@@ -4,7 +4,7 @@ using System.Drawing;
 using System.Collections.Generic;
 using OpenTK.Graphics.OpenGL;
 using OpenTK.Input;
-using Submarine_Library;
+using GameEngine;
 using System.Windows.Forms;
 
 namespace BattleOfTheSubmarinesGames
