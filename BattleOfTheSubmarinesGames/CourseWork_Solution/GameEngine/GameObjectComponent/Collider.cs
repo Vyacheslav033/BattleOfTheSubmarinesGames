@@ -4,16 +4,24 @@ using OpenTK;
 
 namespace GameEngine
 {
+    /// <summary>
+    /// Коллайдер.
+    /// </summary>
     public abstract class Collider : GameComponents
     {
-        public abstract List<Vector2> GetField(GameObject gameObject);
+        /// <summary>
+        /// Получаем координаты сторон объекта, оболочка объекта.
+        /// </summary>
+        /// <param name="gameObject"> Игровой объект. </param>
+        /// <returns> Коллекция координат. </returns>
+        protected abstract List<Vector2> GetField(GameObject gameObject);
         
         /// <summary>
         /// Получение вершин объекта.
         /// </summary>
         /// <param name="gameObject"> Игровой объект. </param>
         /// <returns> Вершины. </returns>
-        public static List<Vector2> GetVertices(GameObject gameObject)
+        private static List<Vector2> GetVertices(GameObject gameObject)
         {
             return (gameObject.GetComponent<Collider>() as Collider).GetField(gameObject);
         }

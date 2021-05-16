@@ -47,6 +47,15 @@ namespace GameEngine
         }
 
         /// <summary>
+        /// Количество типов ракет.
+        /// </summary>
+        /// <returns> Количество типов ракет. </returns>
+        public int TypeRocketCount
+        {
+            get { return ammunition.Count; }
+        }
+
+        /// <summary>
         /// Добвление ракет заданного типа.
         /// </summary>
         /// <param name="rocketType"></param>

@@ -320,7 +320,7 @@ namespace BattleOfTheSubmarinesGames
                     {
                         if (Collider.CheckCollision(gameObjects[i], go))
                         {
-                            // При столкновении лодки с лодкой, стеной. И при столкновении ракеты со стеной ???
+                            // При столкновении лодки с лодкой, стеной.
                             if (go is Submarine && gameObjects[i] is Submarine || gameObjects[i] is Border)
                             {
                                 return true;
@@ -361,9 +361,7 @@ namespace BattleOfTheSubmarinesGames
 
                                     sub.TakingDamage(mina.LifeDamage, mina.ArmorDamage);
                                     gameObjects[i] = sub;
-
                                     
-
                                     return true;
                                 }
 

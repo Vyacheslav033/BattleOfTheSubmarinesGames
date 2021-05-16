@@ -7,11 +7,19 @@ namespace GameEngine
     /// </summary>
     public class AdditionalHealth : SubmarineDecorator
     {
-        static int boostHealth = 20;
+        private static int boostHealth = 20;
 
         public AdditionalHealth(Submarine submarine) : base(submarine)
         {
             Health += boostHealth;
+        }
+
+        /// <summary>
+        /// Значение дополнительных жизней, свойство необходимо для тестов.
+        /// </summary>
+        public int BoostHealth
+        {
+            get { return boostHealth; }
         }
     }
 }

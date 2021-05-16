@@ -33,7 +33,12 @@ namespace GameEngine
             this.height = height;
         }
 
-        public override List<Vector2> GetField(GameObject gameObject)
+        /// <summary>
+        /// Получаем координаты сторон прямоугольного объекта, оболочка объекта.
+        /// </summary>
+        /// <param name="gameObject"> Игровой объект. </param>
+        /// <returns> Коллекция координат. </returns>
+        protected override List<Vector2> GetField(GameObject gameObject)
         {
             if (!gameObject.GetComponent<Collider>().Equals(this))
             {

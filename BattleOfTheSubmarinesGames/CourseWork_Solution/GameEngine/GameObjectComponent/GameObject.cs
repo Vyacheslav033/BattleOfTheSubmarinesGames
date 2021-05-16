@@ -39,9 +39,7 @@ namespace GameEngine
         public GameComponents Компоненты
         {
             get => default;
-            set
-            {
-            }
+            set { }
         }
 
         /// <summary>
