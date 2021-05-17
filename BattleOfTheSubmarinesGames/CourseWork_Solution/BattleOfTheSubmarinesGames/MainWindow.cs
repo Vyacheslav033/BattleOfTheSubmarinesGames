@@ -6,7 +6,6 @@ using OpenTK.Graphics.OpenGL;
 using OpenTK.Input;
 using GameLogic;
 using GameEngine;
-using System.Windows.Forms;
 
 namespace BattleOfTheSubmarinesGames
 {
