@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Collections.Generic;
 using OpenTK.Graphics.OpenGL;
 using OpenTK.Input;
+using GameLogic;
 using GameEngine;
 using System.Windows.Forms;
 
@@ -408,7 +409,6 @@ namespace BattleOfTheSubmarinesGames
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            //GL.ClearColor(Color.FromArgb(54, 54, 38));
             SpriteRendering.Begin(Width, Height);
         }
 

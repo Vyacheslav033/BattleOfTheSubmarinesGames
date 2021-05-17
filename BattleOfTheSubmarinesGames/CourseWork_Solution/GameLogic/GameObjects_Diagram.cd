@@ -1,0 +1,243 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="GameEngine.GameObject" Collapsed="true">
+    <Position X="11.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="GameLogic.Rocket" Collapsed="true">
+    <Position X="4.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAADAAoAAAAAAACAAAAARAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Rockets\Rocket.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="GameLogic.Submarine" Collapsed="true">
+    <Position X="7" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAIAABAAFAAAAAAAFAAIAAAAAEAAAAAAAQAA=</HashCode>
+      <FileName>Submarines\Submarine.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="GameLogic.Destroyer" Collapsed="true">
+    <Position X="9.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAIAAAAAAAAAAAAAAAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>Destroyer\Destroyer.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="GameLogic.Mina" Collapsed="true">
+    <Position X="11.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAoAAQAIAAAAAAAAAAAAAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>Destroyer\Mina.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="GameLogic.BonusGenerator" Collapsed="true">
+    <Position X="16.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>LogicComponents\BonusGenerator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameLogic.Background" Collapsed="true">
+    <Position X="13.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OtherObjects\Background.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameLogic.Border" Collapsed="true">
+    <Position X="15" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAIAQAQAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OtherObjects\Border.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameLogic.AtomicRocket" Collapsed="true">
+    <Position X="2.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Rockets\AtomicRocket.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameLogic.FieryRocket" Collapsed="true">
+    <Position X="2.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Rockets\FieryRocket.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameLogic.IceRocket" Collapsed="true">
+    <Position X="2.5" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Rockets\IceRocket.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameLogic.SubmarineDecorator" Collapsed="true">
+    <Position X="7" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Decorator\SubmarineDecorator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameLogic.BlueSubmarine" Collapsed="true">
+    <Position X="5" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Submarines\BlueSubmarine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameLogic.RedSubmarine" Collapsed="true">
+    <Position X="9" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Submarines\RedSubmarine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameLogic.AdditionalAmmunition" Collapsed="true">
+    <Position X="3.5" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>Decorator\AdditionalAmmunition.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameLogic.AdditionalArmor" Collapsed="true">
+    <Position X="5.75" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Decorator\AdditionalArmor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameLogic.AdditionalHealth" Collapsed="true">
+    <Position X="8" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>Decorator\AdditionalHealth.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameLogic.AdditionalSpeed" Collapsed="true">
+    <Position X="10" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAIAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Decorator\AdditionalSpeed.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameLogic.Bonus" Collapsed="true">
+    <Position X="16.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>FactoryMethod\Bonus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameLogic.BonusCreator" Collapsed="true">
+    <Position X="16.75" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>FactoryMethod\BonusCreator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameLogic.AmmunitionBonus" Collapsed="true">
+    <Position X="12.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>FactoryMethod\AmmunitionBonus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameLogic.ArmorBonus" Collapsed="true">
+    <Position X="14" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>FactoryMethod\ArmorBonus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameLogic.HealthBonus" Collapsed="true">
+    <Position X="15.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>FactoryMethod\HealthBonus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameLogic.SpeedBonus" Collapsed="true">
+    <Position X="17.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>FactoryMethod\SpeedBonus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameLogic.CreatorAmmunition" Collapsed="true">
+    <Position X="13.75" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>FactoryMethod\CreatorAmmunition.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameLogic.CreatorArmor" Collapsed="true">
+    <Position X="15.5" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>FactoryMethod\CreatorArmor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameLogic.CreatorHealth" Collapsed="true">
+    <Position X="17.25" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>FactoryMethod\CreatorHealth.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameLogic.CreatorSpeed" Collapsed="true">
+    <Position X="19" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>FactoryMethod\CreatorSpeed.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameLogic.RocketAmmunition" Collapsed="true">
+    <Position X="4.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAAQAAAQAAABEAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>LogicComponents\RocketAmmunition.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameLogic.Timerr" Collapsed="true">
+    <Position X="9.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAACAAAAAAAgAAAAAAAAAIAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>LogicComponents\Timerr.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="GameLogic.IMovableSubmarine" Collapsed="true">
+    <Position X="7" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IMovableSubmarine.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="GameLogic.IMovable" Collapsed="true">
+    <Position X="4.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IMovable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="GameLogic.Direction" Collapsed="true">
+    <Position X="7" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAACACAAAAAAAI=</HashCode>
+      <FileName>LogicComponents\Direction.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="GameLogic.RocketType" Collapsed="true">
+    <Position X="4.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>LogicComponents\RocketType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

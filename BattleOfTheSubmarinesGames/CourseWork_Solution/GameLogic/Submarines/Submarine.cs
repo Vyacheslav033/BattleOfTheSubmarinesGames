@@ -1,0 +1,131 @@
+﻿using System;
+using OpenTK;
+using GameEngine;
+
+namespace GameLogic
+{
+    /// <summary>
+    /// Подводная лодка.
+    /// </summary>
+    public abstract class Submarine : GameObject, IMovableSubmarine
+    {
+        /// <summary>
+        /// Количество жизней.
+        /// </summary>
+        public int Health { get; protected set; }
+
+        /// <summary>
+        /// Запас брони.
+        /// </summary>
+        public int Armor { get; protected set; }
+
+        /// <summary>
+        /// Скорость.
+        /// </summary>
+        public float Speed { get; protected set; }
+
+        /// <summary>
+        ///  Ракеты.
+        /// </summary>
+        public RocketAmmunition Ammunition { get; protected set; }
+
+        /// <summary>
+        /// Начальное количество ракет.
+        /// </summary>
+        public int AmmunitionCount { get; protected set; }
+
+        /// <summary>
+        /// Настоящий тип лодки, до декарирования.
+        /// </summary>
+        public Type BasicType { get; protected set; }
+
+        /// <summary>
+        /// Инициализатор лодки.
+        /// </summary>
+        public Submarine(RocketAmmunition ammo)
+        {
+            Health = 100;
+            Speed = 18;
+            Armor = 100;
+            AmmunitionCount = 15;
+            Ammunition = ammo;
+            BasicType = this.GetType();
+        }
+
+        /// <summary>
+        /// Получение урона.
+        /// </summary>
+        /// <param name="lifeDamage"> Урон по здоровью. </param>
+        /// <param name="armorDamage"> Урон по броне. </param>
+        public void TakingDamage(int lifeDamage, int armorDamage)
+        {
+            if (Armor == 0)
+            {
+                Health -= lifeDamage;
+            }
+            else
+            {
+                Armor -= armorDamage;
+
+                if (Armor < 0)
+                {
+                    Health -= lifeDamage - (-Armor);
+                    Armor = 0;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Выстрел, расходует ракету.
+        /// </summary>
+        /// <param name="rocketType"> Тип ракеты. </param>
+        public void Shoot(RocketType rocketType)
+        {
+            Ammunition.ChangeRockets(rocketType, -1);
+        }
+
+        /// <summary>
+        /// Движение лодки.
+        /// </summary>
+        /// <param name="direction"> Направление. </param>
+        /// <param name="time"> Время. </param>
+        public void Move(Direction direction, double time)
+        {
+            float x = Transform.Position.X;
+            float y = Transform.Position.Y;
+
+            switch (direction)
+            {
+                case Direction.Up:
+                    y += (float)(Math.Pow(Speed, 2) * time);
+                    break;
+
+                case Direction.Down:
+                    y -= (float)(Math.Pow(Speed, 2) * time);
+                    break;
+
+                case Direction.Left:
+                    x -= (float)(Math.Pow(Speed, 2) * time);
+                    break;
+
+                case Direction.Right:
+                    x += (float)(Math.Pow(Speed, 2) * time);
+                    break;
+
+                default:
+                    break;
+            }
+
+            Transform.Position = new Vector2(x, y);
+        }
+
+        /// <summary>
+        /// Вывод характеристик лодки.
+        /// </summary>
+        /// <returns> Характеристика лодки. </returns>
+        public override string ToString()
+        {
+            return $"Жизни: {Health} | Броня: {Armor} | Скорость: {Speed} | Снаряды: {Ammunition.Count()} - ({Ammunition.GetRockets(RocketType.FieryRocket)},{Ammunition.GetRockets(RocketType.IceRocket)},{Ammunition.GetRockets(RocketType.AtomicRocket)})";
+        }
+    }
+}

@@ -1,0 +1,10 @@
+D:\CourseWorkRepos\BattleOfTheSubmarinesGames\CourseWork_Solution\GameEngine\bin\Debug\Submarine_Library.dll
+D:\CourseWorkRepos\BattleOfTheSubmarinesGames\CourseWork_Solution\GameEngine\bin\Debug\Submarine_Library.pdb
+D:\CourseWorkRepos\BattleOfTheSubmarinesGames\CourseWork_Solution\GameEngine\bin\Debug\OpenTK.dll
+D:\CourseWorkRepos\BattleOfTheSubmarinesGames\CourseWork_Solution\GameEngine\bin\Debug\OpenTK.pdb
+D:\CourseWorkRepos\BattleOfTheSubmarinesGames\CourseWork_Solution\GameEngine\bin\Debug\OpenTK.xml
+D:\CourseWorkRepos\BattleOfTheSubmarinesGames\CourseWork_Solution\GameEngine\obj\Debug\GameEngine.csprojAssemblyReference.cache
+D:\CourseWorkRepos\BattleOfTheSubmarinesGames\CourseWork_Solution\GameEngine\obj\Debug\GameEngine.csproj.CoreCompileInputs.cache
+D:\CourseWorkRepos\BattleOfTheSubmarinesGames\CourseWork_Solution\GameEngine\obj\Debug\GameEngine.csproj.CopyComplete
+D:\CourseWorkRepos\BattleOfTheSubmarinesGames\CourseWork_Solution\GameEngine\obj\Debug\Submarine_Library.dll
+D:\CourseWorkRepos\BattleOfTheSubmarinesGames\CourseWork_Solution\GameEngine\obj\Debug\Submarine_Library.pdb

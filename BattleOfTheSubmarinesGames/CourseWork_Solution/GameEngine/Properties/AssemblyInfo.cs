@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Общие сведения об этой сборке предоставляются следующим набором
 // набора атрибутов. Измените значения этих атрибутов для изменения сведений,
 // связанные со сборкой.
-[assembly: AssemblyTitle("Submarine_Library")]
+[assembly: AssemblyTitle("GameEngine")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Submarine_Library")]
+[assembly: AssemblyProduct("GameEngine")]
 [assembly: AssemblyCopyright("Copyright ©  2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Следующий GUID служит для идентификации библиотеки типов, если этот проект будет видимым для COM
-[assembly: Guid("78ad86ee-2415-4df4-a161-74c3ecfcaade")]
+[assembly: Guid("b63c16ef-ae86-42f2-b6af-289a9bc3f594")]
 
 // Сведения о версии сборки состоят из указанных ниже четырех значений:
 //

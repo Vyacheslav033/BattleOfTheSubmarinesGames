@@ -67,19 +67,20 @@
     <Compile Include="Decorator_Tests.cs" />
     <Compile Include="FactoryMethod_Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Submarine_Tests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="OpenTK.dll.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BattleOfTheSubmarinesGames\BattleOfTheSubmarinesGames.csproj">
-      <Project>{842b2f54-76a6-4994-a0bf-424d09d47845}</Project>
-      <Name>BattleOfTheSubmarinesGames</Name>
-    </ProjectReference>
     <ProjectReference Include="..\GameEngine\GameEngine.csproj">
-      <Project>{78AD86EE-2415-4DF4-A161-74C3ECFCAADE}</Project>
+      <Project>{b63c16ef-ae86-42f2-b6af-289a9bc3f594}</Project>
       <Name>GameEngine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GameLogic\GameLogic.csproj">
+      <Project>{78ad86ee-2415-4df4-a161-74c3ecfcaade}</Project>
+      <Name>GameLogic</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

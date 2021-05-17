@@ -135,8 +135,12 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GameEngine\GameEngine.csproj">
-      <Project>{78ad86ee-2415-4df4-a161-74c3ecfcaade}</Project>
+      <Project>{b63c16ef-ae86-42f2-b6af-289a9bc3f594}</Project>
       <Name>GameEngine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GameLogic\GameLogic.csproj">
+      <Project>{78ad86ee-2415-4df4-a161-74c3ecfcaade}</Project>
+      <Name>GameLogic</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
