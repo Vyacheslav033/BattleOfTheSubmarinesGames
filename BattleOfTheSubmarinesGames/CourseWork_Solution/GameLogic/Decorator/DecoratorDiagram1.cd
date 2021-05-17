@@ -1,53 +1,60 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="GameEngine.SubmarineDecorator" Collapsed="true">
-    <Position X="6" Y="3" Width="1.5" />
+  <Class Name="GameLogic.SubmarineDecorator">
+    <Position X="6" Y="4.5" Width="1.5" />
+    <Members>
+      <Field Name="submarine" Hidden="true" />
+    </Members>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Decorator\SubmarineDecorator.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="GameEngine.Submarine" Collapsed="true">
-    <Position X="6" Y="1.75" Width="1.5" />
+  <Class Name="GameLogic.Submarine">
+    <Position X="6" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAACAAAAIAABAAFAAAAAAAFAAIAAAAAEAAAAAAAQAA=</HashCode>
       <FileName>Submarines\Submarine.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="GameEngine.AdditionalAmmunition" Collapsed="true">
-    <Position X="9" Y="4.5" Width="1.5" />
+  <Class Name="GameLogic.AdditionalAmmunition">
+    <Position X="10" Y="6.75" Width="1.5" />
+    <Members>
+      <Field Name="boostAmmunition" Hidden="true" />
+    </Members>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAgAAAAAAAAAA=</HashCode>
       <FileName>Decorator\AdditionalAmmunition.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="GameEngine.AdditionalArmor" Collapsed="true">
-    <Position X="5" Y="4.5" Width="1.5" />
+  <Class Name="GameLogic.AdditionalArmor">
+    <Position X="4.5" Y="6.75" Width="1.5" />
+    <Members>
+      <Field Name="boostArmor" Hidden="true" />
+    </Members>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAACAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Decorator\AdditionalArmor.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="GameEngine.AdditionalHealth" Collapsed="true">
-    <Position X="3" Y="4.5" Width="1.5" />
+  <Class Name="GameLogic.AdditionalHealth">
+    <Position X="2" Y="6.75" Width="1.5" />
+    <Members>
+      <Field Name="boostHealth" Hidden="true" />
+    </Members>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAAAAAAAA=</HashCode>
       <FileName>Decorator\AdditionalHealth.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="GameEngine.AdditionalSpeed" Collapsed="true">
-    <Position X="7" Y="4.5" Width="1.5" />
-    <InheritanceLine Type="GameEngine.SubmarineDecorator" FixedToPoint="true">
-      <Path>
-        <Point X="6.75" Y="3.691" />
-        <Point X="6.75" Y="4.125" />
-        <Point X="8.125" Y="4.125" />
-        <Point X="8.125" Y="4.5" />
-      </Path>
-    </InheritanceLine>
+  <Class Name="GameLogic.AdditionalSpeed">
+    <Position X="7.5" Y="6.75" Width="1.5" />
+    <Members>
+      <Field Name="boostSpeed" Hidden="true" />
+    </Members>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAIAAAACAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Decorator\AdditionalSpeed.cs</FileName>
     </TypeIdentifier>
   </Class>

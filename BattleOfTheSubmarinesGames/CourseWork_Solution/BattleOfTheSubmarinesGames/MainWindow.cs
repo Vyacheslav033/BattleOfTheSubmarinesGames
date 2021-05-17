@@ -65,8 +65,8 @@ namespace BattleOfTheSubmarinesGames
 
             LoadingGameObjects();
 
-            bonusTimer.Start(10000, CreateBonus);
-            destroyerTimer.Start(9000, CreateDestroyer);
+            bonusTimer.Start(12000, CreateBonus);
+            destroyerTimer.Start(10000, CreateDestroyer);
         }
 
         /// <summary>

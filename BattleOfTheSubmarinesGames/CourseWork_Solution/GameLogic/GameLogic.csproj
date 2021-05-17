@@ -83,6 +83,7 @@
     <Compile Include="Rockets\Rocket.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="DecoratorDiagram2.cd" />
     <None Include="GameObjects_Diagram.cd" />
     <None Include="Submarines\GameEngineDiagram.cd" />
     <None Include="FactoryMethod\FactoryMethodDiagram1.cd" />
