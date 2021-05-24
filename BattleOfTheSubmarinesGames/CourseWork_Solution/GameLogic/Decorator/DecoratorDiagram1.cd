@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="GameLogic.SubmarineDecorator">
-    <Position X="6" Y="4.5" Width="1.5" />
+  <Class Name="GameLogic.SubmarineDecorator" Collapsed="true">
+    <Position X="6" Y="5.25" Width="1.5" />
     <Members>
       <Field Name="submarine" Hidden="true" />
     </Members>
@@ -10,16 +10,16 @@
       <FileName>Decorator\SubmarineDecorator.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="GameLogic.Submarine">
-    <Position X="6" Y="0.5" Width="1.5" />
+  <Class Name="GameLogic.Submarine" Collapsed="true">
+    <Position X="6" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAACAAAAIAABAAFAAAAAAAFAAIAAAAAEAAAAAAAQAA=</HashCode>
       <FileName>Submarines\Submarine.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="GameLogic.AdditionalAmmunition">
-    <Position X="10" Y="6.75" Width="1.5" />
+  <Class Name="GameLogic.AdditionalAmmunition" Collapsed="true">
+    <Position X="9.25" Y="6.75" Width="1.5" />
     <Members>
       <Field Name="boostAmmunition" Hidden="true" />
     </Members>
@@ -28,8 +28,8 @@
       <FileName>Decorator\AdditionalAmmunition.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="GameLogic.AdditionalArmor">
-    <Position X="4.5" Y="6.75" Width="1.5" />
+  <Class Name="GameLogic.AdditionalArmor" Collapsed="true">
+    <Position X="4.75" Y="6.75" Width="1.5" />
     <Members>
       <Field Name="boostArmor" Hidden="true" />
     </Members>
@@ -38,8 +38,8 @@
       <FileName>Decorator\AdditionalArmor.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="GameLogic.AdditionalHealth">
-    <Position X="2" Y="6.75" Width="1.5" />
+  <Class Name="GameLogic.AdditionalHealth" Collapsed="true">
+    <Position X="2.75" Y="6.75" Width="1.5" />
     <Members>
       <Field Name="boostHealth" Hidden="true" />
     </Members>
@@ -48,8 +48,8 @@
       <FileName>Decorator\AdditionalHealth.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="GameLogic.AdditionalSpeed">
-    <Position X="7.5" Y="6.75" Width="1.5" />
+  <Class Name="GameLogic.AdditionalSpeed" Collapsed="true">
+    <Position X="7.25" Y="6.75" Width="1.5" />
     <Members>
       <Field Name="boostSpeed" Hidden="true" />
     </Members>

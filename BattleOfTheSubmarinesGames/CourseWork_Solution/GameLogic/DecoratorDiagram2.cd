@@ -58,5 +58,12 @@
       <FileName>Decorator\AdditionalSpeed.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="GameLogic.GameObject" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>
