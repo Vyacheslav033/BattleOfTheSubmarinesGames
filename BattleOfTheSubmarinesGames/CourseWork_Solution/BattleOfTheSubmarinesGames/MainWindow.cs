@@ -24,13 +24,15 @@ namespace BattleOfTheSubmarinesGames
         RocketType redRocketType = RocketType.FieryRocket;       
         bool activeRocket_1 = true;
         bool activeRocket_2 = true;
-        bool activeMina = false;      
+        bool activeMina = false;
 
         /// <summary>
         /// Инициализатор окна OpenTK.
         /// </summary>
         /// <param name="width"> Ширина. </param>
         /// <param name="height"> Высота. </param>
+        /// <param name="blueAmmo"> Снаряжение синей лодки. </param>
+        /// <param name="redAmmo"> Снаряжение красной лодки. </param>
         public MainWindow(int width, int height, RocketAmmunition blueAmmo, RocketAmmunition redAmmo ) : base(width, height)
         {        
             this.Location = new Point(-10, 0);
@@ -190,7 +192,7 @@ namespace BattleOfTheSubmarinesGames
         /// <summary>
         /// Создание мины.
         /// </summary>
-        /// <param name="transform"></param>
+        /// <param name="transform"> Позиция миноносца. </param>
         private void CreateMina(Transform transform)
         {
             var mina = new Mina();
@@ -218,7 +220,7 @@ namespace BattleOfTheSubmarinesGames
             destroyer.Transform.Scale = new Vector2(destroyer.Transform.Scale.X * side, destroyer.Transform.Scale.Y);           
             destroyer.Transform.Position = new Vector2((-(ClientSize.Width + textures["destroyer.png"].Width) / 2) * side, (ClientSize.Height - textures["destroyer.png"].Height) / 2);
             destroyer.Components.Add(textures["destroyer.png"]);
-            gameObjects.Add(destroyer);     
+            gameObjects.Add(destroyer);            
         }
 
         /// <summary>
@@ -501,18 +503,18 @@ namespace BattleOfTheSubmarinesGames
 
                     destroyer.Move(e.Time);
 
-                    var random = new Random();
-                    var subId = SearchSubmarineId(random.Next(1, 3));
+                    var rn = new Random();
+                    var subId = SearchSubmarineId(rn.Next(1, 3));
 
-                    if (subId != -1)
+                    if (subId != -1 && !activeMina)
                     {
-                        if (destroyer.Transform.Position.X <= gameObjects[subId].Transform.Position.X && !activeMina)
+                        if (destroyer.Transform.Position.X <= gameObjects[subId].Transform.Position.X)
                         {
                             CreateMina(destroyer.Transform);
                             activeMina = true;
                         }
-                    }   
-                }               
+                    }
+                }
 
                 if (gameObjects[i] is Mina)
                 {
@@ -521,7 +523,7 @@ namespace BattleOfTheSubmarinesGames
                     mina.Move(e.Time);
 
                     if (CheckingColliders(mina))
-                    {
+                    {                       
                         gameObjectOrderRemove.Add(gameObjects[i]);
                         activeMina = false;
                     }
@@ -537,10 +539,10 @@ namespace BattleOfTheSubmarinesGames
         }
 
         /// <summary>
-        /// Поиск лодки в коллекции.
+        /// Поиск айди лодки в коллекции.
         /// </summary>
-        /// <param name="numberOject"></param>
-        /// <returns></returns>
+        /// <param name="numberOject"> Номер лодки, которую нужно найти. </param>
+        /// <returns> Айди лодки. </returns>
         private int SearchSubmarineId(int numberOject)
         {
             for (var i = 0; i < gameObjects.Count; i++)
@@ -553,7 +555,7 @@ namespace BattleOfTheSubmarinesGames
                     {
                         return i;
                     }
-                    else if (sub.BasicType.Name.ToString() == nameof(RedSubmarine) && numberOject == 2)
+                    if (sub.BasicType.Name.ToString() == nameof(RedSubmarine) && numberOject == 2)
                     {
                         return i;
                     }
@@ -566,7 +568,8 @@ namespace BattleOfTheSubmarinesGames
         /// <summary>
         /// Управление синего игрока.
         /// </summary>
-        /// <param name="e"></param>
+        /// <param name="e"> Данные собятия. </param>
+        /// <param name="submarine"> Лодка. </param>
         private void ControllingBluePlayer(FrameEventArgs e, Submarine submarine)
         {
             KeyboardState kb = Keyboard.GetState();
@@ -640,6 +643,7 @@ namespace BattleOfTheSubmarinesGames
         /// Управление красного игрока.
         /// </summary>
         /// <param name="e"> Данные события. </param>
+        /// <param name="submarine"> Лодка.</param>
         private void ControllingRedPlayer(FrameEventArgs e, Submarine submarine)
         {
             KeyboardState kb = Keyboard.GetState();           
