@@ -454,19 +454,10 @@ namespace BattleOfTheSubmarinesGames
                 {
                     var sub = (Submarine)gameObjects[i];
 
-                    if (sub.BasicType.Name.ToString() == nameof(BlueSubmarine))
-                    {
-                        ControllingBluePlayer(e, sub);
-                    }
-                    else if (sub.BasicType.Name.ToString() == nameof(RedSubmarine))
-                    {
-                        ControllingRedPlayer(e, sub);
-                    }
+                    var subDel = TrackingSubmarine(sub, e);
 
-                    if (sub.Health <= 0)
+                    if(subDel)
                     {
-                        GameWin(sub.BasicType);
-
                         gameObjectOrderRemove.Add(gameObjects[i]);
                     }
 
@@ -503,17 +494,7 @@ namespace BattleOfTheSubmarinesGames
 
                     destroyer.Move(e.Time);
 
-                    var rn = new Random();
-                    var subId = SearchSubmarineId(rn.Next(1, 3));
-
-                    if (subId != -1 && !activeMina)
-                    {
-                        if (destroyer.Transform.Position.X <= gameObjects[subId].Transform.Position.X)
-                        {
-                            CreateMina(destroyer.Transform);
-                            activeMina = true;
-                        }
-                    }
+                    DropingMine(destroyer, e);
                 }
 
                 if (gameObjects[i] is Mina)
@@ -536,6 +517,53 @@ namespace BattleOfTheSubmarinesGames
             }
 
             Title = property;
+        }
+
+        /// <summary>
+        /// Контроль движения и уничтожения лодок.
+        /// </summary>
+        /// <param name="submarine"> Лодка. </param>
+        /// <param name="e"> Данные события. </param>
+        /// <returns> Логическое значение отвечающее, за удаление лодок. </returns>
+        private bool TrackingSubmarine(Submarine submarine, FrameEventArgs e)
+        {
+            if (submarine.BasicType.Name.ToString() == nameof(BlueSubmarine))
+            {
+                ControllingBluePlayer(e, submarine);
+            }
+            else if (submarine.BasicType.Name.ToString() == nameof(RedSubmarine))
+            {
+                ControllingRedPlayer(e, submarine);
+            }
+
+            if (submarine.Health <= 0)
+            {
+                GameWin(submarine.BasicType);
+
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Сброс мины.
+        /// </summary>
+        /// <param name="destroyer"> Миноносец. </param>
+        /// <param name="e"> Данные собятия. </param>
+        private void DropingMine(Destroyer destroyer, FrameEventArgs e)
+        {        
+            var rn = new Random();
+            var subId = SearchSubmarineId(rn.Next(1, 3));
+
+            if (subId != -1 && !activeMina)
+            {
+                if (destroyer.Transform.Position.X <= gameObjects[subId].Transform.Position.X)
+                {
+                    CreateMina(destroyer.Transform);
+                    activeMina = true;
+                }
+            }
         }
 
         /// <summary>
