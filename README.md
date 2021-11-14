@@ -1,1 +1,1 @@
-# CourseWork_
+# BattleOfTheSubmarinesGames
